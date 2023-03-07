@@ -1,3 +1,4 @@
-export default function Home() {
+const Home = (): JSX.Element => {
   return <main className="home"></main>;
-}
+};
+export default Home;
