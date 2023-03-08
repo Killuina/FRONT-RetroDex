@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:dev": "next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -35,13 +35,5 @@
     "next-redux-wrapper": "^8.1.0",
     "prettier": "^2.8.4",
     "react-redux": "^8.0.5"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "!next-env.d.ts",
-      "!next.config.js"
-    ]
   }
 }
