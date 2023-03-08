@@ -1,4 +1,5 @@
 const Home = (): JSX.Element => {
-  return <main className="home"></main>;
+  return <div className="home-page"></div>;
 };
+
 export default Home;

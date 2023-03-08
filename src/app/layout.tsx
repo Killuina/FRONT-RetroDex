@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Pokédex",
-  description: "Pokédex CRUD app",
+  description: "A Pokédex CRUD app",
 };
 
 interface RootLayoutProps {
