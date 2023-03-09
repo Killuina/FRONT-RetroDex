@@ -1,8 +1,12 @@
+import "@fontsource/ibm-plex-mono";
+import "@fontsource/vt323";
 import { store } from "@/store/store";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import GlobalStyles from "../GlobalStyles";
+import { defaultTheme } from "@/styles/chakraThemes/defaultTheme";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
@@ -13,7 +17,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       </Head>
       <Provider store={store}>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <ChakraProvider theme={defaultTheme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
       </Provider>
     </>
   );
