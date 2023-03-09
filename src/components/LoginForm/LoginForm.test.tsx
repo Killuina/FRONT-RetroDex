@@ -23,63 +23,85 @@ describe("Given the LoginForm component", () => {
     });
   });
 
-  describe("When the user writes on Username's input field", () => {
-    test("Then it should change the value of username's input", async () => {
+  describe("When the user writes on Username's field", () => {
+    test("Then it should change the value of username's field", async () => {
       const usernameLabel = "Username";
-      const expectedInputValue = "manolo";
+      const expectedFieldValue = "manolo";
       render(<LoginForm />);
 
-      const usernameInput = screen.getByLabelText(usernameLabel);
+      const usernameField = screen.getByLabelText(usernameLabel);
 
       await act(
-        async () => await userEvent.type(usernameInput, expectedInputValue)
+        async () => await userEvent.type(usernameField, expectedFieldValue)
       );
 
-      expect(usernameInput).toHaveValue(expectedInputValue);
+      expect(usernameField).toHaveValue(expectedFieldValue);
     });
   });
 
-  describe("When the user writes on Password's input field", () => {
-    test("Then it should change the value of password's input", async () => {
+  describe("When the user writes on Password's field", () => {
+    test("Then it should change the value of password's field", async () => {
       const passwordLabel = "Password";
-      const expectedInputValue = "manolo1234";
+      const expectedFieldValue = "manolo1234";
       render(<LoginForm />);
 
-      const usernameInput = screen.getByLabelText(passwordLabel);
+      const usernameField = screen.getByLabelText(passwordLabel);
 
       await act(
-        async () => await userEvent.type(usernameInput, expectedInputValue)
+        async () => await userEvent.type(usernameField, expectedFieldValue)
       );
 
-      expect(usernameInput).toHaveValue(expectedInputValue);
+      expect(usernameField).toHaveValue(expectedFieldValue);
     });
   });
 
   describe("When the user clicks 'Sign in' button", () => {
-    test("Then it should reset the value of username's input field", async () => {
+    test("Then it should reset the value of username's field", async () => {
       const usernameLabel = "Username";
-      const expectedInputValue = "";
+      const expectedFieldValue = "";
       render(<LoginForm />);
 
-      const usernameInput = screen.getByLabelText(usernameLabel);
+      const usernameField = screen.getByLabelText(usernameLabel);
       const loginButton = screen.getByRole("button", { name: "Sign in" });
 
       await act(async () => await userEvent.click(loginButton));
 
-      expect(usernameInput).toHaveValue(expectedInputValue);
+      expect(usernameField).toHaveValue(expectedFieldValue);
     });
 
-    test("Then it should reset the value of password's input field", async () => {
+    test("Then it should reset the value of password's field", async () => {
       const passwordLabel = "Password";
-      const expectedInputValue = "";
+      const expectedFieldValue = "";
       render(<LoginForm />);
 
-      const passwordInput = screen.getByLabelText(passwordLabel);
+      const passwordField = screen.getByLabelText(passwordLabel);
       const loginButton = screen.getByRole("button", { name: "Sign in" });
 
       await act(async () => await userEvent.click(loginButton));
 
-      expect(passwordInput).toHaveValue(expectedInputValue);
+      expect(passwordField).toHaveValue(expectedFieldValue);
+    });
+  });
+
+  describe("When the user writes on both Username's and Password's fields", () => {
+    test("Then it should change the value of both fields", async () => {
+      const usernameLabel = "Username";
+      const expectedUsernameFieldValue = "manolo";
+      const passwordLabel = "Password";
+      const expectedPasswordFieldValue = "manolo1234";
+
+      render(<LoginForm />);
+
+      const usernameField = screen.getByLabelText(usernameLabel);
+      const passwordField = screen.getByLabelText(passwordLabel);
+
+      await act(async () => {
+        await userEvent.type(usernameField, expectedUsernameFieldValue),
+          await userEvent.type(passwordField, expectedPasswordFieldValue);
+      });
+
+      expect(usernameField).toHaveValue(expectedUsernameFieldValue);
+      expect(passwordField).toHaveValue(expectedPasswordFieldValue);
     });
   });
 });
