@@ -9,8 +9,8 @@ import { useState } from "react";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username] = useState("");
+  const [password] = useState("");
 
   const isUsernameFieldEmpty = username === "";
   const isPasswordFieldEmpty = password === "";
