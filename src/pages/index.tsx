@@ -1,5 +1,11 @@
-const Home = (): JSX.Element => {
-  return <main className="home"></main>;
+import LoginForm from "@/components/LoginForm/LoginForm";
+
+const LoginPage = (): JSX.Element => {
+  return (
+    <main className="login-page">
+      <LoginForm />
+    </main>
+  );
 };
 
-export default Home;
+export default LoginPage;

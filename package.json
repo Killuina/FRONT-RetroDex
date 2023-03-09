@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "test": "jest --passWithNoTests",
-    "test:coverage": "jest --coverage --watchAll=false --passWithNoTests"
+    "test": "jest",
+    "test:dev": "jest --watch",
+    "test:coverage": "jest --coverage --watchAll=false"
   },
   "dependencies": {
     "@types/node": "18.14.6",
