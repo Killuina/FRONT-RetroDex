@@ -6,7 +6,7 @@ const LoginFormStyled = styled.form`
     flex-direction: column;
     padding: 1.875rem;
 
-    .form-error-message {
+    .form-message {
       margin-bottom: 1.875rem;
     }
   }
