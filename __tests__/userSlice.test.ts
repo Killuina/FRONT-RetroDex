@@ -1,5 +1,8 @@
-import { User, UserState } from "./types";
-import { loginUserActionCreator, userReducer } from "./userSlice";
+import { User, UserState } from "../src/store/features/userSlice/types";
+import {
+  loginUserActionCreator,
+  userReducer,
+} from "../src/store/features/userSlice/userSlice";
 
 describe("Given a user reducer", () => {
   const initialState: UserState = {
