@@ -36,7 +36,7 @@ const useUser = (): UseUser => {
       const loggedUser: User = {
         username,
         token,
-        id: sub!,
+        id: sub,
       };
 
       dispatch(loginUserActionCreator(loggedUser));
