@@ -2,7 +2,9 @@ import { PreloadedState } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
 import { RootState, setupStore, store } from "../../store/store";
+import { mainTheme } from "../../styles/mainTheme";
 
 const renderWithProviders = (
   ui: React.ReactElement,
@@ -11,7 +13,11 @@ const renderWithProviders = (
   const testStore = preloadedState ? setupStore(preloadedState) : store;
 
   const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
-    return <Provider store={testStore}>{children}</Provider>;
+    return (
+      <ThemeProvider theme={mainTheme}>
+        <Provider store={testStore}>{children}</Provider>
+      </ThemeProvider>
+    );
   };
 
   return render(ui, { wrapper: Wrapper });

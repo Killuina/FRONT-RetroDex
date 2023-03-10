@@ -1,6 +1,6 @@
-import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
+import { secondaryFont } from "../../styles/fonts/googleFonts";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
@@ -11,7 +11,7 @@ const LoginForm = (): JSX.Element => {
     password: "",
   });
 
-  const isUsernameFieldEmpty =
+  const areAreaFieldsEmpty =
     userLoginCredentials.username === "" ||
     userLoginCredentials.password === "";
 
@@ -28,40 +28,34 @@ const LoginForm = (): JSX.Element => {
     event.preventDefault();
 
     loginUser(userLoginCredentials);
-
-    setUserLoginCredentials({ username: "", password: "" });
   };
 
   return (
-    <LoginFormStyled onSubmit={onSubmitHandler}>
-      <FormControl
-        className="login-form"
-        isInvalid={isUsernameFieldEmpty}
-        fontFamily="form"
-        bg="primary.100"
-      >
-        <FormLabel htmlFor="username">Username</FormLabel>
-        <Input
-          autoComplete="off"
-          className="login-form__field"
-          id={"username"}
-          type="text"
-          bg="white"
-          value={userLoginCredentials.username}
-          onChange={handleUserLoginCredentials}
-        />
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <Input
-          className="login-form__field"
-          id={"password"}
-          type="password"
-          bg="white"
-          autoComplete="on"
-          value={userLoginCredentials.password}
-          onChange={handleUserLoginCredentials}
-        />
-        <Button type="submit">Sign in</Button>
-      </FormControl>
+    <LoginFormStyled
+      className={`${secondaryFont.className} "login-form"`}
+      onSubmit={onSubmitHandler}
+    >
+      <label htmlFor="username">Username</label>
+      <input
+        className="login-form__field"
+        type="text"
+        autoComplete="off"
+        id="username"
+        value={userLoginCredentials.username}
+        onChange={handleUserLoginCredentials}
+      ></input>
+      <label htmlFor="password">Password</label>
+      <input
+        className="login-form__field"
+        autoComplete="on"
+        type="password"
+        id="password"
+        value={userLoginCredentials.password}
+        onChange={handleUserLoginCredentials}
+      />
+      <button className="login-form__button" disabled={areAreaFieldsEmpty}>
+        Sign in
+      </button>
     </LoginFormStyled>
   );
 };

@@ -6,6 +6,8 @@ declare module "styled-components" {
       mainColor: string;
       headerColor: string;
       buttonColor: string;
+      disabledButtonColor: string;
+      inputColor: string;
     };
     fonts: {
       mainFont: string;
@@ -23,8 +25,14 @@ declare module "styled-components" {
       };
       colors: {
         white: string;
-        black: string;
+        dark: string;
       };
+    };
+    border: {
+      radius: string;
+    };
+    paddings: {
+      medium: string;
     };
   }
 }
