@@ -1,6 +1,7 @@
 import decodeToken from "jwt-decode";
-import { User } from "@/store/features/userSlice/types";
-import { useAppDispatch } from "@/store/hooks";
+import { User } from "../../store/features/userSlice/types";
+import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
+import { useAppDispatch } from "../../store/hooks";
 import { paths } from "../paths";
 import {
   CustomJwtPayload,
@@ -8,7 +9,6 @@ import {
   UserCredentials,
   UseUser,
 } from "../types";
-import { loginUserActionCreator } from "@/store/features/userSlice/userSlice";
 
 const {
   users: {

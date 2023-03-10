@@ -1,5 +1,5 @@
-import { paths } from "@/hooks/paths";
 import { rest } from "msw";
+import { paths } from "../hooks/paths";
 
 const {
   users: {

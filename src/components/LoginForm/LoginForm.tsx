@@ -1,15 +1,11 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-  FormHelperText,
-} from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
+import useUser from "../../hooks/userUser/useUser";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
+  const { loginUser } = useUser();
+
   const [userLoginCredentials, setUserLoginCredentials] = useState({
     username: "",
     password: "",
@@ -31,6 +27,8 @@ const LoginForm = (): JSX.Element => {
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    loginUser(userLoginCredentials);
+
     setUserLoginCredentials({ username: "", password: "" });
   };
 
@@ -44,40 +42,24 @@ const LoginForm = (): JSX.Element => {
       >
         <FormLabel htmlFor="username">Username</FormLabel>
         <Input
-          id="username"
+          autoComplete="off"
+          className="login-form__field"
+          id={"username"}
           type="text"
           bg="white"
           value={userLoginCredentials.username}
           onChange={handleUserLoginCredentials}
         />
-
-        {isUsernameFieldEmpty ? (
-          <FormErrorMessage className="form-message">
-            Username is required
-          </FormErrorMessage>
-        ) : (
-          <FormHelperText className="form-message">
-            Your username is the best
-          </FormHelperText>
-        )}
         <FormLabel htmlFor="password">Password</FormLabel>
         <Input
-          id="password"
+          className="login-form__field"
+          id={"password"}
           type="password"
           bg="white"
           autoComplete="on"
           value={userLoginCredentials.password}
           onChange={handleUserLoginCredentials}
         />
-        {isUsernameFieldEmpty ? (
-          <FormErrorMessage className="form-message">
-            Password is required
-          </FormErrorMessage>
-        ) : (
-          <FormHelperText className="form-message">
-            Your password is even better
-          </FormHelperText>
-        )}
         <Button type="submit">Sign in</Button>
       </FormControl>
     </LoginFormStyled>
