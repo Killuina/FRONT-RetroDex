@@ -8,6 +8,7 @@ declare module "styled-components" {
       buttonColor: string;
       disabledButtonColor: string;
       inputColor: string;
+      modalErrorColor: string;
     };
     fonts: {
       mainFont: string;

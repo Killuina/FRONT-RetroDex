@@ -37,6 +37,16 @@ input {
 ul, li, ol {
 list-style: none;
 }
+
+.Toastify__toast--error, .Toastify__toast-body svg {
+  border-radius: ${(props) => props.theme.border.radius};
+  fill: ${(props) => props.theme.colors.modalErrorColor};
+  font-family: inherit;
+  font-weight: inherit;
+  background-color: ${(props) => props.theme.fonts.colors.dark};
+}
+
+
 `;
 
 export default GlobalStyles;

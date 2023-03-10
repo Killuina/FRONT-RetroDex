@@ -1,17 +1,17 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
-import { User } from "../src/store/features/userSlice/types";
-import { loginUserActionCreator } from "../src/store/features/userSlice/userSlice";
-import { store } from "../src/store/store";
-import Wrapper from "../src/utils/testUtils/Wrapper";
-import { CustomJwtPayload, UserCredentials } from "../src/hooks/types";
-import useUser from "../src/hooks/userUser/useUser";
+import { User } from "../../src/store/features/userSlice/types";
+import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
+import { store } from "../../src/store/store";
+import Wrapper from "../../src/utils/testUtils/Wrapper";
+import { CustomJwtPayload, UserCredentials } from "../../src/hooks/types";
+import useUser from "../../src/hooks/userUser/useUser";
 
 const mockDispatch = jest.spyOn(store, "dispatch");
 
-jest.mock("../src/store/hooks", () => ({
-  ...jest.requireActual("../src/store/hooks"),
+jest.mock("../../src/store/hooks", () => ({
+  ...jest.requireActual("../../src/store/hooks"),
   useAppDispatch: () => mockDispatch,
 }));
 
