@@ -5,7 +5,7 @@ import {
 } from "../src/store/features/userSlice/userSlice";
 
 describe("Given a user reducer", () => {
-  const initialState: UserState = {
+  const currentState: UserState = {
     id: "",
     username: "",
     isLogged: false,
@@ -27,7 +27,7 @@ describe("Given a user reducer", () => {
       };
       const loginUserAction = loginUserActionCreator(user);
 
-      const newUserState = userReducer(initialState, loginUserAction);
+      const newUserState = userReducer(currentState, loginUserAction);
 
       expect(newUserState).toStrictEqual(expectedUserState);
     });
