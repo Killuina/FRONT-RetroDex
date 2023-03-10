@@ -1,4 +1,3 @@
-import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
 import LoginFormStyled from "./LoginFormStyled";
@@ -11,7 +10,7 @@ const LoginForm = (): JSX.Element => {
     password: "",
   });
 
-  const isUsernameFieldEmpty =
+  const areAreaFieldsEmpty =
     userLoginCredentials.username === "" ||
     userLoginCredentials.password === "";
 
@@ -33,35 +32,30 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <LoginFormStyled onSubmit={onSubmitHandler}>
-      <FormControl
-        className="login-form"
-        isInvalid={isUsernameFieldEmpty}
-        fontFamily="form"
-        bg="primary.100"
-      >
-        <FormLabel htmlFor="username">Username</FormLabel>
-        <Input
-          autoComplete="off"
-          className="login-form__field"
-          id={"username"}
+    <LoginFormStyled className="login-form" onSubmit={onSubmitHandler}>
+      <label htmlFor="username" className="login-form__field">
+        Username
+        <input
           type="text"
-          bg="white"
+          autoComplete="off"
+          id="username"
           value={userLoginCredentials.username}
           onChange={handleUserLoginCredentials}
-        />
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <Input
-          className="login-form__field"
-          id={"password"}
-          type="password"
-          bg="white"
+        ></input>
+      </label>
+      <label htmlFor="password" className="login-form__field">
+        Password
+        <input
           autoComplete="on"
+          type="password"
+          id="password"
           value={userLoginCredentials.password}
           onChange={handleUserLoginCredentials}
         />
-        <Button type="submit">Sign in</Button>
-      </FormControl>
+      </label>
+      <button className="login-form__button" disabled={areAreaFieldsEmpty}>
+        Sign in
+      </button>
     </LoginFormStyled>
   );
 };

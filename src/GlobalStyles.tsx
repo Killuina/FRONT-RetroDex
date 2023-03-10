@@ -9,10 +9,8 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   margin: 0;
-  background-color:  "#FFFDF0";
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 button {

@@ -2,9 +2,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../GlobalStyles";
 import { store } from "../store/store";
-import { defaultTheme } from "../styles/chakraThemes/defaultTheme";
+import { mainTheme } from "../styles/mainTheme";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
@@ -14,10 +15,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         <meta name="description" content="A Pokédex CRUD App" />
       </Head>
       <Provider store={store}>
-        <GlobalStyles />
-        <ChakraProvider theme={defaultTheme}>
+        <ThemeProvider theme={mainTheme}>
+          <GlobalStyles />
           <Component {...pageProps} />
-        </ChakraProvider>
+        </ThemeProvider>
       </Provider>
     </>
   );
