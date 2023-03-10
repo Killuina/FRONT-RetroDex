@@ -1,12 +1,13 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import LoginForm from "./LoginForm";
 
 describe("Given the LoginForm component", () => {
   describe("When it renders", () => {
     test("Then is shoulw show a field with label 'Username'", () => {
       const expectedLabel = "Username";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(expectedLabel);
 
@@ -15,7 +16,7 @@ describe("Given the LoginForm component", () => {
 
     test("Then is shoulw show a field with label 'Password'", () => {
       const expectedLabel = "Password";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const passwordField = screen.getByLabelText(expectedLabel);
 
@@ -27,7 +28,7 @@ describe("Given the LoginForm component", () => {
     test("Then it should change the value of username's field", async () => {
       const usernameLabel = "Username";
       const expectedFieldValue = "manolo";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(usernameLabel);
 
@@ -43,7 +44,7 @@ describe("Given the LoginForm component", () => {
     test("Then it should change the value of password's field", async () => {
       const passwordLabel = "Password";
       const expectedFieldValue = "manolo1234";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(passwordLabel);
 
@@ -59,7 +60,7 @@ describe("Given the LoginForm component", () => {
     test("Then it should reset the value of username's field", async () => {
       const usernameLabel = "Username";
       const expectedFieldValue = "";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(usernameLabel);
       const loginButton = screen.getByRole("button", { name: "Sign in" });
@@ -72,7 +73,7 @@ describe("Given the LoginForm component", () => {
     test("Then it should reset the value of password's field", async () => {
       const passwordLabel = "Password";
       const expectedFieldValue = "";
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const passwordField = screen.getByLabelText(passwordLabel);
       const loginButton = screen.getByRole("button", { name: "Sign in" });
@@ -90,7 +91,7 @@ describe("Given the LoginForm component", () => {
       const passwordLabel = "Password";
       const expectedPasswordFieldValue = "manolo1234";
 
-      render(<LoginForm />);
+      renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(usernameLabel);
       const passwordField = screen.getByLabelText(passwordLabel);

@@ -5,9 +5,11 @@ const LoginFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     padding: 1.875rem;
+    height: 500px;
+    width: 350px;
 
-    .form-message {
-      margin-bottom: 1.875rem;
+    &__field {
+      margin-bottom: 2rem;
     }
   }
 `;
