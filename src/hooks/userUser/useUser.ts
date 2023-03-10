@@ -19,7 +19,6 @@ const {
 
 const useUser = (): UseUser => {
   const dispatch = useAppDispatch();
-
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
       const response = await fetch(
