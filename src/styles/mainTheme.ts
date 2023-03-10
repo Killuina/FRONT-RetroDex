@@ -5,6 +5,8 @@ export const mainTheme: DefaultTheme = {
     mainColor: "#FFFDF0",
     headerColor: "#F1ECC9",
     buttonColor: "#4D4DA7",
+    disabledButtonColor: "#434378",
+    inputColor: "#FFF",
   },
   fonts: {
     mainFont: "'VT323', monospace",
@@ -22,7 +24,13 @@ export const mainTheme: DefaultTheme = {
     },
     colors: {
       white: "#FFF",
-      black: "#000",
+      dark: "#2D3748",
     },
+  },
+  border: {
+    radius: "0.625rem",
+  },
+  paddings: {
+    medium: "1.875rem",
   },
 };
