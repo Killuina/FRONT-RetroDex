@@ -17,6 +17,8 @@ jobs:
         run: npm ci
       - name: Coverage
         run: npm run test:coverage
+        env:
+          NEXT_PUBLIC_URL_API: ${{ secrets.NEXT_PUBLIC_URL_API }}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

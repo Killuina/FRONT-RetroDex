@@ -1,6 +1,6 @@
 import { UiState } from "../../src/store/features/uiSlice/types";
 import {
-  setIsErrorActionCreator,
+  setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
   uiReducer,
   unsetIsErrorActionCreator,
@@ -45,7 +45,7 @@ describe("Given the uiSliceReducer reducer", () => {
 
       const uiState: UiState = uiReducer(
         currentUiState,
-        setIsErrorActionCreator(errorMessage)
+        setIsErrorModalActionCreator(errorMessage)
       );
 
       expect(uiState).toStrictEqual(expectedUiState);

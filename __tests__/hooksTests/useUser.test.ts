@@ -7,14 +7,14 @@ import { store } from "../../src/store/store";
 import Wrapper from "../../src/utils/testUtils/Wrapper";
 import { CustomJwtPayload, UserCredentials } from "../../src/hooks/types";
 import useUser from "../../src/hooks/userUser/useUser";
-import { server } from "../../src/mocks/server";
-import { errorHandlers } from "../../src/mocks/handlers";
-import { toast } from "react-toastify";
+import { setIsErrorModalActionCreator } from "../../src/store/features/uiSlice/uiSlice";
+import modalMessages from "../../src/modals/modalMessages";
 
 const mockDispatch = jest.spyOn(store, "dispatch");
-const mockError = jest.spyOn(toast, "error");
 
 jest.mock("jwt-decode", () => jest.fn());
+
+const { loginError } = modalMessages;
 
 const mockTokenPayload: CustomJwtPayload = {
   username: "Manolo",
@@ -46,6 +46,7 @@ describe("Given the useUser custom hook", () => {
       (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
         mockTokenPayload
       );
+
       const loginUsersAction = loginUserActionCreator(user);
 
       await act(async () => loginUser(userCredentials));
@@ -55,16 +56,18 @@ describe("Given the useUser custom hook", () => {
   });
 
   describe("When it is called with the wrong user credentials", () => {
-    test("Then it should call toastify's error method", async () => {
+    test("Then it should call the dispatch with setIsError action", async () => {
       const {
         result: {
           current: { loginUser },
         },
       } = renderHook(() => useUser(), { wrapper: Wrapper });
 
-      await loginUser(userCredentials);
+      await act(async () => loginUser(userCredentials));
 
-      expect(mockError).toHaveBeenCalled();
+      const setIsErrorAction = setIsErrorModalActionCreator(loginError);
+
+      expect(mockDispatch).toHaveBeenCalledWith(setIsErrorAction);
     });
   });
 });
