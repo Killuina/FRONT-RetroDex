@@ -4,7 +4,7 @@ import { setIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSli
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { routes } from "../paths";
+import { routes } from "../routes";
 import {
   CustomJwtPayload,
   LoginResponse,

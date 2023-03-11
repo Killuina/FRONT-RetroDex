@@ -3,32 +3,19 @@ import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
 import { User } from "../../src/store/features/userSlice/types";
 import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
-import { store } from "../../src/store/store";
 import wrapper from "../../src/utils/testUtils/Wrapper";
-import { CustomJwtPayload, UserCredentials } from "../../src/hooks/types";
+import { UserCredentials } from "../../src/hooks/types";
 import useUser from "../../src/hooks/userUser/useUser";
 import { setIsErrorModalActionCreator } from "../../src/store/features/uiSlice/uiSlice";
 import modalMessages from "../../src/modals/modalMessages";
-
-const mockDispatch = jest.spyOn(store, "dispatch");
+import { mockDispatch } from "../../src/mocks/storeMocks/mockDispatch";
+import {
+  mockTokenPayload,
+  user,
+  userCredentials,
+} from "../../src/mocks/userMocks/userMocks";
 
 jest.mock("jwt-decode", () => jest.fn());
-
-const { loginError } = modalMessages;
-
-const mockTokenPayload: CustomJwtPayload = {
-  username: "Manolo",
-  sub: "1",
-};
-const userCredentials: UserCredentials = {
-  username: "Manolo",
-  password: "manolo1",
-};
-const user: User = {
-  id: "1",
-  username: "Manolo",
-  token: "mocken",
-};
 
 beforeEach(() => jest.resetAllMocks());
 
@@ -65,7 +52,9 @@ describe("Given the useUser custom hook", () => {
 
       await act(async () => loginUser(userCredentials));
 
-      const setIsErrorAction = setIsErrorModalActionCreator(loginError);
+      const setIsErrorAction = setIsErrorModalActionCreator(
+        modalMessages.loginError
+      );
 
       expect(mockDispatch).toHaveBeenCalledWith(setIsErrorAction);
     });
