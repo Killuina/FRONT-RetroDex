@@ -4,20 +4,12 @@ import { showErrorToast } from "../../modals/modals";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { paths } from "../paths";
 import {
   CustomJwtPayload,
   LoginResponse,
   UserCredentials,
   UseUser,
 } from "../types";
-
-const {
-  users: {
-    path,
-    endpoints: { login },
-  },
-} = paths;
 
 const { loginError } = modalMessages;
 
@@ -26,7 +18,7 @@ const useUser = (): UseUser => {
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
+        `https://cristina-jimenez-final-project-202301-bcn.onrender.com/users/login`,
         {
           method: "POST",
           body: JSON.stringify(userCredentials),

@@ -12,7 +12,6 @@ import { errorHandlers } from "../../src/mocks/handlers";
 import { toast } from "react-toastify";
 
 const mockDispatch = jest.spyOn(store, "dispatch");
-
 const mockError = jest.spyOn(toast, "error");
 
 jest.mock("jwt-decode", () => jest.fn());
@@ -58,7 +57,7 @@ describe("Given the useUser custom hook", () => {
   describe("When it is called with the wrong user credentials", () => {
     server.use(...errorHandlers);
 
-    test("Then it call toastify's error method", async () => {
+    test("Then it should call toastify's error method", async () => {
       const {
         result: {
           current: { loginUser },
