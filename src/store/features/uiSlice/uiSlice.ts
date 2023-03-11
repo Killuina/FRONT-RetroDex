@@ -1,10 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UiState } from "./types";
 
 export const initialState: UiState = {
-  isError: false,
+  modal: {
+    isError: false,
+    message: "",
+  },
   isLoading: false,
-  isSuccess: false,
 };
 
 const uiSlice = createSlice({
@@ -19,14 +21,23 @@ const uiSlice = createSlice({
       ...currentUiState,
       isLoading: false,
     }),
-    setIsError: (currentUiState: UiState): UiState => ({
+    setIsError: (
+      currentUiState: UiState,
+      { payload }: PayloadAction<string>
+    ): UiState => ({
       ...currentUiState,
-      isError: true,
+      modal: {
+        message: payload,
+        isError: true,
+      },
     }),
 
     unsetIsError: (currentUiState: UiState): UiState => ({
       ...currentUiState,
-      isError: false,
+      modal: {
+        message: "",
+        isError: false,
+      },
     }),
   },
 });

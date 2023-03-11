@@ -8,8 +8,7 @@ import {
 } from "../../src/store/features/uiSlice/uiSlice";
 
 const currentUiState: UiState = {
-  isError: false,
-  isSuccess: false,
+  modal: { isError: false, message: "" },
   isLoading: false,
 };
 
@@ -36,25 +35,36 @@ describe("Given the uiSliceReducer reducer", () => {
     });
   });
 
-  describe("When it receives the action to set isError", () => {
-    test("Then it should set isError to true", () => {
+  describe("When it receives the action to set isError and 'This is an error message' message", () => {
+    test("Then it should set modal's isError property to true and message to 'This is an error message'", () => {
+      const errorMessage = "This is an error message";
+      const expectedUiState: UiState = {
+        modal: { isError: true, message: errorMessage },
+        isLoading: false,
+      };
+
       const uiState: UiState = uiReducer(
         currentUiState,
-        setIsErrorActionCreator()
+        setIsErrorActionCreator(errorMessage)
       );
 
-      expect(uiState).toHaveProperty("isError", true);
+      expect(uiState).toStrictEqual(expectedUiState);
     });
   });
 
   describe("When it receives the action to unset isError", () => {
-    test("Then it should set isError to false", () => {
+    test("Then it should set modal to its initial state", () => {
+      const expectedUiState: UiState = {
+        modal: { isError: false, message: "" },
+        isLoading: false,
+      };
+
       const uiState: UiState = uiReducer(
         currentUiState,
         unsetIsErrorActionCreator()
       );
 
-      expect(uiState).toHaveProperty("isError", false);
+      expect(uiState).toStrictEqual(expectedUiState);
     });
   });
 });
