@@ -1,6 +1,6 @@
 import decodeToken from "jwt-decode";
 import modalMessages from "../../modals/modalMessages";
-import { showErrorToast, showSucessToast } from "../../modals/modals";
+import { showErrorToast } from "../../modals/modals";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
@@ -47,7 +47,7 @@ const useUser = (): UseUser => {
 
       localStorage.setItem("token", token);
     } catch (error) {
-      showErrorToast(`${loginError}`);
+      showErrorToast(loginError);
     }
   };
 

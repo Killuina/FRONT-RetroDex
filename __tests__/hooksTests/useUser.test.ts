@@ -21,6 +21,17 @@ const mockTokenPayload: CustomJwtPayload = {
   username: "Manolo",
   sub: "1",
 };
+const userCredentials: UserCredentials = {
+  username: "Manolo",
+  password: "manolo1",
+};
+const user: User = {
+  id: "1",
+  username: "Manolo",
+  token: "mocken",
+};
+
+beforeEach(() => jest.clearAllMocks());
 
 describe("Given the useUser custom hook", () => {
   describe("When loginUser function is called", () => {
@@ -32,15 +43,6 @@ describe("Given the useUser custom hook", () => {
       } = renderHook(() => useUser(), {
         wrapper: Wrapper,
       });
-      const userCredentials: UserCredentials = {
-        username: "Manolo",
-        password: "manolo1",
-      };
-      const user: User = {
-        id: "1",
-        username: "Manolo",
-        token: "mocken",
-      };
 
       (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
         mockTokenPayload
