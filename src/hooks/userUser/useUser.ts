@@ -1,6 +1,6 @@
 import decodeToken from "jwt-decode";
 import modalMessages from "../../modals/modalMessages";
-import { showErrorToast } from "../../modals/modals";
+import { showErrorToast, showSucessToast } from "../../modals/modals";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";

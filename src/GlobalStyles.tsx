@@ -38,12 +38,13 @@ ul, li, ol {
 list-style: none;
 }
 
-.Toastify__toast--error, .Toastify__toast-body svg {
+
+.Toastify__toast {
   border-radius: ${(props) => props.theme.border.radius};
-  fill: ${(props) => props.theme.colors.modalErrorColor};
+  color: ${(props) => props.theme.fonts.colors.dark};
   font-family: inherit;
-  font-weight: inherit;
-  background-color: ${(props) => props.theme.fonts.colors.dark};
+  font-weight: ${(props) => props.theme.fonts.weights.semiBold};
+  background-color: ${(props) => props.theme.colors.headerColor};
 }
 
 
