@@ -21,7 +21,7 @@ const uiSlice = createSlice({
       ...currentUiState,
       isLoading: false,
     }),
-    setIsError: (
+    setIsErrorModal: (
       currentUiState: UiState,
       { payload }: PayloadAction<string>
     ): UiState => ({
@@ -45,7 +45,7 @@ const uiSlice = createSlice({
 export const {
   setIsLoading: setIsLoadingActionCreator,
   unsetIsLoading: unsetIsLoadingActionCreator,
-  setIsError: setIsErrorActionCreator,
+  setIsErrorModal: setIsErrorModalActionCreator,
   unsetIsError: unsetIsErrorActionCreator,
 } = uiSlice.actions;
 
