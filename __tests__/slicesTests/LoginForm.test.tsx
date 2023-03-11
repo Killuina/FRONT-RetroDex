@@ -1,7 +1,13 @@
-import { act, screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderWithProviders from "../src/utils/testUtils/renderWithProviders";
-import LoginForm from "../src/components/LoginForm/LoginForm";
+import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
+import LoginForm from "../../src/components/LoginForm/LoginForm";
+
+const mockedSubmit = jest.fn();
+
+jest.mock("../../src/hooks/userUser/useUser", () => () => ({
+  loginUser: mockedSubmit,
+}));
 
 describe("Given the LoginForm component", () => {
   describe("When it renders", () => {
@@ -32,7 +38,7 @@ describe("Given the LoginForm component", () => {
 
       const usernameField = screen.getByLabelText(usernameLabel);
 
-      await act(
+      await waitFor(
         async () => await userEvent.type(usernameField, expectedFieldValue)
       );
 
@@ -44,11 +50,12 @@ describe("Given the LoginForm component", () => {
     test("Then it should change the value of password's field", async () => {
       const passwordLabel = "Password";
       const expectedFieldValue = "manolo1234";
+
       renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(passwordLabel);
 
-      await act(
+      await waitFor(
         async () => await userEvent.type(usernameField, expectedFieldValue)
       );
 
@@ -56,53 +63,29 @@ describe("Given the LoginForm component", () => {
     });
   });
 
-  describe("When the user clicks 'Sign in' button", () => {
-    test("Then it should reset the value of username's field", async () => {
-      const usernameLabel = "Username";
-      const expectedFieldValue = "";
-      renderWithProviders(<LoginForm />);
-
-      const usernameField = screen.getByLabelText(usernameLabel);
-      const loginButton = screen.getByRole("button", { name: "Sign in" });
-
-      await act(async () => await userEvent.click(loginButton));
-
-      expect(usernameField).toHaveValue(expectedFieldValue);
-    });
-
-    test("Then it should reset the value of password's field", async () => {
+  describe("When the user enters his username and password, and clicks on Sign in button", () => {
+    test("Then it should call the loginUser function", async () => {
+      const userCredentials = {
+        username: "Manolo",
+        password: "manolo1234",
+      };
       const passwordLabel = "Password";
-      const expectedFieldValue = "";
-      renderWithProviders(<LoginForm />);
-
-      const passwordField = screen.getByLabelText(passwordLabel);
-      const loginButton = screen.getByRole("button", { name: "Sign in" });
-
-      await act(async () => await userEvent.click(loginButton));
-
-      expect(passwordField).toHaveValue(expectedFieldValue);
-    });
-  });
-
-  describe("When the user writes on both Username's and Password's fields", () => {
-    test("Then it should change the value of both fields", async () => {
       const usernameLabel = "Username";
-      const expectedUsernameFieldValue = "manolo";
-      const passwordLabel = "Password";
-      const expectedPasswordFieldValue = "manolo1234";
+      const signInButtonText = "Sign in";
 
       renderWithProviders(<LoginForm />);
 
       const usernameField = screen.getByLabelText(usernameLabel);
       const passwordField = screen.getByLabelText(passwordLabel);
-
-      await act(async () => {
-        await userEvent.type(usernameField, expectedUsernameFieldValue),
-          await userEvent.type(passwordField, expectedPasswordFieldValue);
+      const signInButton = screen.getByRole("button", {
+        name: signInButtonText,
       });
 
-      expect(usernameField).toHaveValue(expectedUsernameFieldValue);
-      expect(passwordField).toHaveValue(expectedPasswordFieldValue);
+      await userEvent.type(usernameField, userCredentials.username);
+      await userEvent.type(passwordField, userCredentials.password);
+      await userEvent.click(signInButton);
+
+      expect(mockedSubmit).toHaveBeenCalledWith(userCredentials);
     });
   });
 });

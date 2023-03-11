@@ -1,9 +1,9 @@
-import { UiState } from "../src/store/features/uiSlice/types";
+import { UiState } from "../../src/store/features/uiSlice/types";
 import {
   setIsLoadingActionCreator,
   uiReducer,
   unsetIsLoadingActionCreator,
-} from "../src/store/features/uiSlice/uiSlice";
+} from "../../src/store/features/uiSlice/uiSlice";
 
 describe("Given the uiSliceReducer reducer", () => {
   describe("When it receives the action to set isLoading", () => {

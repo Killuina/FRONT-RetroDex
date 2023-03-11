@@ -7,6 +7,8 @@ export const mainTheme: DefaultTheme = {
     buttonColor: "#4D4DA7",
     disabledButtonColor: "#434378",
     inputColor: "#FFF",
+    modalErrorColor: "#EE7078",
+    modalSucessColor: "#C6F6D5",
   },
   fonts: {
     mainFont: "'VT323', monospace",

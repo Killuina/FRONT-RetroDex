@@ -37,6 +37,17 @@ input {
 ul, li, ol {
 list-style: none;
 }
+
+
+.Toastify__toast {
+  border-radius: ${(props) => props.theme.border.radius};
+  color: ${(props) => props.theme.fonts.colors.dark};
+  font-family: inherit;
+  font-weight: ${(props) => props.theme.fonts.weights.semiBold};
+  background-color: ${(props) => props.theme.colors.headerColor};
+}
+
+
 `;
 
 export default GlobalStyles;
