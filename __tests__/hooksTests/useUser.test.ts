@@ -55,8 +55,6 @@ describe("Given the useUser custom hook", () => {
   });
 
   describe("When it is called with the wrong user credentials", () => {
-    server.use(...errorHandlers);
-
     test("Then it should call toastify's error method", async () => {
       const {
         result: {
