@@ -1,8 +1,11 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import useToken from "../../src/hooks/useToken/useToken";
-import { setLocalStorage } from "../../src/mocks/localStorageMocks/localStorageMocks";
-import { mockDispatch } from "../../src/mocks/storeMocks/mockDispatch";
+import {
+  mockLocalStorage,
+  setLocalStorage,
+} from "../../src/mocks/localStorageMocks/localStorageMocks";
+import { spyDispatch } from "../../src/mocks/storeMocks/mockDispatch";
 import { mockTokenPayload, user } from "../../src/mocks/userMocks/userMocks";
 import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
 import wrapper from "../../src/utils/testUtils/Wrapper";
@@ -35,7 +38,7 @@ describe("Given the useToken hook", () => {
 
       await getToken();
 
-      expect(mockDispatch).toHaveBeenCalledWith(loginUserAction);
+      expect(spyDispatch).toHaveBeenCalledWith(loginUserAction);
     });
   });
 
@@ -49,7 +52,7 @@ describe("Given the useToken hook", () => {
         wrapper,
       });
 
-      const mockedRemoveItem = jest.spyOn(Storage.prototype, "removeItem");
+      const mockedRemoveItem = jest.spyOn(mockLocalStorage, "removeItem");
 
       await removeToken();
 

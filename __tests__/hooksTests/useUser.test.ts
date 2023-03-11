@@ -1,23 +1,23 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
-import { User } from "../../src/store/features/userSlice/types";
 import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
 import wrapper from "../../src/utils/testUtils/Wrapper";
-import { UserCredentials } from "../../src/hooks/types";
 import useUser from "../../src/hooks/userUser/useUser";
 import { setIsErrorModalActionCreator } from "../../src/store/features/uiSlice/uiSlice";
 import modalMessages from "../../src/modals/modalMessages";
-import { mockDispatch } from "../../src/mocks/storeMocks/mockDispatch";
-import {
-  mockTokenPayload,
-  user,
-  userCredentials,
-} from "../../src/mocks/userMocks/userMocks";
+import { spyDispatch } from "../../src/mocks/storeMocks/mockDispatch";
+import { mockTokenPayload, user } from "../../src/mocks/userMocks/userMocks";
+import { UserCredentials } from "../../src/hooks/types";
 
 jest.mock("jwt-decode", () => jest.fn());
 
 beforeEach(() => jest.resetAllMocks());
+
+export const userCredentials: UserCredentials = {
+  username: "Manolo",
+  password: "12345678",
+};
 
 describe("Given the useUser custom hook", () => {
   describe("When loginUser function is called", () => {
@@ -38,7 +38,7 @@ describe("Given the useUser custom hook", () => {
 
       await act(async () => loginUser(userCredentials));
 
-      expect(mockDispatch).toHaveBeenCalledWith(loginUsersAction);
+      expect(spyDispatch).toHaveBeenCalledWith(loginUsersAction);
     });
   });
 
@@ -56,7 +56,7 @@ describe("Given the useUser custom hook", () => {
         modalMessages.loginError
       );
 
-      expect(mockDispatch).toHaveBeenCalledWith(setIsErrorAction);
+      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorAction);
     });
   });
 });
