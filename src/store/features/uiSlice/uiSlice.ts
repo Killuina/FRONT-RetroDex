@@ -2,20 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 import { UiState } from "./types";
 
 export const initialState: UiState = {
+  isError: false,
   isLoading: false,
+  isSuccess: false,
 };
 
 const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    setIsLoading: (currentUserState: UiState): UiState => ({
-      ...currentUserState,
+    setIsLoading: (currentUiState: UiState): UiState => ({
+      ...currentUiState,
       isLoading: true,
     }),
-    unsetIsLoading: (currentUserState: UiState): UiState => ({
-      ...currentUserState,
+    unsetIsLoading: (currentUiState: UiState): UiState => ({
+      ...currentUiState,
       isLoading: false,
+    }),
+    setIsError: (currentUiState: UiState): UiState => ({
+      ...currentUiState,
+      isError: true,
+    }),
+
+    unsetIsError: (currentUiState: UiState): UiState => ({
+      ...currentUiState,
+      isError: false,
     }),
   },
 });
@@ -23,6 +34,8 @@ const uiSlice = createSlice({
 export const {
   setIsLoading: setIsLoadingActionCreator,
   unsetIsLoading: unsetIsLoadingActionCreator,
+  setIsError: setIsErrorActionCreator,
+  unsetIsError: unsetIsErrorActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;
