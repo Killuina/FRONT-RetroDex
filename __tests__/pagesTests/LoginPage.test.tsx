@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { mockErrorUiState } from "../../src/mocks/storeMocks/uiStoreMocks";
 import LoginPage from "../../src/pages/login";
 import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
 

@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { routes } from "../hooks/paths";
+import { routes } from "../hooks/routes";
 
 const {
   users: {
