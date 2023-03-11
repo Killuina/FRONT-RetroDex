@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import { User } from "../../src/store/features/userSlice/types";
 import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
 import { store } from "../../src/store/store";
-import Wrapper from "../../src/utils/testUtils/Wrapper";
+import wrapper from "../../src/utils/testUtils/Wrapper";
 import { CustomJwtPayload, UserCredentials } from "../../src/hooks/types";
 import useUser from "../../src/hooks/userUser/useUser";
 import { setIsErrorModalActionCreator } from "../../src/store/features/uiSlice/uiSlice";
@@ -40,7 +40,7 @@ describe("Given the useUser custom hook", () => {
           current: { loginUser },
         },
       } = renderHook(() => useUser(), {
-        wrapper: Wrapper,
+        wrapper,
       });
 
       (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
@@ -61,7 +61,7 @@ describe("Given the useUser custom hook", () => {
         result: {
           current: { loginUser },
         },
-      } = renderHook(() => useUser(), { wrapper: Wrapper });
+      } = renderHook(() => useUser(), { wrapper });
 
       await act(async () => loginUser(userCredentials));
 

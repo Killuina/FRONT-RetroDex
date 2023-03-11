@@ -1,12 +1,12 @@
 import { rest } from "msw";
-import { paths } from "../hooks/paths";
+import { routes } from "../hooks/paths";
 
 const {
   users: {
     path,
     endpoints: { login },
   },
-} = paths;
+} = routes;
 
 export const handlers = [
   rest.post(

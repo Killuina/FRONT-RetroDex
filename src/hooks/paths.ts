@@ -7,7 +7,7 @@ interface Paths {
   };
 }
 
-export const paths: Paths = {
+export const routes: Paths = {
   users: {
     path: "/users",
     endpoints: {

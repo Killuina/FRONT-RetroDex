@@ -4,7 +4,7 @@ import { setIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSli
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { paths } from "../paths";
+import { routes } from "../paths";
 import {
   CustomJwtPayload,
   LoginResponse,
@@ -17,7 +17,7 @@ const {
     path,
     endpoints: { login },
   },
-} = paths;
+} = routes;
 
 const { loginError } = modalMessages;
 

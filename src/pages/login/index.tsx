@@ -1,12 +1,12 @@
-import { ToastContainer } from "react-toastify";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import Modal from "../../components/Modal/Modal";
 import { mainFont } from "../../styles/fonts/googleFonts";
 import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): JSX.Element => {
   return (
     <>
-      <ToastContainer autoClose={2000} />
+      <Modal />
       <LoginPageStyled>
         <h2 className={mainFont.className}>Log in</h2>
         <main className="login-page">
