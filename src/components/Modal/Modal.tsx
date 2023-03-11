@@ -11,7 +11,7 @@ const Modal = (): JSX.Element => {
     showErrorToast(message);
   }
 
-  return <ToastContainer autoClose={2000} />;
+  return <ToastContainer autoClose={5000} />;
 };
 
 export default Modal;
