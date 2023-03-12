@@ -56,7 +56,9 @@ const useUser = (): UseUser => {
       localStorage.setItem("token", token);
 
       router.push("/");
-    } catch (error: unknown) {}
+    } catch (error: unknown) {
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+    }
   };
 
   return { loginUser };

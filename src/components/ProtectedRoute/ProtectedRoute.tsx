@@ -10,6 +10,7 @@ const ProtectedRoute = ({ children }: PropsWithChildren): JSX.Element => {
   useEffect(() => {
     if (!token) {
       router.push("/login");
+      return;
     }
   });
 
