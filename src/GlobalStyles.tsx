@@ -39,6 +39,12 @@ list-style: none;
 }
 
 
+a, :visited, :active{
+text-decoration: none;
+color: none
+}
+
+
 .Toastify__toast {
   border-radius: ${(props) => props.theme.border.radius};
   color: ${(props) => props.theme.fonts.colors.dark};
