@@ -15,12 +15,12 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         <meta name="description" content="A Pokédex CRUD App" />
       </Head>
       <Provider store={store}>
-        <ProtectedRoute>
-          <ThemeProvider theme={mainTheme}>
-            <GlobalStyles />
+        <ThemeProvider theme={mainTheme}>
+          <GlobalStyles />
+          <ProtectedRoute>
             <Component {...pageProps} />
-          </ThemeProvider>
-        </ProtectedRoute>
+          </ProtectedRoute>
+        </ThemeProvider>
       </Provider>
     </>
   );

@@ -16,7 +16,7 @@ const Modal = (): JSX.Element => {
       showErrorToast(message);
       dispatch(unsetIsErrorModalActionCreator());
     }
-  });
+  }, [dispatch, isError, message]);
 
   return <ToastContainer autoClose={5000} />;
 };
