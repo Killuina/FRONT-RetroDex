@@ -1,6 +1,9 @@
 import decodeToken from "jwt-decode";
 import modalMessages from "../../modals/modalMessages";
-import { setIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSlice";
+import {
+  setIsErrorModalActionCreator,
+  unsetIsErrorActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
@@ -46,9 +49,7 @@ const useUser = (): UseUser => {
       dispatch(loginUserActionCreator(loggedUser));
 
       localStorage.setItem("token", token);
-    } catch (error) {
-      dispatch(setIsErrorModalActionCreator(loginError));
-    }
+    } catch (error) {}
   };
 
   return { loginUser };
