@@ -7,7 +7,7 @@ import GlobalStyles from "../GlobalStyles";
 import { store } from "../store/store";
 import { mainTheme } from "../styles/mainTheme";
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   return (
     <>
       <Head>
@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
           <GlobalStyles />
-          <ProtectedRoute>
+          <ProtectedRoute router={router}>
             <Component {...pageProps} />
           </ProtectedRoute>
         </ThemeProvider>

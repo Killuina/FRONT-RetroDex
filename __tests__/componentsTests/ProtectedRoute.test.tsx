@@ -16,9 +16,8 @@ describe("Given the ProtectedRoute component", () => {
   describe("When it is rendered receiving a Component as a children, and the user has a token", () => {
     test("Then it should render the received Component element", () => {
       renderWithProviders(
-        <ProtectedRoute>
-          <Component />
-        </ProtectedRoute>,
+        <Component />,
+
         { user: mockWithTokenUserState }
       );
 
@@ -30,12 +29,7 @@ describe("Given the ProtectedRoute component", () => {
 
   describe("When it is rendered and the user doesn't have a token", () => {
     test("Then it should redirect to login page", () => {
-      renderWithProviders(
-        <ProtectedRoute>
-          <Component />
-        </ProtectedRoute>,
-        { user: mockNoTokenUserState }
-      );
+      renderWithProviders(<Component />, { user: mockNoTokenUserState });
 
       expect(spyMockRouter).toHaveBeenCalled();
     });
