@@ -1,7 +1,11 @@
 import decodeToken from "jwt-decode";
 import { useRouter } from "next/router";
 import modalMessages from "../../modals/modalMessages";
-import { setIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSlice";
+import {
+  setIsErrorModalActionCreator,
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
@@ -28,6 +32,7 @@ const useUser = (): UseUser => {
 
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
+      dispatch(setIsLoadingActionCreator());
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
         {
@@ -52,10 +57,14 @@ const useUser = (): UseUser => {
 
       dispatch(loginUserActionCreator(loggedUser));
 
+      dispatch(unsetIsLoadingActionCreator());
+
       localStorage.setItem("token", token);
 
       router.push("/");
     } catch (error: unknown) {
+      dispatch(unsetIsLoadingActionCreator());
+
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
   };
