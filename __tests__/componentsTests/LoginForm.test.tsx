@@ -3,6 +3,8 @@ import userEvent from "@testing-library/user-event";
 import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
 import LoginForm from "../../src/components/LoginForm/LoginForm";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 const mockedSubmit = jest.fn();
 
 jest.mock("../../src/hooks/userUser/useUser", () => () => ({

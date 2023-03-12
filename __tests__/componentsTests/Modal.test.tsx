@@ -1,6 +1,5 @@
-import { screen } from "@testing-library/react";
 import Modal from "../../src/components/Modal/Modal";
-import { mockErrorUiState } from "../../src/mocks/storeMocks/uiStoreMocks";
+import { mockErrorUiState } from "../../src/mocks/storeMocks/storeMocks";
 import { showErrorToast } from "../../src/modals/modals";
 import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
 

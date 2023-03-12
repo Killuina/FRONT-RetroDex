@@ -3,7 +3,7 @@ import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
   uiReducer,
-  unsetIsErrorActionCreator,
+  unsetIsErrorModalActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../src/store/features/uiSlice/uiSlice";
 
@@ -61,7 +61,7 @@ describe("Given the uiSliceReducer reducer", () => {
 
       const uiState: UiState = uiReducer(
         currentUiState,
-        unsetIsErrorActionCreator()
+        unsetIsErrorModalActionCreator()
       );
 
       expect(uiState).toStrictEqual(expectedUiState);

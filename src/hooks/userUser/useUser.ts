@@ -40,7 +40,6 @@ const useUser = (): UseUser => {
       if (!response.ok) {
         throw new Error(loginError);
       }
-
       const { token } = (await response.json()) as LoginResponse;
 
       const { sub, username }: CustomJwtPayload = decodeToken(token);

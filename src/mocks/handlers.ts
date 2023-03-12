@@ -21,3 +21,17 @@ export const handlers = [
     }
   ),
 ];
+
+export const errorHandlers = [
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(401),
+        ctx.json({
+          error: "Wrong credentials",
+        })
+      );
+    }
+  ),
+];

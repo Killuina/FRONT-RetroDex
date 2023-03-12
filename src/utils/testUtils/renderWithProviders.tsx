@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import GlobalStyles from "../../GlobalStyles";
 import { RootState, setupStore, store } from "../../store/store";
 import { mainTheme } from "../../styles/mainTheme";

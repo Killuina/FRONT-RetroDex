@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { showErrorToast } from "../../modals/modals";
 import { unsetIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSlice";
@@ -10,10 +11,12 @@ const Modal = (): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  if (isError) {
-    showErrorToast(message);
-    dispatch(unsetIsErrorModalActionCreator());
-  }
+  useEffect(() => {
+    if (isError) {
+      showErrorToast(message);
+      dispatch(unsetIsErrorModalActionCreator());
+    }
+  });
 
   return <ToastContainer autoClose={5000} />;
 };
