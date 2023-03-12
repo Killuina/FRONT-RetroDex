@@ -1,4 +1,5 @@
 import decodeToken from "jwt-decode";
+import { useRouter } from "next/router";
 import modalMessages from "../../modals/modalMessages";
 import { setIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { User } from "../../store/features/userSlice/types";
@@ -23,6 +24,8 @@ const { loginError } = modalMessages;
 
 const useUser = (): UseUser => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
       const response = await fetch(
@@ -33,6 +36,10 @@ const useUser = (): UseUser => {
           headers: { "Content-Type": "application/json" },
         }
       );
+
+      if (!response.ok) {
+        throw new Error(loginError);
+      }
       const { token } = (await response.json()) as LoginResponse;
 
       const { sub, username }: CustomJwtPayload = decodeToken(token);
@@ -46,8 +53,10 @@ const useUser = (): UseUser => {
       dispatch(loginUserActionCreator(loggedUser));
 
       localStorage.setItem("token", token);
-    } catch (error) {
-      dispatch(setIsErrorModalActionCreator(loginError));
+
+      router.push("/");
+    } catch (error: unknown) {
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
   };
 

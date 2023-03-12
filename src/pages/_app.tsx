@@ -2,11 +2,12 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import GlobalStyles from "../GlobalStyles";
 import { store } from "../store/store";
 import { mainTheme } from "../styles/mainTheme";
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   return (
     <>
       <Head>
@@ -16,7 +17,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
           <GlobalStyles />
-          <Component {...pageProps} />
+          <ProtectedRoute router={router}>
+            <Component {...pageProps} />
+          </ProtectedRoute>
         </ThemeProvider>
       </Provider>
     </>

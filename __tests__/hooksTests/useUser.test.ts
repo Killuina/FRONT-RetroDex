@@ -9,6 +9,10 @@ import modalMessages from "../../src/modals/modalMessages";
 import { spyDispatch } from "../../src/mocks/storeMocks/mockDispatch";
 import { mockTokenPayload, user } from "../../src/mocks/userMocks/userMocks";
 import { UserCredentials } from "../../src/hooks/types";
+import { server } from "../../src/mocks/server";
+import { errorHandlers } from "../../src/mocks/handlers";
+
+jest.mock("next/router", () => require("next-router-mock"));
 
 jest.mock("jwt-decode", () => jest.fn());
 
@@ -43,6 +47,8 @@ describe("Given the useUser custom hook", () => {
   });
 
   describe("When it is called with the wrong user credentials", () => {
+    beforeEach(() => server.use(...errorHandlers));
+
     test("Then it should call the dispatch with setIsError action", async () => {
       const {
         result: {

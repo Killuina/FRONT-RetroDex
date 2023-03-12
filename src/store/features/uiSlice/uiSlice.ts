@@ -32,7 +32,7 @@ const uiSlice = createSlice({
       },
     }),
 
-    unsetIsError: (currentUiState: UiState): UiState => ({
+    unsetIsErrorModal: (currentUiState: UiState): UiState => ({
       ...currentUiState,
       modal: {
         message: "",
@@ -46,7 +46,7 @@ export const {
   setIsLoading: setIsLoadingActionCreator,
   unsetIsLoading: unsetIsLoadingActionCreator,
   setIsErrorModal: setIsErrorModalActionCreator,
-  unsetIsError: unsetIsErrorActionCreator,
+  unsetIsErrorModal: unsetIsErrorModalActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;

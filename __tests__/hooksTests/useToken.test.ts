@@ -24,6 +24,7 @@ describe("Given the useToken hook", () => {
   describe("When getToken function is called and there's a token in local storage", () => {
     test("Then it should call the dispatch with loginUser action", async () => {
       const mockedToken = "mocken";
+
       const {
         result: {
           current: { getToken },
