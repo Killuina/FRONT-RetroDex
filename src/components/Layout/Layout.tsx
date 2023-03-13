@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { useAppSelector } from "../../store/hooks";
+import Header from "../Header/Header";
 import Loader from "../Loader/Loader";
 import NavBar from "../NavBar/NavBar";
 
@@ -8,6 +9,7 @@ const Layout = ({ children }: PropsWithChildren): JSX.Element => {
 
   return (
     <>
+      <Header />
       {isLoading && <Loader />}
       {children}
       <NavBar />
