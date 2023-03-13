@@ -1,11 +1,5 @@
-import NavBar from "../components/NavBar/NavBar";
-
 const HomePage = (): JSX.Element => {
-  return (
-    <main className="home-page">
-      <NavBar />
-    </main>
-  );
+  return <main className="home-page"></main>;
 };
 
 export default HomePage;

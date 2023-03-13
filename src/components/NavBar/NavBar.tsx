@@ -6,7 +6,7 @@ const NavBar = (): JSX.Element => {
     <NavBarStyled>
       <ul className="navbar">
         <li className="navbar__login">
-          <Link href="/login">
+          <Link href="/" aria-label="to Login page">
             <svg
               width="30"
               height="30"
@@ -24,7 +24,7 @@ const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navbar__create-pokemon">
-          <Link href="/">
+          <Link href="/" aria-label="to Create Pokémon page">
             <svg
               width="30"
               height="27"
@@ -42,7 +42,7 @@ const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navbar__my-pokemon">
-          <Link href="/">
+          <Link href="/" aria-label="to My Pokémon page">
             <svg
               width="28"
               height="28"
@@ -60,7 +60,7 @@ const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navbar__home">
-          <Link href="/">
+          <Link href="/login" aria-label="to Home page">
             <svg
               width="25"
               height="32"
