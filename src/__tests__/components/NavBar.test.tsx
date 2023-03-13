@@ -49,7 +49,7 @@ describe("Given the NavBar component", () => {
       test("Then it should show a link that says 'Logout'", () => {
         renderWithProviders(<NavBar />, { user: mockLoggedUserState });
 
-        const logoutLink = screen.getByRole("link", {
+        const logoutLink = screen.getByRole("button", {
           name: /logout/i,
         });
 
