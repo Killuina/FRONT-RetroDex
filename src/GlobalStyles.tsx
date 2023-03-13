@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 button {
@@ -36,6 +35,12 @@ input {
 
 ul, li, ol {
 list-style: none;
+}
+
+
+a, :visited, :active{
+text-decoration: none;
+color: none
 }
 
 

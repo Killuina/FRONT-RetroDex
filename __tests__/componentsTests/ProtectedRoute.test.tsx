@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-import ProtectedRoute from "../../src/components/ProtectedRoute/ProtectedRoute";
 import Component from "../../src/mocks/componentMocks/componentMock";
 import {
   mockNoTokenUserState,
