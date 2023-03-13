@@ -1,9 +1,18 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import NavBar from "../../components/NavBar/NavBar";
+import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
 import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
+import { logoutUserActionCreator } from "../../store/features/user/userSlice";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
+
+const mockRemoveToken = jest.fn();
+
+jest.mock("../../hooks/useToken/useToken", () => () => ({
+  removeToken: mockRemoveToken,
+}));
 
 describe("Given the NavBar component", () => {
   describe("When it is rendered", () => {
@@ -49,11 +58,25 @@ describe("Given the NavBar component", () => {
       test("Then it should show a link that says 'Logout'", () => {
         renderWithProviders(<NavBar />, { user: mockLoggedUserState });
 
-        const logoutLink = screen.getByRole("button", {
+        const logoutButton = screen.getByRole("button", {
           name: /logout/i,
         });
 
-        expect(logoutLink).toBeInTheDocument();
+        expect(logoutButton).toBeInTheDocument();
+      });
+
+      describe("When rendered, the user is logged, and the user clicks on logout button", () => {
+        test("Then it should logout the user and remove token from local storage ", async () => {
+          renderWithProviders(<NavBar />, { user: mockLoggedUserState });
+
+          const logoutButton = screen.getByRole("button", {
+            name: /logout/i,
+          });
+
+          await userEvent.click(logoutButton);
+
+          expect(mockRemoveToken).toHaveBeenCalled();
+        });
       });
     });
   });

@@ -1,18 +1,11 @@
 import Link from "next/link";
 import useToken from "../../hooks/useToken/useToken";
-import { logoutUserActionCreator } from "../../store/features/user/userSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import NavBarStyled from "./NavBarStyled";
 
 const NavBar = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
   const { removeToken } = useToken();
-  const dispatch = useAppDispatch();
-
-  const handleLogoutUser: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(logoutUserActionCreator());
-    removeToken();
-  };
 
   return (
     <NavBarStyled>
@@ -73,7 +66,7 @@ const NavBar = (): JSX.Element => {
         </li>
         {isLogged ? (
           <li className="navbar__logout">
-            <button onClick={handleLogoutUser} aria-label="Logout">
+            <button onClick={removeToken} aria-label="Logout">
               <svg
                 width="34"
                 height="33"
