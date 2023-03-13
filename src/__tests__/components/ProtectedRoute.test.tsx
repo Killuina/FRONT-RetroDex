@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-
 import mockRouter from "next-router-mock";
 import Component from "../../mocks/componentMocks/componentMock";
 import {
