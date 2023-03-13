@@ -24,3 +24,10 @@ export const mockWithTokenUserState: UserState = {
   token: "mocken",
   username: "",
 };
+
+export const mockLoggedUserState: UserState = {
+  id: "1",
+  isLogged: true,
+  token: "mocken",
+  username: "",
+};

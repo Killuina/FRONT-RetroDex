@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { useAppSelector } from "../../store/hooks";
 
 const ProtectedRoute = ({ children }: PropsWithChildren): JSX.Element => {

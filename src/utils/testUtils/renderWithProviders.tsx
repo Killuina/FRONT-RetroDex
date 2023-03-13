@@ -1,6 +1,5 @@
 import { PreloadedState } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
-import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
