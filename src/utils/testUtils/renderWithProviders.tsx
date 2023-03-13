@@ -1,6 +1,5 @@
 import { PreloadedState } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
-import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
@@ -16,12 +15,11 @@ const renderWithProviders = (
   const testStore = preloadedState ? setupStore(preloadedState) : store;
 
   const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
-    const router = useRouter();
     return (
       <ThemeProvider theme={mainTheme}>
         <Provider store={testStore}>
           <GlobalStyles />
-          <ProtectedRoute router={router}>{children}</ProtectedRoute>
+          <ProtectedRoute>{children}</ProtectedRoute>
         </Provider>
       </ThemeProvider>
     );

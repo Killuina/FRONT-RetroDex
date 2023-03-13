@@ -14,10 +14,8 @@ const useToken = (): UseTokenStructure => {
 
   const getToken = useCallback(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const { username, sub }: CustomJwtPayload = decodeToken(token);
-
       dispatch(loginUserActionCreator({ token, username, id: sub }));
     }
   }, [dispatch]);

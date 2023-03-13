@@ -2,10 +2,14 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
+import mockRouter from "next-router-mock";
+import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
 import LoginPage from "../../pages/login";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
+
+const spyRouter = jest.spyOn(mockRouter, "push");
 
 beforeAll(() => jest.resetAllMocks());
 
@@ -54,6 +58,14 @@ describe("Given the LoginPage component", () => {
       const modal = await screen.findByText(expectedMessage);
 
       expect(modal).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user is logged", () => {
+    test("Then it should redirect to home page", () => {
+      renderWithProviders(<LoginPage />, { user: mockLoggedUserState });
+
+      expect(spyRouter).toHaveBeenCalledWith("/");
     });
   });
 });

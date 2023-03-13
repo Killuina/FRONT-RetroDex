@@ -1,23 +1,14 @@
-import { NextRouter } from "next/router";
-import { ReactNode, useEffect } from "react";
+import { useRouter } from "next/router";
+import { PropsWithChildren } from "react";
 import { useAppSelector } from "../../store/hooks";
 
-interface ProtectedRouteProps {
-  children: ReactNode;
-  router: NextRouter;
-}
-
-const ProtectedRoute = ({
-  children,
-  router,
-}: ProtectedRouteProps): JSX.Element => {
+const ProtectedRoute = ({ children }: PropsWithChildren): JSX.Element => {
+  const router = useRouter();
   const { token } = useAppSelector(({ user }) => user);
 
-  useEffect(() => {
-    if (!token) {
-      router.push("/login");
-    }
-  }, [router, token]);
+  if (!token) {
+    router.push("/login");
+  }
 
   return <>{children}</>;
 };
