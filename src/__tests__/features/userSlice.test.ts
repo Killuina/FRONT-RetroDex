@@ -1,8 +1,8 @@
-import { User, UserState } from "../../src/store/features/userSlice/types";
+import { User, UserState } from "../../store/features/user/types";
 import {
   loginUserActionCreator,
   userReducer,
-} from "../../src/store/features/userSlice/userSlice";
+} from "../../store/features/user/userSlice";
 
 describe("Given a user reducer", () => {
   const currentState: UserState = {

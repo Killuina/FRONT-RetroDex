@@ -13,11 +13,8 @@ const customJestConfig = {
   collectCoverageFrom: [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "!next-env.d.ts",
-    "!next.config.js",
     "!src/pages/_app.tsx",
     "!src/pages/_document.tsx",
-    "!src/GlobalStyles.tsx",
   ],
   testEnvironment: "jest-environment-jsdom",
 };

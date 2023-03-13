@@ -1,11 +1,11 @@
-import { UiState } from "../../src/store/features/uiSlice/types";
+import { UiState } from "../../store/features/ui/types";
 import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
   uiReducer,
   unsetIsErrorModalActionCreator,
   unsetIsLoadingActionCreator,
-} from "../../src/store/features/uiSlice/uiSlice";
+} from "../../store/features/ui/uiSlice";
 
 const currentUiState: UiState = {
   modal: { isError: false, message: "" },

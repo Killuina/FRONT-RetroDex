@@ -5,9 +5,9 @@ import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
-} from "../../store/features/uiSlice/uiSlice";
-import { User } from "../../store/features/userSlice/types";
-import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
+} from "../../store/features/ui/uiSlice";
+import { User } from "../../store/features/user/types";
+import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
 import {

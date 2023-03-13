@@ -1,13 +1,13 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
-import LoginForm from "../../src/components/LoginForm/LoginForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
 const mockedSubmit = jest.fn();
 
-jest.mock("../../src/hooks/userUser/useUser", () => () => ({
+jest.mock("../../hooks/userUser/useUser", () => () => ({
   loginUser: mockedSubmit,
 }));
 

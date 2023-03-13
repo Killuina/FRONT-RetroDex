@@ -1,14 +1,14 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
-import useToken from "../../src/hooks/useToken/useToken";
+import useToken from "../../hooks/useToken/useToken";
 import {
   mockLocalStorage,
   setLocalStorage,
-} from "../../src/mocks/localStorageMocks/localStorageMocks";
-import { spyDispatch } from "../../src/mocks/storeMocks/mockDispatch";
-import { mockTokenPayload, user } from "../../src/mocks/userMocks/userMocks";
-import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
-import wrapper from "../../src/utils/testUtils/Wrapper";
+} from "../../mocks/localStorageMocks/localStorageMocks";
+import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
+import { mockTokenPayload, user } from "../../mocks/userMocks/userMocks";
+import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import wrapper from "../../utils/testUtils/Wrapper";
 
 afterAll(() => {
   window.localStorage.clear();

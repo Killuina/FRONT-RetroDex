@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { showErrorToast } from "../../modals/modals";
-import { unsetIsErrorModalActionCreator } from "../../store/features/uiSlice/uiSlice";
+import { unsetIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const Modal = (): JSX.Element => {

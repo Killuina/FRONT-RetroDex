@@ -1,11 +1,12 @@
 import { screen } from "@testing-library/react";
-import Component from "../../src/mocks/componentMocks/componentMock";
+
+import mockRouter from "next-router-mock";
+import Component from "../../mocks/componentMocks/componentMock";
 import {
   mockNoTokenUserState,
   mockWithTokenUserState,
-} from "../../src/mocks/storeMocks/storeMocks";
-import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
-import mockRouter from "next-router-mock";
+} from "../../mocks/storeMocks/storeMocks";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
 

@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { errorHandlers } from "../../src/mocks/handlers";
-import { server } from "../../src/mocks/server";
-import LoginPage from "../../src/pages/login";
-import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
+import { errorHandlers } from "../../mocks/handlers";
+import { server } from "../../mocks/server";
+import LoginPage from "../../pages/login";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
 

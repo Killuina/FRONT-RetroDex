@@ -1,5 +1,5 @@
 import { CustomJwtPayload } from "../../hooks/types";
-import { User } from "../../store/features/userSlice/types";
+import { User } from "../../store/features/user/types";
 
 export const mockTokenPayload: CustomJwtPayload = {
   username: "Manolo",

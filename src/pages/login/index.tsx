@@ -1,6 +1,6 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Modal from "../../components/Modal/Modal";
-import { mainFont } from "../../styles/fonts/googleFonts";
+import { mainFont } from "../_app";
 import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): JSX.Element => {

@@ -19,8 +19,8 @@ const renderWithProviders = (
     const router = useRouter();
     return (
       <ThemeProvider theme={mainTheme}>
-        <GlobalStyles />
         <Provider store={testStore}>
+          <GlobalStyles />
           <ProtectedRoute router={router}>{children}</ProtectedRoute>
         </Provider>
       </ThemeProvider>

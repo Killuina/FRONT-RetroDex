@@ -6,7 +6,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { secondaryFont } from "../styles/fonts/googleFonts";
+import { secondaryFont } from "./_app";
 
 class MyDocument extends Document {
   static ctx: DocumentContext = {} as DocumentContext;
