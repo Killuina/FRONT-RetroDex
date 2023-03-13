@@ -1,15 +1,17 @@
+import { initialUserState } from "../../mocks/userMocks/userMocks";
 import { User, UserState } from "../../store/features/user/types";
 import {
   loginUserActionCreator,
+  logoutUserActionCreator,
   userReducer,
 } from "../../store/features/user/userSlice";
 
 describe("Given a user reducer", () => {
   const currentState: UserState = {
-    id: "",
-    username: "",
-    isLogged: false,
-    token: "",
+    id: "2",
+    username: "Fernando",
+    isLogged: true,
+    token: "mocken",
   };
 
   describe("When it receives a user with username 'notExperimentalApp', token 'mocken' and an action to log in the user", () => {
@@ -30,6 +32,16 @@ describe("Given a user reducer", () => {
       const newUserState = userReducer(currentState, loginUserAction);
 
       expect(newUserState).toStrictEqual(expectedUserState);
+    });
+  });
+
+  describe("when it receives the action to logout the user", () => {
+    test("Then it should reset userState to its initial State", () => {
+      const loginUserAction = logoutUserActionCreator();
+
+      const newUserState = userReducer(currentState, loginUserAction);
+
+      expect(newUserState).toStrictEqual(initialUserState);
     });
   });
 });

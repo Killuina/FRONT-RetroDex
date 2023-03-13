@@ -1,6 +1,9 @@
 import decodeToken from "jwt-decode";
 import { useCallback } from "react";
-import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CustomJwtPayload } from "../types";
 
@@ -22,6 +25,8 @@ const useToken = (): UseTokenStructure => {
 
   const removeToken = () => {
     localStorage.removeItem("token");
+
+    dispatch(logoutUserActionCreator());
   };
   return { getToken, removeToken };
 };
