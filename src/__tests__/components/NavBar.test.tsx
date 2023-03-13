@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import NavBar from "../../components/NavBar/NavBar";
+import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
@@ -42,6 +43,18 @@ describe("Given the NavBar component", () => {
       });
 
       expect(loginLink).toBeInTheDocument();
+    });
+
+    describe("When rendered and the user is logged", () => {
+      test("Then it should show a link that says 'Logout'", () => {
+        renderWithProviders(<NavBar />, { user: mockLoggedUserState });
+
+        const logoutLink = screen.getByRole("link", {
+          name: /logout/i,
+        });
+
+        expect(logoutLink).toBeInTheDocument();
+      });
     });
   });
 });
