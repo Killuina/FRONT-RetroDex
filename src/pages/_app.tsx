@@ -1,10 +1,10 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { IBM_Plex_Mono, VT323 } from "next/font/google";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import Layout from "../components/Layout/Layout";
-import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import GlobalStyles from "../GlobalStyles";
 import { store } from "../store/store";
 import { mainTheme } from "../styles/mainTheme";
@@ -16,7 +16,14 @@ export const secondaryFont = IBM_Plex_Mono({
   weight: "400",
 });
 
-const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
+const ClientSideProtectedRoute = dynamic(
+  () => import("../components/ProtectedRoute/ProtectedRoute"),
+  {
+    ssr: false,
+  }
+);
+
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <Head>
@@ -25,12 +32,12 @@ const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
-          <GlobalStyles />
-          <ProtectedRoute router={router}>
-            <Layout>
+          <Layout>
+            <GlobalStyles />
+            <ClientSideProtectedRoute>
               <Component {...pageProps} />
-            </Layout>
-          </ProtectedRoute>
+            </ClientSideProtectedRoute>
+          </Layout>
         </ThemeProvider>
       </Provider>
     </>

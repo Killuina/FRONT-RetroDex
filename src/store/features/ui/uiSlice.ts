@@ -19,7 +19,7 @@ const uiSlice = createSlice({
     }),
     unsetIsLoading: (currentUiState: UiState): UiState => ({
       ...currentUiState,
-      isLoading: false,
+      isLoading: initialState.isLoading,
     }),
     setIsErrorModal: (
       currentUiState: UiState,
@@ -35,8 +35,8 @@ const uiSlice = createSlice({
     unsetIsErrorModal: (currentUiState: UiState): UiState => ({
       ...currentUiState,
       modal: {
-        message: "",
-        isError: false,
+        message: initialState.modal.message,
+        isError: initialState.modal.isError,
       },
     }),
   },

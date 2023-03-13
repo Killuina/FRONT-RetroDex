@@ -1,9 +1,19 @@
+import { useRouter } from "next/router";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Modal from "../../components/Modal/Modal";
+import { useAppSelector } from "../../store/hooks";
 import { mainFont } from "../_app";
-import LoginPageStyled from "./LoginPageStyled";
+import LoginPageStyled from "../../styles/LoginPageStyled";
 
 const LoginPage = (): JSX.Element => {
+  const router = useRouter();
+
+  const { isLogged } = useAppSelector((state) => state.user);
+
+  if (isLogged) {
+    router.push("/");
+  }
+
   return (
     <>
       <Modal />

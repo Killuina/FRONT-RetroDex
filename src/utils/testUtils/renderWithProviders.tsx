@@ -16,12 +16,11 @@ const renderWithProviders = (
   const testStore = preloadedState ? setupStore(preloadedState) : store;
 
   const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
-    const router = useRouter();
     return (
       <ThemeProvider theme={mainTheme}>
         <Provider store={testStore}>
           <GlobalStyles />
-          <ProtectedRoute router={router}>{children}</ProtectedRoute>
+          <ProtectedRoute>{children}</ProtectedRoute>
         </Provider>
       </ThemeProvider>
     );

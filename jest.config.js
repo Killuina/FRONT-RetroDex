@@ -15,6 +15,8 @@ const customJestConfig = {
     "src/**/*.tsx",
     "!src/pages/_app.tsx",
     "!src/pages/_document.tsx",
+    "!src/styles/styled.d.ts",
+    "!src/GlobalStyles.tsx",
   ],
   testEnvironment: "jest-environment-jsdom",
 };
