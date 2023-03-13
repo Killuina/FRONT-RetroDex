@@ -1,16 +1,16 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
-import { loginUserActionCreator } from "../../src/store/features/userSlice/userSlice";
-import wrapper from "../../src/utils/testUtils/Wrapper";
-import useUser from "../../src/hooks/userUser/useUser";
-import { setIsErrorModalActionCreator } from "../../src/store/features/uiSlice/uiSlice";
-import modalMessages from "../../src/modals/modalMessages";
-import { spyDispatch } from "../../src/mocks/storeMocks/mockDispatch";
-import { mockTokenPayload, user } from "../../src/mocks/userMocks/userMocks";
-import { UserCredentials } from "../../src/hooks/types";
-import { server } from "../../src/mocks/server";
-import { errorHandlers } from "../../src/mocks/handlers";
+import { UserCredentials } from "../../hooks/types";
+import useUser from "../../hooks/userUser/useUser";
+import { errorHandlers } from "../../mocks/handlers";
+import { server } from "../../mocks/server";
+import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
+import { mockTokenPayload, user } from "../../mocks/userMocks/userMocks";
+import modalMessages from "../../modals/modalMessages";
+import { setIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
+import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import wrapper from "../../utils/testUtils/Wrapper";
 
 jest.mock("next/router", () => require("next-router-mock"));
 

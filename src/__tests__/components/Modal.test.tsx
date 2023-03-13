@@ -1,9 +1,9 @@
-import Modal from "../../src/components/Modal/Modal";
-import { mockErrorUiState } from "../../src/mocks/storeMocks/storeMocks";
-import { showErrorToast } from "../../src/modals/modals";
-import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
+import Modal from "../../components/Modal/Modal";
+import { mockErrorUiState } from "../../mocks/storeMocks/storeMocks";
+import { showErrorToast } from "../../modals/modals";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
-jest.mock("../../src/modals/modals", () => ({
+jest.mock("../../modals/modals", () => ({
   showErrorToast: jest.fn(),
 }));
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
-import { secondaryFont } from "../../styles/fonts/googleFonts";
+import { secondaryFont } from "../../pages/_app";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {

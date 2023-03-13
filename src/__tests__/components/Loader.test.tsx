@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
-import Loader from "../../src/components/Loader/Loader";
-import renderWithProviders from "../../src/utils/testUtils/renderWithProviders";
+import { screen } from "@testing-library/react";
+import Loader from "../../components/Loader/Loader";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
