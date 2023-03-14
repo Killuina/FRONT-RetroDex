@@ -22,7 +22,7 @@ const PokemonCard = ({
       <h2 className="pokemon-card__name">{name}</h2>
       <span className="pokemon-card__types">Type:{types.join("/")}</span>
       <div className="pokemon-card__buttons">
-        <button className="pokemon-card__button">
+        <button className="pokemon-card__button" aria-label="edit pokemon">
           <svg
             width="45"
             height="45"
@@ -38,7 +38,7 @@ const PokemonCard = ({
             />
           </svg>
         </button>
-        <button className="pokemon-card__button">
+        <button className="pokemon-card__button" aria-label="delete pokemon">
           <svg
             width="40"
             height="40"
