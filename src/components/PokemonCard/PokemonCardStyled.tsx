@@ -5,6 +5,7 @@ interface PokemonCardStyledProps {
 }
 
 const PokemonCardStyled = styled.article<PokemonCardStyledProps>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +13,24 @@ const PokemonCardStyled = styled.article<PokemonCardStyledProps>`
   width: 17rem;
   padding: 1rem;
   border-radius: ${(props) => props.theme.border.radius};
+
+  .pokemon-card {
+    &__name {
+      font-size: ${(props) => props.theme.fonts.sizes.pokemonNameSize};
+    }
+
+    &__types {
+      font-size: ${(props) => props.theme.fonts.sizes.pokemonDescriptionSize};
+    }
+
+    &__buttons {
+      width: 15rem;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+    }
+  }
+
   border: solid
     ${({ pokemonType }) => {
       switch (pokemonType) {
@@ -54,15 +73,6 @@ const PokemonCardStyled = styled.article<PokemonCardStyledProps>`
       }
     }};
 
-  .pokemon-card {
-    &__name {
-      font-size: ${(props) => props.theme.fonts.sizes.pokemonNameSize};
-    }
-
-    &__types {
-      font-size: ${(props) => props.theme.fonts.sizes.pokemonDescriptionSize};
-    }
-  }
   background-color: ${({ pokemonType }) => {
     switch (pokemonType) {
       case "Water":
