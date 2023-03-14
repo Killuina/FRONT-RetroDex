@@ -3,7 +3,7 @@ import { routes } from "../hooks/routes";
 
 const {
   users: {
-    path,
+    usersPath: path,
     endpoints: { login },
   },
 } = routes;

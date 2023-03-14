@@ -33,8 +33,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
           <Layout>
-            <GlobalStyles />
             <ClientSideProtectedRoute>
+              <GlobalStyles />
               <Component {...pageProps} />
             </ClientSideProtectedRoute>
           </Layout>

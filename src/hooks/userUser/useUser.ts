@@ -10,21 +10,20 @@ import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
-import {
-  CustomJwtPayload,
-  LoginResponse,
-  UserCredentials,
-  UseUser,
-} from "../types";
+import { CustomJwtPayload, LoginResponse, UserCredentials } from "../types";
 
 const {
   users: {
-    path,
+    usersPath: path,
     endpoints: { login },
   },
 } = routes;
 
 const { loginError } = modalMessages;
+
+interface UseUser {
+  loginUser: (userCredentials: UserCredentials) => Promise<void>;
+}
 
 const useUser = (): UseUser => {
   const dispatch = useAppDispatch();

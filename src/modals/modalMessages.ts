@@ -12,6 +12,7 @@ interface ModalMessages {
     error: string;
     sucess: string;
   };
+  gettingPokemonError: string;
 }
 
 const modalMessages: ModalMessages = {
@@ -28,6 +29,7 @@ const modalMessages: ModalMessages = {
     error: "Error updating Pokémon",
     sucess: "Pokémon updated!",
   },
+  gettingPokemonError: "Error getting Pokemon",
 };
 
 export default modalMessages;
