@@ -29,7 +29,7 @@ const modalMessages: ModalMessages = {
     error: "Error updating Pokémon",
     sucess: "Pokémon updated!",
   },
-  gettingPokemonError: "Error getting Pokemon",
+  gettingPokemonError: "Error getting Pokémon",
 };
 
 export default modalMessages;
