@@ -1,17 +1,23 @@
 interface Paths {
   users: {
-    path: string;
+    usersPath: string;
     endpoints: {
       login: string;
     };
+  };
+  pokemon: {
+    pokemonPath: string;
   };
 }
 
 export const routes: Paths = {
   users: {
-    path: "/users",
+    usersPath: "/users",
     endpoints: {
       login: "/login",
     },
+  },
+  pokemon: {
+    pokemonPath: "/pokemon",
   },
 };

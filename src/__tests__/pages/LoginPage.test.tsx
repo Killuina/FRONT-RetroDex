@@ -6,6 +6,7 @@ import mockRouter from "next-router-mock";
 import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
 import LoginPage from "../../pages/login";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
+import Layout from "../../components/Layout/Layout";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -31,7 +32,7 @@ describe("Given the LoginPage component", () => {
   describe("When the user enters a wrong username and password, and clicks on Sign in button", () => {
     beforeEach(() => server.use(...errorHandlers));
 
-    test("Then it should render the modal component with error message 'Invalid credentials'", async () => {
+    test("Then it should show the modal component with error message 'Invalid credentials'", async () => {
       const userCredentials = {
         username: "Manolito",
         password: "manolo1234",
@@ -43,7 +44,11 @@ describe("Given the LoginPage component", () => {
 
       const expectedMessage = "Invalid credentials";
 
-      renderWithProviders(<LoginPage />);
+      renderWithProviders(
+        <Layout>
+          <LoginPage />
+        </Layout>
+      );
 
       const usernameField = screen.getByLabelText(usernameLabel);
       const passwordField = screen.getByLabelText(passwordLabel);

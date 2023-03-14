@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import Modal from "../../components/Modal/Modal";
 import { useAppSelector } from "../../store/hooks";
 import { mainFont } from "../_app";
 import LoginPageStyled from "../../styles/LoginPageStyled";
@@ -16,7 +15,6 @@ const LoginPage = (): JSX.Element => {
 
   return (
     <>
-      <Modal />
       <LoginPageStyled>
         <h2 className={mainFont.className}>Log in</h2>
         <main className="login-page">
