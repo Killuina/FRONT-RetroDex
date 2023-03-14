@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import mockRouter from "next-router-mock";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import Component from "../../mocks/componentMocks/componentMock";
 import {
   mockNoTokenUserState,
@@ -28,7 +29,12 @@ describe("Given the ProtectedRoute component", () => {
 
   describe("When it is rendered and the user doesn't have a token", () => {
     test("Then it should redirect to login page", () => {
-      renderWithProviders(<Component />, { user: mockNoTokenUserState });
+      renderWithProviders(
+        <ProtectedRoute>
+          <Component />
+        </ProtectedRoute>,
+        { user: mockNoTokenUserState }
+      );
 
       expect(spyMockRouter).toHaveBeenCalled();
     });
