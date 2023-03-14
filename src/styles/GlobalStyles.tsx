@@ -26,6 +26,10 @@ button {
   font-size: inherit;
 }
 
+h1, h2 {
+  font-weight: inherit;
+}
+
 input {
   padding: 0.5rem;
   background-color: ${(props) => props.theme.colors.inputColor};
