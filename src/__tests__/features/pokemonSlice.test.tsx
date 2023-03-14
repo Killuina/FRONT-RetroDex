@@ -1,9 +1,9 @@
 import { mockUserPokemonList as mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import {
-  loadPokemonActionCreator,
+  loadUserPokemonActionCreator,
   pokemonReducer,
-} from "../../store/features/pokemon/pokemonSlice";
-import { UserPokemonList } from "../../store/features/pokemon/types";
+} from "../../store/features/userPokemon/pokemonSlice";
+import { UserPokemonList } from "../../store/features/userPokemon/types";
 
 describe("Given the pokemonReducer reducer", () => {
   describe("When it receives the action to loadPokemon and a list of two pokemon", () => {
@@ -11,7 +11,7 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonListState: UserPokemonList = [];
 
       const loadUserPokemonAction =
-        loadPokemonActionCreator(mockUserPokemonList);
+        loadUserPokemonActionCreator(mockUserPokemonList);
 
       const newUserPokemonListState = pokemonReducer(
         currentUserPokemonListState,

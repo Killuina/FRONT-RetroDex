@@ -1,5 +1,4 @@
 import { PropsWithChildren, useEffect } from "react";
-import usePokemon from "../../hooks/usePokemon/usePokemon";
 import useToken from "../../hooks/useToken/useToken";
 import { useAppSelector } from "../../store/hooks";
 import Header from "../Header/Header";

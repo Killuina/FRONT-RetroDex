@@ -16,13 +16,6 @@ export const secondaryFont = IBM_Plex_Mono({
   weight: "400",
 });
 
-const ClientSideProtectedRoute = dynamic(
-  () => import("../components/ProtectedRoute/ProtectedRoute"),
-  {
-    ssr: false,
-  }
-);
-
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
@@ -33,10 +26,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
           <Layout>
-            <ClientSideProtectedRoute>
-              <GlobalStyles />
-              <Component {...pageProps} />
-            </ClientSideProtectedRoute>
+            <GlobalStyles />
+            <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
       </Provider>

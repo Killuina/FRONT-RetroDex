@@ -15,7 +15,7 @@ describe("Given a user reducer", () => {
   };
 
   describe("When it receives a user with username 'notExperimentalApp', token 'mocken' and an action to log in the user", () => {
-    test("Then it should return the user with its isLogged property set as true", () => {
+    test("Then it should change userState to a user with its isLogged property set as true", () => {
       const user: User = {
         username: "notExperimentalApp",
         token: "mocken",

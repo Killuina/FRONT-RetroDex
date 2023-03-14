@@ -3,9 +3,9 @@ import {
   configureStore,
   PreloadedState,
 } from "@reduxjs/toolkit";
-import { pokemonReducer } from "./features/pokemon/pokemonSlice";
 import { uiReducer } from "./features/ui/uiSlice";
 import { userReducer } from "./features/user/userSlice";
+import { pokemonReducer } from "./features/userPokemon/pokemonSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,

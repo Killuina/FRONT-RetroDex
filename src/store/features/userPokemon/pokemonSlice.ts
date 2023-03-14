@@ -7,7 +7,7 @@ const pokemonSlice = createSlice({
   name: "pokemon",
   initialState,
   reducers: {
-    loadPokemon: (
+    loadUserPokemon: (
       currentPokemonState,
       { payload }: PayloadAction<UserPokemonList>
     ) => [...payload],
@@ -15,4 +15,5 @@ const pokemonSlice = createSlice({
 });
 
 export const pokemonReducer = pokemonSlice.reducer;
-export const { loadPokemon: loadPokemonActionCreator } = pokemonSlice.actions;
+export const { loadUserPokemon: loadUserPokemonActionCreator } =
+  pokemonSlice.actions;

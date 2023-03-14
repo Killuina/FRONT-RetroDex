@@ -1,4 +1,4 @@
-import { UserPokemonList } from "../../store/features/pokemon/types";
+import { UserPokemonList } from "../../store/features/userPokemon/types";
 
 export const mockUserPokemonList: UserPokemonList = [
   {
