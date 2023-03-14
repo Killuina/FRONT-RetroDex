@@ -1,7 +1,7 @@
 import { routes } from "../hooks/routes";
 import { UserPokemonListResponse } from "../hooks/types";
 import modalMessages from "../modals/modalMessages";
-import { getUserPokemonList } from "./types";
+import { GetUserPokemonList } from "./types";
 
 const {
   pokemon: { pokemonPath },
@@ -9,7 +9,7 @@ const {
 
 const { gettingPokemonError } = modalMessages;
 
-const getUserPokemonList = async (): Promise<getUserPokemonList> => {
+const getUserPokemonList = async (): Promise<GetUserPokemonList> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`

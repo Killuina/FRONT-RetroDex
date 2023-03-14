@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import { IBM_Plex_Mono, VT323 } from "next/font/google";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";

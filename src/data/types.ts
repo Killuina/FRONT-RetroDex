@@ -1,6 +1,6 @@
 import { UserPokemonList } from "../store/features/userPokemon/types";
 
-export interface getUserPokemonList {
+export interface GetUserPokemonList {
   props: UserPokemonListPageProps;
 }
 
