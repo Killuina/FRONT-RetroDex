@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { UserPokemon } from "../../store/features/userPokemon/types";
-import { mainFont } from "../../styles/fonts";
 import PokemonCardStyled from "./PokemonCardStyled";
 
 interface PokemonCardProps {

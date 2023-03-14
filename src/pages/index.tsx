@@ -1,6 +1,4 @@
 import dynamic from "next/dynamic";
-import PokemonCard from "../components/PokemonCard/PokemonCard";
-import { userPokemon } from "../data/userPokemonList";
 
 const ClientSideProtectedRoute = dynamic(
   () => import("../components/ProtectedRoute/ProtectedRoute"),
@@ -12,9 +10,7 @@ const ClientSideProtectedRoute = dynamic(
 const HomePage = (): JSX.Element => {
   return (
     <ClientSideProtectedRoute>
-      <main className="home-page">
-        <PokemonCard userPokemon={userPokemon} />
-      </main>
+      <main className="home-page"></main>
     </ClientSideProtectedRoute>
   );
 };
