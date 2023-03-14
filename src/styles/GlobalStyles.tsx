@@ -17,6 +17,7 @@ body {
 }
 
 button {
+  background-color: inherit;
   border: none;
   cursor: pointer;
   font-weight: inherit;
@@ -40,7 +41,7 @@ list-style: none;
 
 a, :visited, :active{
 text-decoration: none;
-color: none
+color: #000
 }
 
 

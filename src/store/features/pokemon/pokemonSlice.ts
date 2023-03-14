@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserPokemons } from "./types";
+import { UserPokemonList } from "./types";
 
-const initialState: UserPokemons = [];
+const initialState: UserPokemonList = [];
 
 const pokemonSlice = createSlice({
   name: "pokemon",
@@ -9,7 +9,7 @@ const pokemonSlice = createSlice({
   reducers: {
     loadPokemon: (
       currentPokemonState,
-      { payload }: PayloadAction<UserPokemons>
+      { payload }: PayloadAction<UserPokemonList>
     ) => [...payload],
   },
 });

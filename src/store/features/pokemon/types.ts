@@ -9,4 +9,4 @@ export interface UserPokemon {
   imageUrl: string;
 }
 
-export type UserPokemons = UserPokemon[];
+export type UserPokemonList = UserPokemon[];

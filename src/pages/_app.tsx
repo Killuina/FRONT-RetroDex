@@ -5,7 +5,7 @@ import { IBM_Plex_Mono, VT323 } from "next/font/google";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import Layout from "../components/Layout/Layout";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../styles/GlobalStyles";
 import { store } from "../store/store";
 import { mainTheme } from "../styles/mainTheme";
 
