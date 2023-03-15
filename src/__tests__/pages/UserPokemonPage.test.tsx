@@ -9,7 +9,9 @@ describe("Given the UserPokemonPage component", () => {
     test("Then it should show the page title 'Your Pokémon' on a heading", () => {
       const expectedTitle = "Your Pokémon";
 
-      renderWithProviders(<UserPokemonListPage />);
+      renderWithProviders(
+        <UserPokemonListPage userPokemonList={[]} isError errorMessage="" />
+      );
 
       const title = screen.getByRole("heading", { name: expectedTitle });
 
