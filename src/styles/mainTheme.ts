@@ -35,4 +35,7 @@ export const mainTheme: DefaultTheme = {
   paddings: {
     medium: "1.875rem",
   },
+  margins: {
+    standard: "4.375rem",
+  },
 };

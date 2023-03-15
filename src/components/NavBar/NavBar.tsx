@@ -28,8 +28,8 @@ const NavBar = (): JSX.Element => {
             </svg>
           </Link>
         </li>
-        <li className="navbar__create-pokemon">
-          <Link href="/" aria-label="to Create Pokémon page">
+        <li className="navbar__my-pokemon">
+          <Link href="/your-pokemon" aria-label="to My Pokémon page">
             <svg
               width="30"
               height="27"
@@ -46,8 +46,8 @@ const NavBar = (): JSX.Element => {
             </svg>
           </Link>
         </li>
-        <li className="navbar__my-pokemon">
-          <Link href="/" aria-label="to My Pokémon page">
+        <li className="navbar__create-pokemon">
+          <Link href="/" aria-label="to Create Pokémon page">
             <svg
               width="28"
               height="28"
@@ -64,6 +64,7 @@ const NavBar = (): JSX.Element => {
             </svg>
           </Link>
         </li>
+
         {isLogged ? (
           <li className="navbar__logout">
             <button onClick={removeToken} aria-label="Logout">

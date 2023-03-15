@@ -1,5 +1,6 @@
 import { UiState } from "../../store/features/ui/types";
 import {
+  initialState,
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
   uiReducer,
@@ -54,17 +55,12 @@ describe("Given the uiSliceReducer reducer", () => {
 
   describe("When it receives the action to unset isError", () => {
     test("Then it should set modal to its initial state", () => {
-      const expectedUiState: UiState = {
-        modal: { isError: false, message: "" },
-        isLoading: false,
-      };
-
       const uiState: UiState = uiReducer(
         currentUiState,
         unsetIsErrorModalActionCreator()
       );
 
-      expect(uiState).toStrictEqual(expectedUiState);
+      expect(uiState).toStrictEqual(initialState);
     });
   });
 });

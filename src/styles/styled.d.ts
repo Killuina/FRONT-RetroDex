@@ -36,5 +36,8 @@ declare module "styled-components" {
     paddings: {
       medium: string;
     };
+    margins: {
+      standard: string;
+    };
   }
 }

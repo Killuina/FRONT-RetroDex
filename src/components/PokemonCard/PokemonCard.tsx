@@ -3,19 +3,19 @@ import { UserPokemon } from "../../store/features/userPokemon/types";
 import PokemonCardStyled from "./PokemonCardStyled";
 
 interface PokemonCardProps {
-  userPokemon: UserPokemon;
+  Pokemon: UserPokemon;
 }
 
 const PokemonCard = ({
-  userPokemon: { name, imageUrl, types },
+  Pokemon: { name, imageUrl, types },
 }: PokemonCardProps): JSX.Element => {
   return (
     <PokemonCardStyled className={`pokemon-card ${types[0]}`}>
       <Image
         src={`${imageUrl}`}
         alt={`${name}`}
-        width="130"
-        height="130"
+        width="120"
+        height="120"
         priority={true}
       />
       <h3 className="pokemon-card__name">{name}</h3>

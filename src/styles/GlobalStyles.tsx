@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   background-color: ${(props) => props.theme.colors.mainColor};
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -41,6 +41,8 @@ input {
 
 ul, li, ol {
 list-style: none;
+padding: 0;
+margin: 0;
 }
 
 
