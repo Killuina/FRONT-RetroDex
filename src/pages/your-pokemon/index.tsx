@@ -1,5 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import PokemonList from "../../components/PokemonList/PokemonList";
+import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import getUserPokemonList from "../../data/getUserPokemonList";
 
 import { setIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
@@ -25,10 +26,12 @@ const UserPokemonListPage = ({
   }
 
   return (
-    <UserPokemonListPageStyled>
-      <h2>Your Pokémon</h2>
-      <PokemonList pokemonList={userPokemonList} />
-    </UserPokemonListPageStyled>
+    <ClientSideProtectedRoute>
+      <UserPokemonListPageStyled>
+        <h2>Your Pokémon</h2>
+        <PokemonList pokemonList={userPokemonList} />
+      </UserPokemonListPageStyled>
+    </ClientSideProtectedRoute>
   );
 };
 

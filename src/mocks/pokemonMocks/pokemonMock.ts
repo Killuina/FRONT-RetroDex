@@ -1,3 +1,4 @@
+import { GetUserPokemonList } from "../../data/types";
 import {
   UserPokemon,
   UserPokemonList,
@@ -35,4 +36,12 @@ export const mockUserPokemon: UserPokemon = {
   weight: 0,
   baseExp: 0,
   imageUrl: "/pokamion.png",
+};
+
+export const mockPokemonServerSideProps: GetUserPokemonList = {
+  props: {
+    userPokemonList: mockUserPokemonList,
+    isError: false,
+    errorMessage: "",
+  },
 };
