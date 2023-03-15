@@ -11,9 +11,16 @@ const pokemonSlice = createSlice({
       currentPokemonState,
       { payload }: PayloadAction<UserPokemonList>
     ) => [...payload],
+    deleteUserPokemon: (
+      currentPokemonState,
+      { payload }: PayloadAction<string>
+    ) =>
+      currentPokemonState.filter((userPokemon) => userPokemon.id !== payload),
   },
 });
 
 export const pokemonReducer = pokemonSlice.reducer;
-export const { loadUserPokemon: loadUserPokemonActionCreator } =
-  pokemonSlice.actions;
+export const {
+  loadUserPokemon: loadUserPokemonActionCreator,
+  deleteUserPokemon: deleteUserPokemonActionCreator,
+} = pokemonSlice.actions;

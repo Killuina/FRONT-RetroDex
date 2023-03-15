@@ -1,11 +1,12 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { useEffect } from "react";
 import PokemonList from "../../components/PokemonList/PokemonList";
 import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import getUserPokemonList from "../../data/getUserPokemonList";
-
 import { setIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
+import { loadUserPokemonActionCreator } from "../../store/features/userPokemon/pokemonSlice";
 import { UserPokemonList } from "../../store/features/userPokemon/types";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import UserPokemonListPageStyled from "../../styles/pages/UserPokemonListPageStyled";
 
 export interface UserPokemonListPageProps {
@@ -20,6 +21,11 @@ const UserPokemonListPage = ({
   errorMessage,
 }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const dispatch = useAppDispatch();
+  const userPokemon = useAppSelector((state) => state.pokemon);
+
+  useEffect(() => {
+    dispatch(loadUserPokemonActionCreator(userPokemonList));
+  }, [dispatch, userPokemonList]);
 
   if (isError) {
     dispatch(setIsErrorModalActionCreator(errorMessage));
@@ -29,7 +35,7 @@ const UserPokemonListPage = ({
     <ClientSideProtectedRoute>
       <UserPokemonListPageStyled>
         <h2>Your Pokémon</h2>
-        <PokemonList pokemonList={userPokemonList} />
+        <PokemonList pokemonList={userPokemon} />
       </UserPokemonListPageStyled>
     </ClientSideProtectedRoute>
   );

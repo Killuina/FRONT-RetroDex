@@ -1,6 +1,8 @@
 import { routes } from "../hooks/routes";
 import { UserPokemonListResponse } from "../hooks/types";
 import modalMessages from "../modals/modalMessages";
+import { loadUserPokemonActionCreator } from "../store/features/userPokemon/pokemonSlice";
+import { store } from "../store/store";
 import { GetUserPokemonList } from "./types";
 
 const {
