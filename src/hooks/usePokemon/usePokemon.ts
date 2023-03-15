@@ -1,0 +1,52 @@
+import { useCallback } from "react";
+import modalMessages from "../../modals/modalMessages";
+
+import {
+  setIsErrorModalActionCreator,
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/ui/uiSlice";
+import { loadUserPokemonActionCreator } from "../../store/features/userPokemon/pokemonSlice";
+import { UserPokemonList } from "../../store/features/userPokemon/types";
+import { useAppDispatch } from "../../store/hooks";
+import { routes } from "../routes";
+
+interface UsePokemon {
+  getUserPokemonList: () => void;
+}
+
+const {
+  pokemon: { pokemonPath },
+} = routes;
+
+const { gettingPokemonError } = modalMessages;
+
+const usePokemon = (): UsePokemon => {
+  const dispatch = useAppDispatch();
+  dispatch(setIsLoadingActionCreator());
+
+  const getUserPokemonList = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
+      );
+
+      if (!response.ok) {
+        throw new Error(gettingPokemonError);
+      }
+      const pokemonList: UserPokemonList = await response.json();
+
+      dispatch(loadUserPokemonActionCreator(pokemonList));
+
+      dispatch(unsetIsLoadingActionCreator());
+    } catch (error: unknown) {
+      dispatch(unsetIsLoadingActionCreator());
+
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+    }
+  }, [dispatch]);
+
+  return { getUserPokemonList };
+};
+
+export default usePokemon;
