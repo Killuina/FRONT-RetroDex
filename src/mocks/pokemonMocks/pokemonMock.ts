@@ -1,4 +1,7 @@
-import { UserPokemonList } from "../../store/features/userPokemon/types";
+import {
+  UserPokemon,
+  UserPokemonList,
+} from "../../store/features/userPokemon/types";
 
 export const mockUserPokemonList: UserPokemonList = [
   {
@@ -22,3 +25,14 @@ export const mockUserPokemonList: UserPokemonList = [
     imageUrl: "/pokemito.png",
   },
 ];
+
+export const mockUserPokemon: UserPokemon = {
+  id: "1",
+  name: "Pokamion",
+  types: ["Pesao"],
+  ability: "Pesao",
+  height: 0,
+  weight: 0,
+  baseExp: 0,
+  imageUrl: "/pokamion.png",
+};

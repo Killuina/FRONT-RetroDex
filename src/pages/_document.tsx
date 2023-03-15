@@ -6,7 +6,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { secondaryFont } from "./_app";
+import { mainFont } from "./_app";
 
 class MyDocument extends Document {
   static ctx: DocumentContext = {} as DocumentContext;
@@ -37,7 +37,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head />
-        <body className={secondaryFont.className}>
+        <body className={mainFont.className}>
           <Main />
           <NextScript />
         </body>
