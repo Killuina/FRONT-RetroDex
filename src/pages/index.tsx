@@ -1,11 +1,5 @@
-import ClientSideProtectedRoute from "../components/ProtectedRoute/ClientSideProtectedRoute";
-
 const HomePage = (): JSX.Element => {
-  return (
-    <ClientSideProtectedRoute>
-      <main className="home-page"></main>
-    </ClientSideProtectedRoute>
-  );
+  return <main className="home-page"></main>;
 };
 
 export default HomePage;

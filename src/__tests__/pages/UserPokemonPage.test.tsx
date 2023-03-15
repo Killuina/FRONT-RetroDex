@@ -1,7 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
-import { ClientRequest } from "http";
-import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
-import { mockWithTokenUserState } from "../../mocks/storeMocks/storeMocks";
+import { screen } from "@testing-library/react";
 import UserPokemonListPage from "../../pages/your-pokemon";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
@@ -11,8 +8,6 @@ describe("Given the UserPokemonPage component", () => {
   describe("When rendered", () => {
     test("Then it should show the page title 'Your Pokémon' on a heading", () => {
       const expectedTitle = "Your Pokémon";
-
-      window.localStorage.setItem("token", "mocken");
 
       renderWithProviders(<UserPokemonListPage />);
 

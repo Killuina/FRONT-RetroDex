@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }: PropsWithChildren): JSX.Element => {
     router.push("/login");
   }
 
-  return <>{children}</>;
+  return <div className="test">{children}</div>;
 };
 
 export default ProtectedRoute;
