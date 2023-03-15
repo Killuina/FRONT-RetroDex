@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { mainFont } from "../../pages/_app";
+import { mainFont } from "../../styles/fonts";
 import HeaderStyled from "./HeaderStyled";
 
 const Header = (): JSX.Element => {

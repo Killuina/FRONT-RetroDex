@@ -1,11 +1,4 @@
-import dynamic from "next/dynamic";
-
-const ClientSideProtectedRoute = dynamic(
-  () => import("../components/ProtectedRoute/ProtectedRoute"),
-  {
-    ssr: false,
-  }
-);
+import ClientSideProtectedRoute from "../components/ProtectedRoute/ClientSideProtectedRoute";
 
 const HomePage = (): JSX.Element => {
   return (
