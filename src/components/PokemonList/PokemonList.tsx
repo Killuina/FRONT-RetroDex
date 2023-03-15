@@ -1,5 +1,6 @@
 import { UserPokemonList } from "../../store/features/userPokemon/types";
 import PokemonCard from "../PokemonCard/PokemonCard";
+import PokemonListStyled from "./PokemonListStyled";
 
 interface PokemonListProps {
   pokemonList: UserPokemonList;
@@ -7,13 +8,13 @@ interface PokemonListProps {
 
 const PokemonList = ({ pokemonList }: PokemonListProps): JSX.Element => {
   return (
-    <ul>
+    <PokemonListStyled>
       {pokemonList.map((pokemon) => (
         <li key={pokemon.id}>
           <PokemonCard Pokemon={pokemon} />
         </li>
       ))}
-    </ul>
+    </PokemonListStyled>
   );
 };
 

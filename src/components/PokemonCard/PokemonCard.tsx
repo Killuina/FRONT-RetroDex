@@ -14,8 +14,8 @@ const PokemonCard = ({
       <Image
         src={`${imageUrl}`}
         alt={`${name}`}
-        width="130"
-        height="130"
+        width="120"
+        height="120"
         priority={true}
       />
       <h3 className="pokemon-card__name">{name}</h3>
