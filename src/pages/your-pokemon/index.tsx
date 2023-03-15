@@ -1,5 +1,4 @@
 import PokemonList from "../../components/PokemonList/PokemonList";
-import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import UserPokemonListPageStyled from "../../styles/pages/UserPokemonListPageStyled";
 
 const UserPokemonListPage = (): JSX.Element => {
