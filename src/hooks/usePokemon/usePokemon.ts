@@ -4,6 +4,7 @@ import modalMessages from "../../modals/modalMessages";
 import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
+  setIsSuccessModalActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
 import {
@@ -73,6 +74,7 @@ const usePokemon = (): UsePokemon => {
       }
 
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
+      dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
     } catch (error: unknown) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
