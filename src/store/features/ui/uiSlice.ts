@@ -42,7 +42,7 @@ const uiSlice = createSlice({
         isError: initialState.modal.isError,
       },
     }),
-    setIsSucessModal: (
+    setIsSuccessModal: (
       currentUiState: UiState,
       { payload }: PayloadAction<string>
     ): UiState => ({
@@ -54,7 +54,7 @@ const uiSlice = createSlice({
       },
     }),
 
-    unsetIsSucessModal: (currentUiState: UiState): UiState => ({
+    unsetIsSuccessModal: (currentUiState: UiState): UiState => ({
       ...currentUiState,
       modal: {
         ...currentUiState.modal,
@@ -70,6 +70,8 @@ export const {
   unsetIsLoading: unsetIsLoadingActionCreator,
   setIsErrorModal: setIsErrorModalActionCreator,
   unsetIsErrorModal: unsetIsErrorModalActionCreator,
+  setIsSuccessModal: setIsSuccessModalActionCreator,
+  unsetIsSuccessModal: unsetIsSuccessModalActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;
