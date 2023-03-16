@@ -6,20 +6,27 @@ import {
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
-import { loadUserPokemonActionCreator } from "../../store/features/userPokemon/pokemonSlice";
+import {
+  deleteUserPokemonActionCreator,
+  loadUserPokemonActionCreator,
+} from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
 import { UserPokemonListResponse } from "../types";
 
 interface UsePokemon {
   getUserPokemonList: () => void;
+  deleteUserPokemon: (userPokemonId: string) => void;
 }
 
 const {
-  pokemon: { pokemonPath },
+  pokemon: {
+    pokemonPath,
+    endpoints: { deletePokemon },
+  },
 } = routes;
 
-const { gettingPokemonError } = modalMessages;
+const { gettingPokemonError, deletingPokemon } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
   const dispatch = useAppDispatch();
@@ -34,6 +41,7 @@ const usePokemon = (): UsePokemon => {
       if (!response.ok) {
         throw new Error(gettingPokemonError);
       }
+
       const { pokemon: pokemonList }: UserPokemonListResponse =
         await response.json();
 
@@ -47,7 +55,26 @@ const usePokemon = (): UsePokemon => {
     }
   }, [dispatch]);
 
-  return { getUserPokemonList };
+  const deleteUserPokemon = async (userPokemonId: string) => {
+    try {
+      const response = await fetch(
+        `${process.env
+          .NEXT_PUBLIC_URL_API!}${pokemonPath}${deletePokemon}${userPokemonId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        throw new Error(deletingPokemon.error);
+      }
+
+      dispatch(deleteUserPokemonActionCreator(userPokemonId));
+    } catch (error: unknown) {
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+    }
+  };
+
+  return { getUserPokemonList, deleteUserPokemon };
 };
 
 export default usePokemon;

@@ -7,7 +7,10 @@ const {
     usersPath: path,
     endpoints: { login },
   },
-  pokemon: { pokemonPath },
+  pokemon: {
+    pokemonPath,
+    endpoints: { deletePokemon },
+  },
 } = routes;
 
 export const handlers = [
@@ -33,6 +36,17 @@ export const handlers = [
       );
     }
   ),
+  rest.delete(
+    `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}${deletePokemon}${mockUserPokemonList[0].id}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          message: `${mockUserPokemonList[0].name} deleted`,
+        })
+      );
+    }
+  ),
 ];
 
 export const errorHandlers = [
@@ -54,6 +68,17 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           error: "Coudln't retreive Pokémon",
+        })
+      );
+    }
+  ),
+  rest.delete(
+    `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}${deletePokemon}${mockUserPokemonList[0].id}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          error: "Error deleting Pokémon",
         })
       );
     }
