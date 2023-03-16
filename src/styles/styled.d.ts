@@ -34,6 +34,7 @@ declare module "styled-components" {
       radius: string;
     };
     paddings: {
+      standard: string;
       medium: string;
     };
     margins: {

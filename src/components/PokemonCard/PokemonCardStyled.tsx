@@ -5,9 +5,7 @@ const PokemonCardStyled = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 17rem;
-  width: 17rem;
-  padding: 1rem;
+  padding: ${(props) => props.theme.paddings.standard};
   border-radius: ${(props) => props.theme.border.radius};
 
   .pokemon-card {
@@ -20,7 +18,8 @@ const PokemonCardStyled = styled.article`
     }
 
     &__buttons {
-      width: 15rem;
+      padding: 0 ${(props) => props.theme.paddings.standard};
+      width: 100%;
       display: flex;
       justify-content: space-between;
       position: absolute;

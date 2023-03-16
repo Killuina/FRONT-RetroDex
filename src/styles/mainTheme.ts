@@ -33,6 +33,7 @@ export const mainTheme: DefaultTheme = {
     radius: "0.625rem",
   },
   paddings: {
+    standard: "1.5rem",
     medium: "1.875rem",
   },
   margins: {
