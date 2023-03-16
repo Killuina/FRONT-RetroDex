@@ -10,7 +10,7 @@ import {
   deleteUserPokemonActionCreator,
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { routes } from "../routes";
 import { UserPokemonListResponse } from "../types";
 
@@ -30,6 +30,7 @@ const { gettingPokemonError, deletingPokemon } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
   const dispatch = useAppDispatch();
+  const { token } = useAppSelector(({ user }) => user);
 
   const getUserPokemonList = useCallback(async () => {
     try {
@@ -62,6 +63,9 @@ const usePokemon = (): UsePokemon => {
           .NEXT_PUBLIC_URL_API!}${pokemonPath}${deletePokemon}${userPokemonId}`,
         {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (!response.ok) {
