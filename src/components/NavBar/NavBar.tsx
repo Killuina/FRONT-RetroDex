@@ -86,7 +86,7 @@ const NavBar = (): JSX.Element => {
           </li>
         ) : (
           <li className="navbar__login">
-            <Link href="/" aria-label="to Login page">
+            <Link href="/login" aria-label="to Login page">
               <svg
                 width="25"
                 height="32"
