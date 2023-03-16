@@ -9,7 +9,7 @@ import {
 } from "../../store/features/ui/uiSlice";
 
 const currentUiState: UiState = {
-  modal: { isError: false, message: "" },
+  modal: { isSuccess: false, isError: false, message: "" },
   isLoading: false,
 };
 
@@ -40,7 +40,7 @@ describe("Given the uiSliceReducer reducer", () => {
     test("Then it should set modal's isError property to true and message to 'This is an error message'", () => {
       const errorMessage = "This is an error message";
       const expectedUiState: UiState = {
-        modal: { isError: true, message: errorMessage },
+        modal: { isSuccess: false, isError: true, message: errorMessage },
         isLoading: false,
       };
 

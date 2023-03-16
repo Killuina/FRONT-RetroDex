@@ -10,3 +10,13 @@ export const showErrorToast = (message: string) => {
     progressStyle: { backgroundColor: "#EE7078" },
   });
 };
+
+export const showSuccessToast = (message: string) => {
+  toast.success(message, {
+    hideProgressBar: true,
+    closeOnClick: true,
+    progress: undefined,
+    transition: Slide,
+    progressStyle: { backgroundColor: "#EE7078" },
+  });
+};

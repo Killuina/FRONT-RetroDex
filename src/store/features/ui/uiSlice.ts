@@ -3,6 +3,7 @@ import { UiState } from "./types";
 
 export const initialState: UiState = {
   modal: {
+    isSuccess: false,
     isError: false,
     message: "",
   },
@@ -27,6 +28,7 @@ const uiSlice = createSlice({
     ): UiState => ({
       ...currentUiState,
       modal: {
+        ...currentUiState.modal,
         message: payload,
         isError: true,
       },
@@ -35,8 +37,29 @@ const uiSlice = createSlice({
     unsetIsErrorModal: (currentUiState: UiState): UiState => ({
       ...currentUiState,
       modal: {
+        ...currentUiState.modal,
         message: initialState.modal.message,
         isError: initialState.modal.isError,
+      },
+    }),
+    setIsSucessModal: (
+      currentUiState: UiState,
+      { payload }: PayloadAction<string>
+    ): UiState => ({
+      ...currentUiState,
+      modal: {
+        ...currentUiState.modal,
+        message: payload,
+        isSuccess: true,
+      },
+    }),
+
+    unsetIsSucessModal: (currentUiState: UiState): UiState => ({
+      ...currentUiState,
+      modal: {
+        ...currentUiState.modal,
+        message: initialState.modal.message,
+        isSuccess: initialState.modal.isSuccess,
       },
     }),
   },
