@@ -1,5 +1,6 @@
 import { mockUserPokemonList as mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import {
+  deleteUserPokemonActionCreator,
   loadUserPokemonActionCreator,
   pokemonReducer,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -19,6 +20,37 @@ describe("Given the pokemonReducer reducer", () => {
       );
 
       expect(newUserPokemonListState).toStrictEqual(mockUserPokemonList);
+    });
+  });
+
+  describe("When it receives the action to delete  the first pokemon on the list: 'Pokamion' with id: '1'", () => {
+    test("Then it should return the list of Pokémon with Pokamion deleted", () => {
+      const currentUserPokemonListState: UserPokemonList = mockUserPokemonList;
+      const expectedUserPokemonListState: UserPokemonList = [
+        {
+          id: "2",
+          name: "Pokemito",
+          types: ["Xikito"],
+          ability: "Xikito",
+          height: 0,
+          weight: 0,
+          baseExp: 0,
+          imageUrl: "/pokemito.png",
+        },
+      ];
+
+      const deleteUserPokemonAction = deleteUserPokemonActionCreator(
+        mockUserPokemonList[0].id
+      );
+
+      const newUserPokemonListState = pokemonReducer(
+        currentUserPokemonListState,
+        deleteUserPokemonAction
+      );
+
+      expect(newUserPokemonListState).toStrictEqual(
+        expectedUserPokemonListState
+      );
     });
   });
 });
