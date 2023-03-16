@@ -7,7 +7,6 @@ import {
   unsetIsLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
 import { loadUserPokemonActionCreator } from "../../store/features/userPokemon/pokemonSlice";
-import { UserPokemonList } from "../../store/features/userPokemon/types";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
 import { UserPokemonListResponse } from "../types";
