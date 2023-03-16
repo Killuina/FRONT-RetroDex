@@ -7,12 +7,8 @@ import { showErrorToast, showSuccessToast } from "../../modals/modals";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("../../modals/modals", () => ({
-  showErrorToast: jest.fn().mockImplementationOnce(() => {
-    showErrorToast(mockErrorUiState.modal.message);
-  }),
-  showSuccessToast: jest.fn().mockImplementationOnce(() => {
-    showErrorToast(mockSucessUiState.modal.message);
-  }),
+  showErrorToast: jest.fn(),
+  showSuccessToast: jest.fn(),
 }));
 
 jest.mock("next/router", () => require("next-router-mock"));

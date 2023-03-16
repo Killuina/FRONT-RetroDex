@@ -69,11 +69,13 @@ const usePokemon = (): UsePokemon => {
           },
         }
       );
+
       if (!response.ok) {
         throw new Error(deletingPokemon.error);
       }
 
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
+
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
     } catch (error: unknown) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));

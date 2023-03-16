@@ -1,5 +1,8 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Layout from "../../components/Layout/Layout";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
+import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
 import UserPokemonListPage from "../../pages/your-pokemon";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
@@ -18,7 +21,7 @@ describe("Given the UserPokemonPage component", () => {
     });
   });
 
-  describe("When there's a list of two pokemon on the store", () => {
+  describe("When being rendered with a list of two pokemon on the store", () => {
     test("Then is should show a card with the first of those pokemon's name: 'Pokamion'", () => {
       renderWithProviders(<UserPokemonListPage />, {
         pokemon: mockUserPokemonList,
@@ -29,6 +32,32 @@ describe("Given the UserPokemonPage component", () => {
       });
 
       expect(pokemonCard).toBeInTheDocument();
+    });
+  });
+
+  describe("When being rendered with a list of one pokemon on the store, and the logged user deletes that pokemon", () => {
+    test("Then it should show a modal with message: 'Pokémon deleted!'", async () => {
+      const expectedMessage = "Pokémon deleted!";
+
+      renderWithProviders(
+        <Layout>
+          <UserPokemonListPage />
+        </Layout>,
+        {
+          pokemon: [mockUserPokemonList[0]],
+          user: mockLoggedUserState,
+        }
+      );
+
+      const deleteButton = screen.getByRole("button", {
+        name: /delete pokemon/i,
+      });
+
+      await userEvent.click(deleteButton);
+
+      const modal = await screen.findByText(expectedMessage);
+
+      expect(modal).toBeInTheDocument();
     });
   });
 });

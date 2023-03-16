@@ -44,7 +44,7 @@ describe("Given the PokemonCard component", () => {
       renderWithProviders(<PokemonCard pokemon={mockUserPokemon} />);
 
       const deleteButton = screen.getByRole("button", {
-        name: /delete/i,
+        name: /delete pokemon/i,
       });
 
       await userEvent.click(deleteButton);
