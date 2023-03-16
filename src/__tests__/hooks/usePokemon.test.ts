@@ -38,27 +38,44 @@ describe("Given the usePokemon custom hook", () => {
     });
   });
 
-  describe("When the getUserPokemonList is called and request to get user's pokemon fails", () => {
-    beforeEach(() => {
-      server.resetHandlers(...errorHandlers);
+  test("Then it should call the dispatch with setIsSuccessModal action", async () => {
+    const {
+      result: {
+        current: { getUserPokemonList },
+      },
+    } = renderHook(() => usePokemon(), {
+      wrapper,
     });
 
-    test("Then the dispatch should be called with the action to activate the error modal with message 'Error getting Pokémon'", async () => {
-      const {
-        result: {
-          current: { getUserPokemonList },
-        },
-      } = renderHook(() => usePokemon(), {
-        wrapper,
-      });
+    const setIsSuccessPokemonAction =
+      loadUserPokemonActionCreator(mockUserPokemonList);
 
-      const setIsErrorModalAction =
-        setIsErrorModalActionCreator(gettingPokemonError);
+    await getUserPokemonList();
 
-      await getUserPokemonList();
+    expect(spyDispatch).toHaveBeenCalledWith(setIsSuccessPokemonAction);
+  });
+});
 
-      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+describe("When the getUserPokemonList is called and request to get user's pokemon fails", () => {
+  beforeEach(() => {
+    server.resetHandlers(...errorHandlers);
+  });
+
+  test("Then the dispatch should be called with the action to activate the error modal with message 'Error getting Pokémon'", async () => {
+    const {
+      result: {
+        current: { getUserPokemonList },
+      },
+    } = renderHook(() => usePokemon(), {
+      wrapper,
     });
+
+    const setIsErrorModalAction =
+      setIsErrorModalActionCreator(gettingPokemonError);
+
+    await getUserPokemonList();
+
+    expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
   });
 });
 
