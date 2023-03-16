@@ -10,6 +10,7 @@ import { loadUserPokemonActionCreator } from "../../store/features/userPokemon/p
 import { UserPokemonList } from "../../store/features/userPokemon/types";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
+import { UserPokemonListResponse } from "../types";
 
 interface UsePokemon {
   getUserPokemonList: () => void;
@@ -23,10 +24,10 @@ const { gettingPokemonError } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
   const dispatch = useAppDispatch();
-  dispatch(setIsLoadingActionCreator());
 
   const getUserPokemonList = useCallback(async () => {
     try {
+      dispatch(setIsLoadingActionCreator());
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
       );
@@ -34,7 +35,8 @@ const usePokemon = (): UsePokemon => {
       if (!response.ok) {
         throw new Error(gettingPokemonError);
       }
-      const pokemonList: UserPokemonList = await response.json();
+      const { pokemon: pokemonList }: UserPokemonListResponse =
+        await response.json();
 
       dispatch(loadUserPokemonActionCreator(pokemonList));
 
