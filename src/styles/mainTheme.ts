@@ -9,6 +9,7 @@ export const mainTheme: DefaultTheme = {
     inputColor: "#FFF",
     modalErrorColor: "#EE7078",
     modalSucessColor: "#C6F6D5",
+    loaderBackGroundColor: "rgba(255, 253, 240, 0.7)",
   },
   fonts: {
     mainFont: "'VT323', monospace",
@@ -33,6 +34,7 @@ export const mainTheme: DefaultTheme = {
     radius: "0.625rem",
   },
   paddings: {
+    standard: "1.5rem",
     medium: "1.875rem",
   },
   margins: {

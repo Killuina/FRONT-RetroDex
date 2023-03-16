@@ -10,7 +10,7 @@ const LoginPage = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
 
   if (isLogged) {
-    router.push("/");
+    router.push("/your-pokemon");
   }
 
   return (

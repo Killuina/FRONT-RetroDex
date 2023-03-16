@@ -67,10 +67,12 @@ describe("Given the LoginPage component", () => {
   });
 
   describe("When the user is logged", () => {
-    test("Then it should redirect to home page", () => {
+    test("Then it should redirect to my pokemon page", () => {
+      const expectedPage = "/your-pokemon";
+
       renderWithProviders(<LoginPage />, { user: mockLoggedUserState });
 
-      expect(spyRouter).toHaveBeenCalledWith("/");
+      expect(spyRouter).toHaveBeenCalledWith(expectedPage);
     });
   });
 });
