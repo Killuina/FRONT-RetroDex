@@ -10,6 +10,7 @@ declare module "styled-components" {
       inputColor: string;
       modalErrorColor: string;
       modalSucessColor: string;
+      loaderBackGroundColor: string;
     };
     fonts: {
       mainFont: string;

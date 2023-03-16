@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const PokemonCardStyled = styled.article`
+  z-index: -1;
   position: relative;
   display: flex;
   flex-direction: column;
