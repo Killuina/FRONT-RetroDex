@@ -2,12 +2,16 @@ import { UiState } from "../../store/features/ui/types";
 import { UserState } from "../../store/features/user/types";
 
 export const mockErrorUiState: UiState = {
-  modal: { isError: true, message: "Invalid credentials" },
+  modal: { isSuccess: false, isError: true, message: "Error!" },
   isLoading: true,
 };
 
+export const mockSucessUiState: UiState = {
+  modal: { isSuccess: true, isError: false, message: "Sucess!" },
+  isLoading: true,
+};
 export const mockLoadingUiState: UiState = {
-  modal: { isError: false, message: "" },
+  modal: { isSuccess: false, isError: false, message: "" },
   isLoading: true,
 };
 

@@ -3,13 +3,15 @@ import {
   initialState,
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
+  setIsSuccessModalActionCreator,
   uiReducer,
   unsetIsErrorModalActionCreator,
   unsetIsLoadingActionCreator,
+  unsetIsSuccessModalActionCreator,
 } from "../../store/features/ui/uiSlice";
 
 const currentUiState: UiState = {
-  modal: { isError: false, message: "" },
+  modal: { isSuccess: false, isError: false, message: "" },
   isLoading: false,
 };
 
@@ -40,7 +42,7 @@ describe("Given the uiSliceReducer reducer", () => {
     test("Then it should set modal's isError property to true and message to 'This is an error message'", () => {
       const errorMessage = "This is an error message";
       const expectedUiState: UiState = {
-        modal: { isError: true, message: errorMessage },
+        modal: { isSuccess: false, isError: true, message: errorMessage },
         isLoading: false,
       };
 
@@ -58,6 +60,34 @@ describe("Given the uiSliceReducer reducer", () => {
       const uiState: UiState = uiReducer(
         currentUiState,
         unsetIsErrorModalActionCreator()
+      );
+
+      expect(uiState).toStrictEqual(initialState);
+    });
+  });
+
+  describe("When it receives the action to set isSucess and 'This is an success message' message", () => {
+    test("Then it should set modal's isSuccess property to true and message to 'This is an success message'", () => {
+      const successMessage = "This is an success message";
+      const expectedUiState: UiState = {
+        modal: { isSuccess: true, isError: false, message: successMessage },
+        isLoading: false,
+      };
+
+      const uiState: UiState = uiReducer(
+        currentUiState,
+        setIsSuccessModalActionCreator(successMessage)
+      );
+
+      expect(uiState).toStrictEqual(expectedUiState);
+    });
+  });
+
+  describe("When it receives the action to unset isSucess", () => {
+    test("Then it should set modal to its initial state", () => {
+      const uiState: UiState = uiReducer(
+        currentUiState,
+        unsetIsSuccessModalActionCreator()
       );
 
       expect(uiState).toStrictEqual(initialState);
