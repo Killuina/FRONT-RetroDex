@@ -14,6 +14,10 @@ export interface UserPokemonListResponse {
   pokemon: UserPokemonList;
 }
 
+export interface DeletePokemonResponse {
+  message: string;
+}
+
 export interface CustomJwtPayload extends JwtPayload {
   sub: string;
   username: string;

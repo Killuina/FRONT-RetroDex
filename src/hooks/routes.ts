@@ -7,6 +7,9 @@ interface Paths {
   };
   pokemon: {
     pokemonPath: string;
+    endpoints: {
+      deletePokemon: string;
+    };
   };
 }
 
@@ -19,5 +22,8 @@ export const routes: Paths = {
   },
   pokemon: {
     pokemonPath: "/pokemon",
+    endpoints: {
+      deletePokemon: "/delete/",
+    },
   },
 };
