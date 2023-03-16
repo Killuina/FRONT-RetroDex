@@ -1,14 +1,24 @@
 import Image from "next/image";
+import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { UserPokemon } from "../../store/features/userPokemon/types";
 import PokemonCardStyled from "./PokemonCardStyled";
 
 interface PokemonCardProps {
-  Pokemon: UserPokemon;
+  pokemon: UserPokemon;
 }
 
 const PokemonCard = ({
-  Pokemon: { name, imageUrl, types },
+  pokemon: { name, imageUrl, types, id },
 }: PokemonCardProps): JSX.Element => {
+  const { deleteUserPokemon } = usePokemon();
+
+  const handleDeletePokemon = async (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    deleteUserPokemon(id);
+  };
+
   return (
     <PokemonCardStyled className={`pokemon-card ${types[0]}`}>
       <Image
@@ -37,7 +47,11 @@ const PokemonCard = ({
             />
           </svg>
         </button>
-        <button className="pokemon-card__button" aria-label="delete pokemon">
+        <button
+          onClick={handleDeletePokemon}
+          className="pokemon-card__button"
+          aria-label="delete pokemon"
+        >
           <svg
             width="40"
             height="40"

@@ -11,7 +11,7 @@ const PokemonList = ({ pokemonList }: PokemonListProps): JSX.Element => {
     <PokemonListStyled>
       {pokemonList.map((pokemon) => (
         <li key={pokemon.id}>
-          <PokemonCard Pokemon={pokemon} />
+          <PokemonCard pokemon={pokemon} />
         </li>
       ))}
     </PokemonListStyled>

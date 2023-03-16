@@ -64,7 +64,6 @@ const usePokemon = (): UsePokemon => {
           method: "DELETE",
         }
       );
-
       if (!response.ok) {
         throw new Error(deletingPokemon.error);
       }
