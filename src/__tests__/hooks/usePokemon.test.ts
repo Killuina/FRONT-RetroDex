@@ -11,7 +11,6 @@ import wrapper from "../../utils/testUtils/Wrapper";
 import modalMessages from "../../modals/modalMessages";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
-import { act } from "react-dom/test-utils";
 
 jest.mock("next/router", () => require("next-router-mock"));
 

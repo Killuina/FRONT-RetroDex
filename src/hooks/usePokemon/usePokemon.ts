@@ -12,7 +12,7 @@ import {
 } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../routes";
-import { DeletePokemonResponse, UserPokemonListResponse } from "../types";
+import { UserPokemonListResponse } from "../types";
 
 interface UsePokemon {
   getUserPokemonList: () => void;
