@@ -17,9 +17,7 @@ const LoginPage = (): JSX.Element => {
     <>
       <LoginPageStyled>
         <h2 className={mainFont.className}>Log in</h2>
-        <main className="login-page">
-          <LoginForm />
-        </main>
+        <LoginForm />
       </LoginPageStyled>
     </>
   );

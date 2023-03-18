@@ -23,7 +23,7 @@ describe("Given the pokemonReducer reducer", () => {
     });
   });
 
-  describe("When it receives the action to delete  the first pokemon on the list: 'Pokamion' with id: '1'", () => {
+  describe("When it receives the action to delete the first pokemon on the list: 'Pokamion' with id: '1'", () => {
     test("Then it should return the list of Pokémon with Pokamion deleted", () => {
       const currentUserPokemonListState: UserPokemonList = mockUserPokemonList;
       const expectedUserPokemonListState: UserPokemonList = [
@@ -36,6 +36,9 @@ describe("Given the pokemonReducer reducer", () => {
           weight: 0,
           baseExp: 0,
           imageUrl: "/pokemito.png",
+          backupImageUrl:
+            "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokemito.webp",
+          createdBy: "63fa113cda52dff28b261e0a",
         },
       ];
 

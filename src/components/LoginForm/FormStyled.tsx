@@ -1,21 +1,42 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.form`
+const FormStyled = styled.form`
   font-weight: ${(props) => props.theme.fonts.weights.semiBold};
   color: ${(props) => props.theme.fonts.colors.dark};
   display: flex;
   flex-direction: column;
   padding: 1.875rem;
-  height: 500px;
-  width: 350px;
+  width: 100%;
   gap: 0.5rem;
 
-  .login-form {
-    &__field {
+  input[type="file"] {
+    display: none;
+  }
+
+  .field--image {
+    display: flex;
+  }
+
+  .form {
+    &__field,
+    &__image-field {
       display: block;
       margin-bottom: ${(props) => props.theme.paddings.medium};
       border-radius: ${(props) => props.theme.border.radius};
-      height: 2.5rem;
+      width: 100%;
+      padding: 0.5rem;
+      background-color: ${(props) => props.theme.colors.inputColor};
+      border: solid 1px;
+      border-radius: ${(props) => props.theme.border.radius};
+      font-weight: inherit;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    &__image-field {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
     }
 
     &__button {
@@ -34,4 +55,4 @@ const LoginFormStyled = styled.form`
   }
 `;
 
-export default LoginFormStyled;
+export default FormStyled;
