@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
 import { secondaryFont } from "../../styles/fonts";
-import FormStyled from "./LoginFormStyled";
+import FormStyled from "./FormStyled";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -32,7 +32,7 @@ const LoginForm = (): JSX.Element => {
 
   return (
     <FormStyled
-      className={`${secondaryFont.className} "form"`}
+      className={`${secondaryFont.className} form`}
       onSubmit={onSubmitHandler}
     >
       <label htmlFor="username">Username</label>

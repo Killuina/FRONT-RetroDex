@@ -9,11 +9,34 @@ const FormStyled = styled.form`
   width: 100%;
   gap: 0.5rem;
 
+  input[type="file"] {
+    display: none;
+  }
+
+  .field--image {
+    display: flex;
+  }
+
   .form {
-    &__field {
+    &__field,
+    &__image-field {
       display: block;
       margin-bottom: ${(props) => props.theme.paddings.medium};
       border-radius: ${(props) => props.theme.border.radius};
+      width: 100%;
+      padding: 0.5rem;
+      background-color: ${(props) => props.theme.colors.inputColor};
+      border: solid 1px;
+      border-radius: ${(props) => props.theme.border.radius};
+      font-weight: inherit;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    &__image-field {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
     }
 
     &__button {

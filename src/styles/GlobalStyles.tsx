@@ -30,11 +30,12 @@ h1, h2, h3 {
   font-weight: inherit;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 0.5rem;
   background-color: ${(props) => props.theme.colors.inputColor};
   border: solid 1px;
+      border-radius: ${(props) => props.theme.border.radius};
   font-weight: inherit;
   font-family: inherit;
   font-size: inherit;
