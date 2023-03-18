@@ -4,7 +4,6 @@ export interface UserPokemonFormData {
   height: string;
   weight: string;
   baseExp: string;
-  image: string;
 }
 
 export interface UserPokemonSelectData {

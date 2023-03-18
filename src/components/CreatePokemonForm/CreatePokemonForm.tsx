@@ -1,20 +1,16 @@
 import { useState } from "react";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
-import { user } from "../../mocks/userMocks/userMocks";
 import { secondaryFont } from "../../styles/fonts";
 import FormStyled from "../LoginForm/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
-  let userPokemonFormData = new FormData();
-
-  const initiaUserPokemonFormData: UserPokemonFormData = {
+  const initialUserPokemonFormData: UserPokemonFormData = {
     name: "",
     ability: "",
     height: "",
     weight: "",
     baseExp: "",
-    image: "",
   };
 
   const initialUserPokemonSelectData: UserPokemonSelectData = {
@@ -22,26 +18,27 @@ const CreatePokemonForm = (): JSX.Element => {
     secondType: "",
   };
 
-  const [userPokemonData, setUserPokemonData] = useState(
-    initiaUserPokemonFormData
+  const [userPokemonFormData, setUserPokemonFormData] = useState(
+    initialUserPokemonFormData
   );
   const [userPokemonSelectData, setUserPokemonSelectData] = useState(
     initialUserPokemonSelectData
   );
+  const [image, setImage] = useState<File>();
 
   const areAreaFieldsEmpty =
-    userPokemonData.name === "" ||
+    userPokemonFormData.name === "" ||
     userPokemonSelectData.firstType === "" ||
-    userPokemonData.ability === "" ||
-    userPokemonData.height === "" ||
-    userPokemonData.weight === "" ||
-    userPokemonData.baseExp === "";
+    userPokemonFormData.ability === "" ||
+    userPokemonFormData.height === "" ||
+    userPokemonFormData.weight === "" ||
+    userPokemonFormData.baseExp === "";
 
   const handleUserPokemonFormData = ({
     target: { id, value },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    setUserPokemonData({
-      ...userPokemonData,
+    setUserPokemonFormData({
+      ...userPokemonFormData,
       [id]: value,
     });
   };
@@ -58,11 +55,17 @@ const CreatePokemonForm = (): JSX.Element => {
   const handleImage = ({
     target: { files },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    userPokemonFormData.append("image", files![0]);
+    setImage(files![0]);
   };
 
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const newUserPokemon = new FormData(event.currentTarget);
+
+    if (image) {
+      newUserPokemon.append("image", image);
+    }
   };
 
   return (
@@ -72,14 +75,15 @@ const CreatePokemonForm = (): JSX.Element => {
     >
       <label htmlFor="name">Name</label>
       <input
-        value={userPokemonData.name}
+        maxLength={11}
+        value={userPokemonFormData.name}
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
         autoComplete="off"
         id="name"
       ></input>
-      <label htmlFor="first-type">First type</label>
+      <label htmlFor="firstType">First type</label>
       <select
         className="form__field"
         id="firstType"
@@ -107,7 +111,8 @@ const CreatePokemonForm = (): JSX.Element => {
       </select>
       <label htmlFor="ability">Ability</label>
       <input
-        value={userPokemonData.ability}
+        maxLength={11}
+        value={userPokemonFormData.ability}
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
@@ -116,7 +121,8 @@ const CreatePokemonForm = (): JSX.Element => {
       ></input>
       <label htmlFor="height">Height</label>
       <input
-        value={userPokemonData.height}
+        maxLength={3}
+        value={userPokemonFormData.height}
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
@@ -125,7 +131,8 @@ const CreatePokemonForm = (): JSX.Element => {
       ></input>
       <label htmlFor="weight">Weight</label>
       <input
-        value={userPokemonData.weight}
+        maxLength={3}
+        value={userPokemonFormData.weight}
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
@@ -134,7 +141,8 @@ const CreatePokemonForm = (): JSX.Element => {
       ></input>
       <label htmlFor="baseExp">Base exp</label>
       <input
-        value={userPokemonData.baseExp}
+        maxLength={3}
+        value={userPokemonFormData.baseExp}
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
