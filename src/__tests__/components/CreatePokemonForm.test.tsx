@@ -91,10 +91,10 @@ describe("Given the CreatePokemonForm component", () => {
     });
   });
 
-  describe("When the user writes on name's field", () => {
-    test("Then it should change the value of name's field", async () => {
+  describe("When the user writes 'Pokamion' on name's field", () => {
+    test("Then it should change the value of name's field to 'Pokamion'", async () => {
       const nameLabel = "Name";
-      const expectedFieldValue = "manolo";
+      const expectedFieldValue = "Pokamion";
       renderWithProviders(<CreatePokemonForm />);
 
       const nameField = screen.getByLabelText(nameLabel);
@@ -107,24 +107,38 @@ describe("Given the CreatePokemonForm component", () => {
     });
   });
 
-  describe("When the user writes on name's field", () => {
-    test("Then it should change the value of name's field", async () => {
-      const nameLabel = "Name";
-      const expectedFieldValue = "manolo";
+  describe("When the user selects 'Fairy' option on First Type input", () => {
+    test("Then it should change the value of First type's field to 'Fairy'", async () => {
+      const firstTypeLabel = "First type";
+      const expectedFieldValue = "Fairy";
       renderWithProviders(<CreatePokemonForm />);
 
-      const nameField = screen.getByLabelText(nameLabel);
+      const firstTypeField: HTMLSelectElement =
+        screen.getByLabelText(firstTypeLabel);
 
-      await waitFor(
-        async () => await userEvent.type(nameField, expectedFieldValue)
-      );
+      await userEvent.selectOptions(firstTypeField, expectedFieldValue);
 
-      expect(nameField).toHaveValue(expectedFieldValue);
+      expect(firstTypeField).toHaveValue(expectedFieldValue);
     });
   });
 
-  describe("When the user writes on ability's field", () => {
-    test("Then it should change the value of ability's field", async () => {
+  describe("When the user selects 'Ground' option on Second Type input", () => {
+    test("Then it should change the value of Second type's field to 'Ground'", async () => {
+      const secondTypeLabel = "Second type";
+      const expectedFieldValue = "Ground";
+      renderWithProviders(<CreatePokemonForm />);
+
+      const secondTypeField: HTMLSelectElement =
+        screen.getByLabelText(secondTypeLabel);
+
+      await userEvent.selectOptions(secondTypeField, expectedFieldValue);
+
+      expect(secondTypeField).toHaveValue(expectedFieldValue);
+    });
+  });
+
+  describe("When the user writes 'Pesao' on ability's field", () => {
+    test("Then it should change the value of ability's field to 'Pesao'", async () => {
       const abilityLabel = "Ability";
       const expectedFieldValue = "Pesao";
       renderWithProviders(<CreatePokemonForm />);
@@ -139,8 +153,8 @@ describe("Given the CreatePokemonForm component", () => {
     });
   });
 
-  describe("When the user writes on height's field", () => {
-    test("Then it should change the value of height's field", async () => {
+  describe("When the user writes 23 on height's field", () => {
+    test("Then it should change the value of height's field to 23", async () => {
       const heightLabel = "Height";
       const expectedFieldValue = "23";
       renderWithProviders(<CreatePokemonForm />);
@@ -155,8 +169,8 @@ describe("Given the CreatePokemonForm component", () => {
     });
   });
 
-  describe("When the user writes on weight's field", () => {
-    test("Then it should change the value of weight's field", async () => {
+  describe("When the user writes 145 on weight's field", () => {
+    test("Then it should change the value of weight's field to 145", async () => {
       const weightLabel = "Weight";
       const expectedFieldValue = "145";
       renderWithProviders(<CreatePokemonForm />);
@@ -171,8 +185,8 @@ describe("Given the CreatePokemonForm component", () => {
     });
   });
 
-  describe("When the user writes on base exp's field", () => {
-    test("Then it should change the value of base exp's field", async () => {
+  describe("When the user writes 200 on base exp's field", () => {
+    test("Then it should change the value of base exp's field to 200", async () => {
       const baseExpLabel = "Base exp";
       const expectedFieldValue = "200";
       renderWithProviders(<CreatePokemonForm />);
@@ -190,12 +204,11 @@ describe("Given the CreatePokemonForm component", () => {
   describe("When the user ataches a file 'pokemon.png' on image input", () => {
     test("Then it should change the value of image's field", async () => {
       const inputLabel = "Image";
-
-      renderWithProviders(<CreatePokemonForm />);
-
       const testFile = new File(["pokemon"], "pokemon.png", {
         type: "image/png",
       });
+
+      renderWithProviders(<CreatePokemonForm />);
 
       const imageInput: HTMLInputElement = screen.getByLabelText(inputLabel);
 

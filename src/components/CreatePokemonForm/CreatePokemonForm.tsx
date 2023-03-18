@@ -58,21 +58,8 @@ const CreatePokemonForm = (): JSX.Element => {
     setImage(files![0]);
   };
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const newUserPokemon = new FormData(event.currentTarget);
-
-    if (image) {
-      newUserPokemon.append("image", image);
-    }
-  };
-
   return (
-    <FormStyled
-      onSubmit={onSubmitHandler}
-      className={`${secondaryFont.className} form`}
-    >
+    <FormStyled className={`${secondaryFont.className} form`}>
       <label htmlFor="name">Name</label>
       <input
         maxLength={11}
@@ -170,7 +157,7 @@ const CreatePokemonForm = (): JSX.Element => {
             fill="black"
           />
         </svg>
-        <input type="file" id="image" onChange={handleImage} />
+        <input type="file" id="image" hidden onChange={handleImage} />
       </label>
       <button className="form__button" disabled={areAreaFieldsEmpty}>
         Create Pokémon

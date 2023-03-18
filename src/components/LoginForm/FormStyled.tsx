@@ -9,10 +9,6 @@ const FormStyled = styled.form`
   width: 100%;
   gap: 0.5rem;
 
-  input[type="file"] {
-    display: none;
-  }
-
   .field--image {
     display: flex;
   }
