@@ -47,7 +47,7 @@ const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navbar__create-pokemon">
-          <Link href="/" aria-label="to Create Pokémon page">
+          <Link href="/create" aria-label="to Create Pokémon page">
             <svg
               width="28"
               height="28"

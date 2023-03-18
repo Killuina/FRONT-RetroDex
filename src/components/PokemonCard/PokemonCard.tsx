@@ -8,7 +8,7 @@ interface PokemonCardProps {
 }
 
 const PokemonCard = ({
-  pokemon: { name, imageUrl, types, id },
+  pokemon: { name, imageUrl, types, id, backupImageUrl },
 }: PokemonCardProps): JSX.Element => {
   const { deleteUserPokemon } = usePokemon();
 
@@ -22,7 +22,7 @@ const PokemonCard = ({
   return (
     <PokemonCardStyled className={`pokemon-card ${types[0]}`}>
       <Image
-        src={`${imageUrl}`}
+        src={`${imageUrl && backupImageUrl}`}
         alt={`${name}`}
         width="120"
         height="120"

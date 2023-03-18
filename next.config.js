@@ -13,6 +13,12 @@ const nextConfig = {
         port: "",
         pathname: "/mediawiki/**",
       },
+      {
+        protocol: "https",
+        hostname: "whvdnqxlctrpqnppjuwd.supabase.co",
+        port: "",
+        pathname: "/storage/**",
+      },
     ],
   },
 };

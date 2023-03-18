@@ -31,6 +31,7 @@ h1, h2, h3 {
 }
 
 input {
+  width: 100%;
   padding: 0.5rem;
   background-color: ${(props) => props.theme.colors.inputColor};
   border: solid 1px;

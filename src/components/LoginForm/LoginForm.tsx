@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
 import { secondaryFont } from "../../styles/fonts";
-import LoginFormStyled from "./LoginFormStyled";
+import FormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -31,13 +31,13 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <LoginFormStyled
-      className={`${secondaryFont.className} "login-form"`}
+    <FormStyled
+      className={`${secondaryFont.className} "form"`}
       onSubmit={onSubmitHandler}
     >
       <label htmlFor="username">Username</label>
       <input
-        className="login-form__field"
+        className="form__field"
         type="text"
         autoComplete="off"
         id="username"
@@ -46,17 +46,17 @@ const LoginForm = (): JSX.Element => {
       ></input>
       <label htmlFor="password">Password</label>
       <input
-        className="login-form__field"
+        className="form__field"
         autoComplete="on"
         type="password"
         id="password"
         value={userLoginCredentials.password}
         onChange={handleUserLoginCredentials}
       />
-      <button className="login-form__button" disabled={areAreaFieldsEmpty}>
+      <button className="form__button" disabled={areAreaFieldsEmpty}>
         Sign in
       </button>
-    </LoginFormStyled>
+    </FormStyled>
   );
 };
 
