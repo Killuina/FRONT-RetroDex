@@ -200,21 +200,4 @@ describe("Given the CreatePokemonForm component", () => {
       expect(baseExpField).toHaveValue(expectedFieldValue);
     });
   });
-
-  describe("When the user ataches a file 'pokemon.png' on image input", () => {
-    test("Then it should change the value of image's field", async () => {
-      const inputLabel = "Image";
-      const testFile = new File(["pokemon"], "pokemon.png", {
-        type: "image/png",
-      });
-
-      renderWithProviders(<CreatePokemonForm />);
-
-      const imageInput: HTMLInputElement = screen.getByLabelText(inputLabel);
-
-      fireEvent.change(imageInput, { target: { files: [testFile] } });
-
-      expect(imageInput.files![0]).toStrictEqual(testFile);
-    });
-  });
 });

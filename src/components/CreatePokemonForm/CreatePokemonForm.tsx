@@ -24,15 +24,6 @@ const CreatePokemonForm = (): JSX.Element => {
   const [userPokemonSelectData, setUserPokemonSelectData] = useState(
     initialUserPokemonSelectData
   );
-  const [image, setImage] = useState<File>();
-
-  const areAreaFieldsEmpty =
-    userPokemonFormData.name === "" ||
-    userPokemonSelectData.firstType === "" ||
-    userPokemonFormData.ability === "" ||
-    userPokemonFormData.height === "" ||
-    userPokemonFormData.weight === "" ||
-    userPokemonFormData.baseExp === "";
 
   const handleUserPokemonFormData = ({
     target: { id, value },
@@ -50,12 +41,6 @@ const CreatePokemonForm = (): JSX.Element => {
       ...userPokemonSelectData,
       [id]: value,
     });
-  };
-
-  const handleImage = ({
-    target: { files },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setImage(files![0]);
   };
 
   return (
@@ -157,11 +142,9 @@ const CreatePokemonForm = (): JSX.Element => {
             fill="black"
           />
         </svg>
-        <input type="file" id="image" hidden onChange={handleImage} />
+        <input type="file" id="image" hidden />
       </label>
-      <button className="form__button" disabled={areAreaFieldsEmpty}>
-        Create Pokémon
-      </button>
+      <button className="form__button">Create Pokémon</button>
     </FormStyled>
   );
 };
