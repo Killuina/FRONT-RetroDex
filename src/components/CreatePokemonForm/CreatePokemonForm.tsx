@@ -1,3 +1,4 @@
+import { pokemonInputTypes } from "../../data/pokemonTypes";
 import { secondaryFont } from "../../styles/fonts";
 import FormStyled from "../LoginForm/FormStyled";
 
@@ -13,47 +14,19 @@ const CreatePokemonForm = (): JSX.Element => {
       ></input>
       <label htmlFor="first-type">First type</label>
       <select className="form__field" id="first-type">
-        <option value="">None</option>
-        <option value="Water">Water</option>
-        <option value="Ice">Ice</option>
-        <option value="Poison">Poison</option>
-        <option value="Fairy">Fairy</option>
-        <option value="Grass">Grass</option>
-        <option value="Fire">Fire</option>
-        <option value="Ground">Ground</option>
-        <option value="Dragon">Dragon</option>
-        <option value="Electric">Electric</option>
-        <option value="Bug">Bug</option>
-        <option value="Dark">Dark</option>
-        <option value="Fighting">Fighting</option>
-        <option value="Flying">Flying</option>
-        <option value="Ghost">Ghost</option>
-        <option value="Psychic">Psychic</option>
-        <option value="Rock">Rock</option>
-        <option value="Steel">Steel</option>
-        <option value="Normal">Normal</option>
+        {pokemonInputTypes.map((type) => (
+          <option key={type} value={type === "None" ? "" : type}>
+            {type}
+          </option>
+        ))}
       </select>
       <label htmlFor="second-type">Second type</label>
       <select className="form__field" id="second-type">
-        <option value="">None</option>
-        <option value="Water">Water</option>
-        <option value="Ice">Ice</option>
-        <option value="Poison">Poison</option>
-        <option value="Fairy">Fairy</option>
-        <option value="Grass">Grass</option>
-        <option value="Fire">Fire</option>
-        <option value="Ground">Ground</option>
-        <option value="Dragon">Dragon</option>
-        <option value="Electric">Electric</option>
-        <option value="Bug">Bug</option>
-        <option value="Dark">Dark</option>
-        <option value="Fighting">Fighting</option>
-        <option value="Flying">Flying</option>
-        <option value="Ghost">Ghost</option>
-        <option value="Psychic">Psychic</option>
-        <option value="Rock">Rock</option>
-        <option value="Steel">Steel</option>
-        <option value="Normal">Normal</option>
+        {pokemonInputTypes.map((type) => (
+          <option key={type} value={type === "None" ? "" : type}>
+            {type}
+          </option>
+        ))}
       </select>
       <label htmlFor="ability">Ability</label>
       <input
