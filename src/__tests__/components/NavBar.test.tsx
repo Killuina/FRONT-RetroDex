@@ -1,9 +1,7 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NavBar from "../../components/NavBar/NavBar";
-import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
 import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
-import { logoutUserActionCreator } from "../../store/features/user/userSlice";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
