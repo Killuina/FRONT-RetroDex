@@ -1,4 +1,3 @@
-import { GetUserPokemonList } from "../../data/types";
 import {
   UserPokemon,
   UserPokemonList,

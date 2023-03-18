@@ -33,8 +33,8 @@ const CreatePokemonForm = (): JSX.Element => {
         <option value="Steel">Steel</option>
         <option value="Normal">Normal</option>
       </select>
-      <label htmlFor="first-type">Second type</label>
-      <select className="form__field" id="first-type">
+      <label htmlFor="second-type">Second type</label>
+      <select className="form__field" id="second-type">
         <option value="">None</option>
         <option value="Water">Water</option>
         <option value="Ice">Ice</option>
