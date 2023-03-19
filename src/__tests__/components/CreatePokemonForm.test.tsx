@@ -1,10 +1,8 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import mockRouter from "next-router-mock";
 import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
-import {
-  getMockNewUserPokemonData,
-  mockUserPokemon,
-} from "../../mocks/pokemonMocks/pokemonMock";
+import { mockUserPokemon } from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
@@ -19,7 +17,7 @@ jest.mock("../../hooks/usePokemon/usePokemon", () => () => ({
   createUserPokemon: mockedCreateUserPokemon,
 }));
 
-const mockNewUserPokemonData = getMockNewUserPokemonData();
+const spyMockRouter = jest.spyOn(mockRouter, "push");
 
 describe("Given the CreatePokemonForm component", () => {
   describe("When it renders", () => {
@@ -218,7 +216,7 @@ describe("Given the CreatePokemonForm component", () => {
   });
 
   describe("When the user enters all data necessary to create a pokémon", () => {
-    test("Then it should call the createUserPokemon function", async () => {
+    test("Then it should call the createUserPokemon function and redirect to your pokemon page", async () => {
       const nameLabel = "Name";
       const firstTypeLabel = "First type";
       const secondTypeLabel = "Second type";
@@ -254,6 +252,7 @@ describe("Given the CreatePokemonForm component", () => {
       await userEvent.click(createPokemonButton);
 
       expect(mockedCreateUserPokemon).toHaveBeenCalled();
+      expect(spyMockRouter).toHaveBeenCalledWith("your-pokemon");
     });
   });
 });

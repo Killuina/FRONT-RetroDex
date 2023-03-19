@@ -3,7 +3,7 @@ import PokemonList from "../../components/PokemonList/PokemonList";
 import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../../store/hooks";
-import UserPokemonListPageStyled from "../../styles/pages/UserPokemonListPageStyled";
+import PageStyled from "../../styles/PageStyled";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
@@ -16,10 +16,10 @@ const UserPokemonListPage = (): JSX.Element => {
 
   return (
     <ClientSideProtectedRoute>
-      <UserPokemonListPageStyled>
+      <PageStyled>
         <h2>Your Pokémon</h2>
         <PokemonList pokemonList={userPokemon} />
-      </UserPokemonListPageStyled>
+      </PageStyled>
     </ClientSideProtectedRoute>
   );
 };
