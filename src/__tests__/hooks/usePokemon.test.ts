@@ -2,6 +2,7 @@ import { renderHook } from "@testing-library/react";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import {
   getMockNewUserPokemonData,
+  mockUserPokemon,
   mockUserPokemonList,
 } from "../../mocks/pokemonMocks/pokemonMock";
 import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
@@ -10,6 +11,7 @@ import {
   setIsSuccessModalActionCreator,
 } from "../../store/features/ui/uiSlice";
 import {
+  addUserPokemonActionCreator,
   deleteUserPokemonActionCreator,
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -130,7 +132,7 @@ describe("Given a deletePokemon function", () => {
 
 describe("Given the createUserPokemon function", () => {
   describe("When it is called and the fetching is ok", () => {
-    test("Then it should call dispatch with set is sucess modal action with 'Pokemon created!' message", async () => {
+    test("Then it should call dispatch with add new user pokemon action, and all the new pokemon data on the payload", async () => {
       const {
         result: {
           current: { createUserPokemon },
@@ -141,37 +143,54 @@ describe("Given the createUserPokemon function", () => {
 
       const mockNewUserPokemonData = getMockNewUserPokemonData();
 
-      const setIsSuccessModalAction = setIsSuccessModalActionCreator(
-        creatingPokemon.sucess
-      );
+      const addUserPokemonAction = addUserPokemonActionCreator(mockUserPokemon);
 
       await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
 
-      expect(spyDispatch).toHaveBeenCalledWith(setIsSuccessModalAction);
+      expect(spyDispatch).toHaveBeenCalledWith(addUserPokemonAction);
     });
   });
-
-  describe("When it is called to create a Pokemon but receives an error instead", () => {
-    test("Then it should call dispatch with set error modal action with 'Error creating pokémon' message", async () => {
-      server.resetHandlers(...errorHandlers);
-
-      const {
-        result: {
-          current: { createUserPokemon },
-        },
-      } = renderHook(() => usePokemon(), {
-        wrapper,
-      });
-
-      const mockNewUserPokemonData = getMockNewUserPokemonData();
-
-      const setIsErrorModalAction = setIsErrorModalActionCreator(
-        creatingPokemon.error
-      );
-
-      await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
-
-      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+  test("Then it should call dispatch with set is sucess modal action with 'Pokemon created!' message", async () => {
+    const {
+      result: {
+        current: { createUserPokemon },
+      },
+    } = renderHook(() => usePokemon(), {
+      wrapper,
     });
+
+    const mockNewUserPokemonData = getMockNewUserPokemonData();
+
+    const setIsSuccessModalAction = setIsSuccessModalActionCreator(
+      creatingPokemon.sucess
+    );
+
+    await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
+
+    expect(spyDispatch).toHaveBeenCalledWith(setIsSuccessModalAction);
+  });
+});
+
+describe("When it is called to create a Pokemon but receives an error instead", () => {
+  test("Then it should call dispatch with set error modal action with 'Error creating pokémon' message", async () => {
+    server.resetHandlers(...errorHandlers);
+
+    const {
+      result: {
+        current: { createUserPokemon },
+      },
+    } = renderHook(() => usePokemon(), {
+      wrapper,
+    });
+
+    const mockNewUserPokemonData = getMockNewUserPokemonData();
+
+    const setIsErrorModalAction = setIsErrorModalActionCreator(
+      creatingPokemon.error
+    );
+
+    await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
+
+    expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
   });
 });
