@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { mockUserPokemon } from "../../mocks/pokemonMocks/pokemonMock";
+import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 const mockDeleteUserPokemon = jest.fn();
@@ -41,9 +42,11 @@ describe("Given the PokemonCard component", () => {
     });
   });
 
-  describe("When  it receives a Pokemon with name 'Pokamion' and the user clicks on its delete button", () => {
+  describe("When  it receives a Pokemon with name 'Pokamion' and the logged user clicks on its delete button", () => {
     test("Then it should call deletePokemon with Pokamion's id", async () => {
-      renderWithProviders(<PokemonCard pokemon={mockUserPokemon} />);
+      renderWithProviders(<PokemonCard pokemon={mockUserPokemon} />, {
+        user: mockLoggedUserState,
+      });
 
       const deleteButton = screen.getByRole("button", {
         name: /delete pokemon/i,

@@ -46,24 +46,26 @@ const NavBar = (): JSX.Element => {
             </svg>
           </Link>
         </li>
-        <li className="navbar__create-pokemon">
-          <Link href="/create" aria-label="to Create Pokémon page">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12.3334 0.666672H15.6667V4.00001V12.3333H27.3334V15.6667H15.6667V24V27.3333H12.3334V24V15.6667H0.666687V12.3333H12.3334V4.00001V0.666672Z"
-                fill="black"
-              />
-            </svg>
-          </Link>
-        </li>
+        {isLogged && (
+          <li className="navbar__create-pokemon">
+            <Link href="/create" aria-label="to Create Pokémon page">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12.3334 0.666672H15.6667V4.00001V12.3333H27.3334V15.6667H15.6667V24V27.3333H12.3334V24V15.6667H0.666687V12.3333H12.3334V4.00001V0.666672Z"
+                  fill="black"
+                />
+              </svg>
+            </Link>
+          </li>
+        )}
 
         {isLogged ? (
           <li className="navbar__logout">
