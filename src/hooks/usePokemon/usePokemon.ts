@@ -18,16 +18,17 @@ import { UserPokemonListResponse } from "../types";
 interface UsePokemon {
   getUserPokemonList: () => void;
   deleteUserPokemon: (userPokemonId: string) => void;
+  createUserPokemon: (newUserPokemonData: FormData) => void;
 }
 
 const {
   pokemon: {
     pokemonPath,
-    endpoints: { deletePokemon },
+    endpoints: { deletePokemon, createPokemon },
   },
 } = routes;
 
-const { gettingPokemonError, deletingPokemon } = modalMessages;
+const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
   const dispatch = useAppDispatch();
@@ -82,7 +83,32 @@ const usePokemon = (): UsePokemon => {
     }
   };
 
-  return { getUserPokemonList, deleteUserPokemon };
+  const createUserPokemon = async (newUserPokemonData: FormData) => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}${createPokemon}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: newUserPokemonData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(creatingPokemon.error);
+      }
+      dispatch(unsetIsLoadingActionCreator());
+      dispatch(setIsSuccessModalActionCreator(creatingPokemon.sucess));
+    } catch (error) {
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+      dispatch(unsetIsLoadingActionCreator());
+    }
+  };
+  return { getUserPokemonList, deleteUserPokemon, createUserPokemon };
 };
 
 export default usePokemon;
