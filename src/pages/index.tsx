@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import CreatePokemonForm from "../components/CreatePokemonForm/CreatePokemonForm";
 import PokemonList from "../components/PokemonList/PokemonList";
 import usePokemon from "../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../store/hooks";
@@ -16,7 +17,7 @@ const HomePage = (): JSX.Element => {
   return (
     <HomePageStyled>
       <h2>Home</h2>
-      <PokemonList pokemonList={userPokemon} />
+      <CreatePokemonForm />
     </HomePageStyled>
   );
 };

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
+import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { secondaryFont } from "../../styles/fonts";
 import FormStyled from "../LoginForm/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
+  const { createUserPokemon } = usePokemon();
+
   const initialUserPokemonFormData: UserPokemonFormData = {
     name: "",
     ability: "",
@@ -24,6 +27,21 @@ const CreatePokemonForm = (): JSX.Element => {
   const [userPokemonSelectData, setUserPokemonSelectData] = useState(
     initialUserPokemonSelectData
   );
+  const [image, setImage] = useState<File>();
+
+  const areAreaFieldsEmpty =
+    userPokemonFormData.name === "" ||
+    userPokemonSelectData.firstType === "" ||
+    userPokemonFormData.ability === "" ||
+    userPokemonFormData.height === "" ||
+    userPokemonFormData.weight === "" ||
+    userPokemonFormData.baseExp === "";
+
+  const handleImage = ({
+    target: { files },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setImage(files![0]);
+  };
 
   const handleUserPokemonFormData = ({
     target: { id, value },
@@ -43,8 +61,30 @@ const CreatePokemonForm = (): JSX.Element => {
     });
   };
 
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newUserPokemon = new FormData();
+    newUserPokemon.append("name", userPokemonFormData.name);
+    newUserPokemon.append("firstType", userPokemonSelectData.firstType);
+    newUserPokemon.append("secondType", userPokemonSelectData.secondType);
+    newUserPokemon.append("ability", userPokemonFormData.ability);
+    newUserPokemon.append("height", userPokemonFormData.height);
+    newUserPokemon.append("weight", userPokemonFormData.weight);
+    newUserPokemon.append("baseExp", userPokemonFormData.baseExp);
+
+    if (image) {
+      newUserPokemon.append("image", image);
+    }
+
+    createUserPokemon(newUserPokemon);
+  };
+
   return (
-    <FormStyled className={`${secondaryFont.className} form`}>
+    <FormStyled
+      onSubmit={onSubmitHandler}
+      className={`${secondaryFont.className} form`}
+    >
       <label htmlFor="name">Name</label>
       <input
         maxLength={11}
@@ -63,7 +103,7 @@ const CreatePokemonForm = (): JSX.Element => {
         onChange={handleUserPokemonSelectData}
       >
         {pokemonInputTypes.map((type) => (
-          <option key={type} value={type === "None" ? "" : type}>
+          <option key={type} value={type}>
             {type}
           </option>
         ))}
@@ -76,7 +116,7 @@ const CreatePokemonForm = (): JSX.Element => {
         onChange={handleUserPokemonSelectData}
       >
         {pokemonInputTypes.map((type) => (
-          <option key={type} value={type === "None" ? "" : type}>
+          <option key={type} value={type}>
             {type}
           </option>
         ))}
@@ -142,9 +182,11 @@ const CreatePokemonForm = (): JSX.Element => {
             fill="black"
           />
         </svg>
-        <input type="file" id="image" hidden />
+        <input type="file" id="image" hidden onChange={handleImage} />
       </label>
-      <button className="form__button">Create Pokémon</button>
+      <button className="form__button" disabled={areAreaFieldsEmpty}>
+        Create Pokémon
+      </button>
     </FormStyled>
   );
 };
