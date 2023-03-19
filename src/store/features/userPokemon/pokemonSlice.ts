@@ -8,14 +8,16 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {
     loadUserPokemon: (
-      currentPokemonState,
+      currentUserPokemonState,
       { payload }: PayloadAction<UserPokemonList>
     ) => [...payload],
     deleteUserPokemon: (
-      currentPokemonState,
+      currentUserPokemonState,
       { payload }: PayloadAction<string>
     ) =>
-      currentPokemonState.filter((userPokemon) => userPokemon.id !== payload),
+      currentUserPokemonState.filter(
+        (userPokemon) => userPokemon.id !== payload
+      ),
   },
 });
 

@@ -1,9 +1,25 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
+import {
+  getMockNewUserPokemonData,
+  mockUserPokemon,
+} from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
+
+const testImage = new File(["test"], "test.png", {
+  type: "image/png",
+});
+
+const mockedCreateUserPokemon = jest.fn();
+
+jest.mock("../../hooks/usePokemon/usePokemon", () => () => ({
+  createUserPokemon: mockedCreateUserPokemon,
+}));
+
+const mockNewUserPokemonData = getMockNewUserPokemonData();
 
 describe("Given the CreatePokemonForm component", () => {
   describe("When it renders", () => {
@@ -198,6 +214,46 @@ describe("Given the CreatePokemonForm component", () => {
       );
 
       expect(baseExpField).toHaveValue(expectedFieldValue);
+    });
+  });
+
+  describe("When the user enters all data necessary to create a pokémon", () => {
+    test("Then it should call the createUserPokemon function", async () => {
+      const nameLabel = "Name";
+      const firstTypeLabel = "First type";
+      const secondTypeLabel = "Second type";
+      const abilityLabel = "Ability";
+      const heightLabel = "Height";
+      const weightLabel = "Weight";
+      const baseExpLabel = "Base exp";
+      const imageLabel = "Image";
+      const buttonText = "Create Pokémon";
+
+      renderWithProviders(<CreatePokemonForm />);
+
+      const nameField = screen.getByLabelText(nameLabel);
+      const firstTypeField = screen.getByLabelText(firstTypeLabel);
+      const secondTypeField = screen.getByLabelText(secondTypeLabel);
+      const abilityField = screen.getByLabelText(abilityLabel);
+      const heightField = screen.getByLabelText(heightLabel);
+      const weightField = screen.getByLabelText(weightLabel);
+      const baseExpField = screen.getByLabelText(baseExpLabel);
+      const imageField = screen.getByLabelText(imageLabel);
+      const createPokemonButton = screen.getByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.type(nameField, mockUserPokemon.name);
+      await userEvent.selectOptions(firstTypeField, mockUserPokemon.types[0]);
+      await userEvent.selectOptions(secondTypeField, mockUserPokemon.types[1]);
+      await userEvent.type(abilityField, mockUserPokemon.ability);
+      await userEvent.type(heightField, mockUserPokemon.height);
+      await userEvent.type(weightField, mockUserPokemon.weight);
+      await userEvent.type(baseExpField, mockUserPokemon.baseExp);
+      await userEvent.upload(imageField, testImage);
+      await userEvent.click(createPokemonButton);
+
+      expect(mockedCreateUserPokemon).toHaveBeenCalled();
     });
   });
 });

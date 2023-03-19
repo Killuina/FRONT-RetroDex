@@ -27,19 +27,7 @@ describe("Given the pokemonReducer reducer", () => {
     test("Then it should return the list of Pokémon with Pokamion deleted", () => {
       const currentUserPokemonListState: UserPokemonList = mockUserPokemonList;
       const expectedUserPokemonListState: UserPokemonList = [
-        {
-          id: "2",
-          name: "Pokemito",
-          types: ["Xikito"],
-          ability: "Xikito",
-          height: 0,
-          weight: 0,
-          baseExp: 0,
-          imageUrl: "/pokemito.png",
-          backupImageUrl:
-            "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokemito.webp",
-          createdBy: "63fa113cda52dff28b261e0a",
-        },
+        mockUserPokemonList[1],
       ];
 
       const deleteUserPokemonAction = deleteUserPokemonActionCreator(
