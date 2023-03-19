@@ -1,5 +1,8 @@
 import { JwtPayload } from "jwt-decode";
-import { UserPokemonList } from "../store/features/userPokemon/types";
+import {
+  UserPokemon,
+  UserPokemonList,
+} from "../store/features/userPokemon/types";
 
 export interface UserCredentials {
   username: string;
@@ -12,6 +15,10 @@ export interface LoginResponse {
 
 export interface UserPokemonListResponse {
   pokemon: UserPokemonList;
+}
+
+export interface NewUserPokemonResponse {
+  pokemon: UserPokemon;
 }
 
 export interface DeletePokemonResponse {

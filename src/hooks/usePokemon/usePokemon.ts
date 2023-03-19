@@ -8,12 +8,13 @@ import {
   unsetIsLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
 import {
+  addUserPokemonActionCreator,
   deleteUserPokemonActionCreator,
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { routes } from "../routes";
-import { UserPokemonListResponse } from "../types";
+import { NewUserPokemonResponse, UserPokemonListResponse } from "../types";
 
 interface UsePokemon {
   getUserPokemonList: () => void;
@@ -100,10 +101,13 @@ const usePokemon = (): UsePokemon => {
         }
       );
 
-      if (response.status !== 201) {
+      const { pokemon: newUserPokemon }: NewUserPokemonResponse =
+        await response.json();
+
+      if (!response.ok) {
         throw new Error(creatingPokemon.error);
       }
-
+      dispatch(addUserPokemonActionCreator(newUserPokemon));
       dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(creatingPokemon.sucess));
     } catch (error) {

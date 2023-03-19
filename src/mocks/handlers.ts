@@ -58,7 +58,7 @@ export const handlers = [
       return res(
         ctx.status(201),
         ctx.json({
-          message: "Pokamion created!",
+          pokemon: { ...mockUserPokemonList[0] },
         })
       );
     }
