@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
@@ -6,6 +7,7 @@ import FormStyled from "../LoginForm/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
+  const router = useRouter();
   const { createUserPokemon } = usePokemon();
 
   const initialUserPokemonFormData: UserPokemonFormData = {
@@ -62,7 +64,7 @@ const CreatePokemonForm = (): JSX.Element => {
     });
   };
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newUserPokemonData = new FormData();
@@ -78,7 +80,9 @@ const CreatePokemonForm = (): JSX.Element => {
       newUserPokemonData.append("image", image);
     }
 
-    createUserPokemon(newUserPokemonData);
+    await createUserPokemon(newUserPokemonData);
+
+    router.push("your-pokemon");
   };
 
   return (

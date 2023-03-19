@@ -2,6 +2,8 @@ import { screen } from "@testing-library/react";
 import CreatePokemonPage from "../../pages/create";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 describe("Given the CreatePokemon component", () => {
   describe("When rendered", () => {
     test("Then it should render the page title 'Create your Pokémon' on a heading", () => {
