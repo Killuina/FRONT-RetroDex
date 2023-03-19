@@ -32,16 +32,6 @@ describe("Given the NavBar component", () => {
       expect(myPokemonLink).toBeInTheDocument();
     });
 
-    test("Then it should show a link that says 'to Create Pokémon page'", () => {
-      renderWithProviders(<NavBar />);
-
-      const createPokemonLink = screen.getByRole("link", {
-        name: /to create pokémon page/i,
-      });
-
-      expect(createPokemonLink).toBeInTheDocument();
-    });
-
     test("Then it should show a link that says 'to Login page'", () => {
       renderWithProviders(<NavBar />);
 
@@ -61,6 +51,15 @@ describe("Given the NavBar component", () => {
         });
 
         expect(logoutButton).toBeInTheDocument();
+      });
+      test("Then it should show a link that says 'to Create Pokémon page'", () => {
+        renderWithProviders(<NavBar />, { user: mockLoggedUserState });
+
+        const createPokemonLink = screen.getByRole("link", {
+          name: /to create pokémon page/i,
+        });
+
+        expect(createPokemonLink).toBeInTheDocument();
       });
 
       describe("When rendered, the user is logged, and the user clicks on logout button", () => {
