@@ -7,7 +7,6 @@ import FormStyled from "../LoginForm/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
-  const router = useRouter();
   const { createUserPokemon } = usePokemon();
 
   const initialUserPokemonFormData: UserPokemonFormData = {
@@ -34,6 +33,7 @@ const CreatePokemonForm = (): JSX.Element => {
   const areAreaFieldsEmpty =
     userPokemonFormData.name === "" ||
     userPokemonSelectData.firstType === "" ||
+    !image ||
     userPokemonFormData.ability === "" ||
     userPokemonFormData.height === "" ||
     userPokemonFormData.weight === "" ||
@@ -66,20 +66,20 @@ const CreatePokemonForm = (): JSX.Element => {
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newUserPokemon = new FormData();
-    newUserPokemon.append("name", userPokemonFormData.name);
-    newUserPokemon.append("firstType", userPokemonSelectData.firstType);
-    newUserPokemon.append("secondType", userPokemonSelectData.secondType);
-    newUserPokemon.append("ability", userPokemonFormData.ability);
-    newUserPokemon.append("height", userPokemonFormData.height);
-    newUserPokemon.append("weight", userPokemonFormData.weight);
-    newUserPokemon.append("baseExp", userPokemonFormData.baseExp);
+    const newUserPokemonData = new FormData();
+    newUserPokemonData.append("name", userPokemonFormData.name);
+    newUserPokemonData.append("firstType", userPokemonSelectData.firstType);
+    newUserPokemonData.append("secondType", userPokemonSelectData.secondType);
+    newUserPokemonData.append("ability", userPokemonFormData.ability);
+    newUserPokemonData.append("height", userPokemonFormData.height);
+    newUserPokemonData.append("weight", userPokemonFormData.weight);
+    newUserPokemonData.append("baseExp", userPokemonFormData.baseExp);
 
     if (image) {
-      newUserPokemon.append("image", image);
+      newUserPokemonData.append("image", image);
     }
 
-    createUserPokemon(newUserPokemon);
+    createUserPokemon(newUserPokemonData);
   };
 
   return (

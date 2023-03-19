@@ -1,6 +1,9 @@
 import { rest } from "msw";
 import { routes } from "../hooks/routes";
-import { mockUserPokemonList } from "./pokemonMocks/pokemonMock";
+import {
+  getMockNewUserPokemonData,
+  mockUserPokemonList,
+} from "./pokemonMocks/pokemonMock";
 
 const {
   users: {
@@ -9,9 +12,11 @@ const {
   },
   pokemon: {
     pokemonPath,
-    endpoints: { deletePokemon },
+    endpoints: { deletePokemon, createPokemon },
   },
 } = routes;
+
+const mockNewUserPokemonData = getMockNewUserPokemonData();
 
 export const handlers = [
   rest.post(
@@ -43,6 +48,17 @@ export const handlers = [
         ctx.status(200),
         ctx.json({
           message: `${mockUserPokemonList[0].name} deleted`,
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}${createPokemon}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(201),
+        ctx.json({
+          message: "Pokamion created!",
         })
       );
     }
@@ -79,6 +95,17 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           error: "Error deleting Pokémon",
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}${createPokemon}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          message: "Error creating Pokémon",
         })
       );
     }

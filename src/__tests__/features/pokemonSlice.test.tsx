@@ -30,7 +30,7 @@ describe("Given the pokemonReducer reducer", () => {
         {
           id: "2",
           name: "Pokemito",
-          types: ["Xikito"],
+          types: ["Xikito", "Xikitito"],
           ability: "Xikito",
           height: 0,
           weight: 0,

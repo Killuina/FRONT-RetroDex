@@ -30,10 +30,12 @@ describe("Given the PokemonCard component", () => {
       expect(pokemonCard).toBeInTheDocument();
     });
 
-    test("Then it should show 'Type:Pesao'", () => {
+    test("Then it should show 'Types:Pesao/Pesadito'", () => {
       renderWithProviders(<PokemonCard pokemon={mockUserPokemon} />);
 
-      const pokemonCard = screen.getByText(`Type:${mockUserPokemon.types}`);
+      const pokemonCard = screen.getByText(
+        `Type:${mockUserPokemon.types[0]}/${mockUserPokemon.types[1]}`
+      );
 
       expect(pokemonCard).toBeInTheDocument();
     });
