@@ -7,6 +7,8 @@ import {
 } from "../../mocks/localStorageMocks/localStorageMocks";
 import { spyDispatch } from "../../mocks/storeMocks/mockDispatch";
 import { mockTokenPayload, user } from "../../mocks/userMocks/userMocks";
+import modalMessages from "../../modals/modalMessages";
+import { setIsSuccessModalActionCreator } from "../../store/features/ui/uiSlice";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import wrapper from "../../utils/testUtils/Wrapper";
 
@@ -14,11 +16,15 @@ afterAll(() => {
   window.localStorage.clear();
 });
 
+beforeEach(() => jest.clearAllMocks());
+
 jest.mock("jwt-decode", () => jest.fn());
 
 (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
   mockTokenPayload
 );
+
+const { logoutSuccess } = modalMessages;
 
 describe("Given the useToken hook", () => {
   describe("When getToken function is called and there's a token in local storage", () => {
@@ -58,6 +64,23 @@ describe("Given the useToken hook", () => {
       await removeToken();
 
       expect(mockedRemoveItem).toHaveBeenCalledWith("token");
+    });
+
+    test("Then it should call sucess modal with message 'You have been logged out successfully!'", async () => {
+      const {
+        result: {
+          current: { removeToken },
+        },
+      } = renderHook(() => useToken(), {
+        wrapper,
+      });
+
+      const setIsSuccessModalAction =
+        setIsSuccessModalActionCreator(logoutSuccess);
+
+      await removeToken();
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsSuccessModalAction);
     });
   });
 });

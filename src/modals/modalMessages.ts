@@ -1,5 +1,6 @@
 interface ModalMessages {
   loginError: string;
+  logoutSuccess: string;
   creatingPokemon: {
     sucess: string;
     error: string;
@@ -17,6 +18,7 @@ interface ModalMessages {
 
 const modalMessages: ModalMessages = {
   loginError: "Invalid credentials",
+  logoutSuccess: "You have been logged out successfully!",
   creatingPokemon: {
     sucess: "Pokémon created!",
     error: "Error creating Pokémon",

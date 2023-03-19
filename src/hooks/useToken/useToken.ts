@@ -1,5 +1,7 @@
 import decodeToken from "jwt-decode";
 import { useCallback } from "react";
+import modalMessages from "../../modals/modalMessages";
+import { setIsSuccessModalActionCreator } from "../../store/features/ui/uiSlice";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
@@ -11,6 +13,8 @@ interface UseTokenStructure {
   getToken: () => void;
   removeToken: () => void;
 }
+
+const { logoutSuccess } = modalMessages;
 
 const useToken = (): UseTokenStructure => {
   const dispatch = useAppDispatch();
@@ -27,6 +31,7 @@ const useToken = (): UseTokenStructure => {
     localStorage.removeItem("token");
 
     dispatch(logoutUserActionCreator());
+    dispatch(setIsSuccessModalActionCreator(logoutSuccess));
   };
   return { getToken, removeToken };
 };
