@@ -3,6 +3,8 @@ import PokemonList from "../../components/PokemonList/PokemonList";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 describe("Given the PokemonList component", () => {
   describe("When it receives a list of two pokemon with name 'Pokamion' and 'Pokemito'", () => {
     test("Then it should render two cards with that names on headings", () => {

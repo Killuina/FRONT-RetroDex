@@ -3,6 +3,8 @@ import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import HomePage from "../../pages";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 describe("Given the Home page", () => {
   describe("When rendered", () => {
     test("Then it should show the page title 'Home' on a heading", () => {

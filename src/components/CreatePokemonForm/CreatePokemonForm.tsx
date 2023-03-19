@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
@@ -6,6 +7,7 @@ import FormStyled from "../LoginForm/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
+  const router = useRouter();
   const { createUserPokemon } = usePokemon();
 
   const initialUserPokemonFormData: UserPokemonFormData = {

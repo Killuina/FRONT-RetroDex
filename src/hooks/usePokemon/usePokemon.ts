@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useCallback } from "react";
 import modalMessages from "../../modals/modalMessages";
 
@@ -31,6 +32,7 @@ const {
 const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { token } = useAppSelector(({ user }) => user);
 
@@ -60,6 +62,8 @@ const usePokemon = (): UsePokemon => {
 
   const deleteUserPokemon = async (userPokemonId: string) => {
     try {
+      dispatch(setIsLoadingActionCreator());
+
       const response = await fetch(
         `${process.env
           .NEXT_PUBLIC_URL_API!}${pokemonPath}${deletePokemon}${userPokemonId}`,
@@ -76,10 +80,11 @@ const usePokemon = (): UsePokemon => {
       }
 
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
-
+      dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
     } catch (error: unknown) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
+      dispatch(unsetIsLoadingActionCreator());
     }
   };
 
@@ -101,8 +106,9 @@ const usePokemon = (): UsePokemon => {
       if (!response.ok) {
         throw new Error(creatingPokemon.error);
       }
-      dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(creatingPokemon.sucess));
+      dispatch(unsetIsLoadingActionCreator());
+      router.push("your-pokemon");
     } catch (error) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
       dispatch(unsetIsLoadingActionCreator());
