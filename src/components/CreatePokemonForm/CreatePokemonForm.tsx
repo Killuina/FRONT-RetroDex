@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
 import usePokemon from "../../hooks/usePokemon/usePokemon";

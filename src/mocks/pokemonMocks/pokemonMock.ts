@@ -8,11 +8,11 @@ export const mockUserPokemonList: UserPokemonList = [
   {
     id: "1",
     name: "Pokamion",
-    types: ["Pesao", "Pesadito"],
+    types: ["Water", "Fairy"],
     ability: "Pesao",
-    height: 0,
-    weight: 0,
-    baseExp: 0,
+    height: "2",
+    weight: "3",
+    baseExp: "4",
     imageUrl: "/pokamion.png",
     backupImageUrl:
       "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokamion.webp",
@@ -21,11 +21,11 @@ export const mockUserPokemonList: UserPokemonList = [
   {
     id: "2",
     name: "Pokemito",
-    types: ["Xikito", "Xikitito"],
+    types: ["Water", "Dragon"],
     ability: "Xikito",
-    height: 0,
-    weight: 0,
-    baseExp: 0,
+    height: "2",
+    weight: "3",
+    baseExp: "4",
     imageUrl: "/pokemito.png",
     backupImageUrl:
       "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokemito.webp",
@@ -36,11 +36,11 @@ export const mockUserPokemonList: UserPokemonList = [
 export const mockUserPokemon: UserPokemon = {
   id: "1",
   name: "Pokamion",
-  types: ["Pesao", "Pesadito"],
+  types: ["Water", "Fairy"],
   ability: "Pesao",
-  height: 0,
-  weight: 0,
-  baseExp: 0,
+  height: "2",
+  weight: "3",
+  baseExp: "4",
   imageUrl: "/pokamion.png",
   backupImageUrl:
     "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokamion.webp",

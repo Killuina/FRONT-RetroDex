@@ -3,9 +3,9 @@ export interface UserPokemon {
   name: string;
   types: string[];
   ability: string;
-  height: number;
-  weight: number;
-  baseExp: number;
+  height: string;
+  weight: string;
+  baseExp: string;
   imageUrl: string;
   backupImageUrl: string;
   createdBy: string;
