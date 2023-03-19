@@ -64,7 +64,7 @@ const CreatePokemonForm = (): JSX.Element => {
     });
   };
 
-  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newUserPokemonData = new FormData();
@@ -80,7 +80,7 @@ const CreatePokemonForm = (): JSX.Element => {
       newUserPokemonData.append("image", image);
     }
 
-    await createUserPokemon(newUserPokemonData);
+    createUserPokemon(newUserPokemonData);
 
     router.push("your-pokemon");
   };
