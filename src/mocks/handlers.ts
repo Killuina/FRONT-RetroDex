@@ -1,9 +1,6 @@
 import { rest } from "msw";
 import { routes } from "../hooks/routes";
-import {
-  getMockNewUserPokemonData,
-  mockUserPokemonList,
-} from "./pokemonMocks/pokemonMock";
+import { mockUserPokemonList } from "./pokemonMocks/pokemonMock";
 
 const {
   users: {
@@ -15,8 +12,6 @@ const {
     endpoints: { deletePokemon, createPokemon },
   },
 } = routes;
-
-const mockNewUserPokemonData = getMockNewUserPokemonData();
 
 export const handlers = [
   rest.post(
@@ -59,6 +54,19 @@ export const handlers = [
         ctx.status(201),
         ctx.json({
           pokemon: { ...mockUserPokemonList[0] },
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
+      mockUserPokemonList[0].id
+    }`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          pokemon: mockUserPokemonList[0],
         })
       );
     }
@@ -106,6 +114,19 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           error: "Error creating Pokémon",
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
+      mockUserPokemonList[0].id
+    }`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          error: "Error finding your Pokémon",
         })
       );
     }

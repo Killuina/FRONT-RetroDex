@@ -13,6 +13,7 @@ import {
 import {
   addUserPokemonActionCreator,
   deleteUserPokemonActionCreator,
+  getPokemonDetailActionCreator,
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
 import wrapper from "../../utils/testUtils/Wrapper";
@@ -24,7 +25,12 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 beforeEach(() => jest.resetAllMocks());
 
-const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
+const {
+  gettingPokemonError,
+  deletingPokemon,
+  creatingPokemon,
+  gettingDetailError,
+} = modalMessages;
 
 describe("Given the usePokemon custom hook", () => {
   describe("When the getUserPokemonList is called", () => {
@@ -68,7 +74,7 @@ describe("Given the usePokemon custom hook", () => {
   });
 });
 
-describe("Given a deletePokemon function", () => {
+describe("Given the deletePokemon function", () => {
   describe("When it is called and the fetching is ok", () => {
     test("Then it should call dispatch with delete pokemon action", async () => {
       const {
@@ -192,5 +198,47 @@ describe("When it is called to create a Pokemon but receives an error instead", 
     await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
 
     expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+  });
+});
+
+describe("Given the getPokemonDetail function", () => {
+  describe("When it is called and the fetching is ok", () => {
+    test("Then it should call dispatch with get pokemon detail action", async () => {
+      const {
+        result: {
+          current: { getPokemonDetail },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const getPokemonDetailAction =
+        getPokemonDetailActionCreator(mockUserPokemon);
+
+      await getPokemonDetail(mockUserPokemon.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(getPokemonDetailAction);
+    });
+
+    describe("When it is called to get a pokemon detail but receives an error instead", () => {
+      test("Then it should call dispatch with set error modal action with 'Error getting Pokémon detail' message", async () => {
+        server.resetHandlers(...errorHandlers);
+
+        const {
+          result: {
+            current: { getPokemonDetail },
+          },
+        } = renderHook(() => usePokemon(), {
+          wrapper,
+        });
+
+        const setIsErrorModalAction =
+          setIsErrorModalActionCreator(gettingDetailError);
+
+        await getPokemonDetail(mockUserPokemonList[0].id);
+
+        expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+      });
+    });
   });
 });
