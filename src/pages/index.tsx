@@ -16,7 +16,7 @@ const HomePage = (): JSX.Element => {
   return (
     <PageStyled>
       <h2>Home</h2>
-      <PokemonList pokemonList={userPokemon} />
+      <PokemonList pokemonList={userPokemon.pokemonList} />
     </PageStyled>
   );
 };

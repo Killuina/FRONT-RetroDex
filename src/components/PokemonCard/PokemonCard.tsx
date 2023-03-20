@@ -29,6 +29,7 @@ const PokemonCard = ({
         width="120"
         height="120"
         priority={true}
+        loading="eager"
       />
       <h3 className="pokemon-card__name">{name}</h3>
       <span className="pokemon-card__types">Type:{types.join("/")}</span>

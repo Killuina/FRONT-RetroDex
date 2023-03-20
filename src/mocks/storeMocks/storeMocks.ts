@@ -1,5 +1,7 @@
 import { UiState } from "../../store/features/ui/types";
 import { UserState } from "../../store/features/user/types";
+import { UserPokemonState } from "../../store/features/userPokemon/types";
+import { mockUserPokemonList } from "../pokemonMocks/pokemonMock";
 
 export const mockErrorUiState: UiState = {
   modal: { isSuccess: false, isError: true, message: "Error!" },
@@ -34,4 +36,36 @@ export const mockLoggedUserState: UserState = {
   isLogged: true,
   token: "mocken",
   username: "",
+};
+
+export const mockWithPokemonListUserPokemonState: UserPokemonState = {
+  pokemonDetail: {
+    ability: "",
+    backupImageUrl: "",
+    baseExp: "",
+    createdBy: "",
+    height: "",
+    id: "",
+    imageUrl: "",
+    name: "",
+    types: [],
+    weight: "",
+  },
+  pokemonList: mockUserPokemonList,
+};
+
+export const mockWithOnePokemonUserPokemonState: UserPokemonState = {
+  pokemonDetail: {
+    ability: "",
+    backupImageUrl: "",
+    baseExp: "",
+    createdBy: "",
+    height: "",
+    id: "",
+    imageUrl: "",
+    name: "",
+    types: [],
+    weight: "",
+  },
+  pokemonList: [mockUserPokemonList[0]],
 };

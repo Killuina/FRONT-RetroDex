@@ -2,7 +2,11 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Layout from "../../components/Layout/Layout";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
-import { mockLoggedUserState } from "../../mocks/storeMocks/storeMocks";
+import {
+  mockLoggedUserState,
+  mockWithOnePokemonUserPokemonState,
+  mockWithPokemonListUserPokemonState,
+} from "../../mocks/storeMocks/storeMocks";
 import UserPokemonListPage from "../../pages/your-pokemon";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
@@ -24,7 +28,7 @@ describe("Given the UserPokemonPage component", () => {
   describe("When being rendered with a list of two pokemon on the store", () => {
     test("Then is should show a card with the first of those pokemon's name: 'Pokamion'", () => {
       renderWithProviders(<UserPokemonListPage />, {
-        pokemon: mockUserPokemonList,
+        pokemon: mockWithPokemonListUserPokemonState,
       });
 
       const pokemonCard = screen.getByRole("heading", {
@@ -44,7 +48,7 @@ describe("Given the UserPokemonPage component", () => {
           <UserPokemonListPage />
         </Layout>,
         {
-          pokemon: [mockUserPokemonList[0]],
+          pokemon: mockWithOnePokemonUserPokemonState,
           user: mockLoggedUserState,
         }
       );

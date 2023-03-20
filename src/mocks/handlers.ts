@@ -83,7 +83,7 @@ export const errorHandlers = [
       return res(
         ctx.status(500),
         ctx.json({
-          error: "Coudln't retreive Pokémon",
+          error: "Couldn't retreive Pokémon",
         })
       );
     }
@@ -105,7 +105,7 @@ export const errorHandlers = [
       return res(
         ctx.status(500),
         ctx.json({
-          message: "Error creating Pokémon",
+          error: "Error creating Pokémon",
         })
       );
     }

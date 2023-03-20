@@ -115,7 +115,11 @@ const usePokemon = (): UsePokemon => {
       dispatch(unsetIsLoadingActionCreator());
     }
   };
-  return { getUserPokemonList, deleteUserPokemon, createUserPokemon };
+  return {
+    getUserPokemonList,
+    deleteUserPokemon,
+    createUserPokemon,
+  };
 };
 
 export default usePokemon;
