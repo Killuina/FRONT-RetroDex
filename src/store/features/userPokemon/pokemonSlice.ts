@@ -1,7 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserPokemon, UserPokemonList } from "./types";
+import { UserPokemon, UserPokemonList, UserPokemonState } from "./types";
 
-const initialState: UserPokemonList = [];
+const initialPokemonList: UserPokemonList = [];
+
+const initialPokemonDetail: UserPokemon = {
+  ability: "",
+  backupImageUrl: "",
+  baseExp: "",
+  createdBy: "",
+  height: "",
+  id: "",
+  imageUrl: "",
+  name: "",
+  types: [],
+  weight: "",
+};
+
+const initialState: UserPokemonState = {
+  pokemonList: initialPokemonList,
+  pokemonDetail: initialPokemonDetail,
+};
 
 const pokemonSlice = createSlice({
   name: "pokemon",
@@ -10,18 +28,28 @@ const pokemonSlice = createSlice({
     loadUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<UserPokemonList>
-    ) => [...payload],
+    ) => ({
+      ...currentUserPokemonState,
+      pokemonList: [...payload],
+    }),
     deleteUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<string>
-    ) =>
-      currentUserPokemonState.filter(
-        (userPokemon) => userPokemon.id !== payload
-      ),
+    ) => ({
+      ...currentUserPokemonState,
+      pokemonList: [
+        ...currentUserPokemonState.pokemonList.filter(
+          (pokemon) => pokemon.id !== payload
+        ),
+      ],
+    }),
     addUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<UserPokemon>
-    ) => [...currentUserPokemonState, payload],
+    ) => ({
+      ...currentUserPokemonState,
+      pokemonList: [...currentUserPokemonState.pokemonList, payload],
+    }),
   },
 });
 
