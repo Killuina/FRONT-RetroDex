@@ -10,16 +10,22 @@ import {
 import {
   addUserPokemonActionCreator,
   deleteUserPokemonActionCreator,
+  getPokemonDetailActionCreator,
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { routes } from "../routes";
-import { NewUserPokemonResponse, UserPokemonListResponse } from "../types";
+import {
+  GetPokemonDetailResponse,
+  NewUserPokemonResponse,
+  UserPokemonListResponse,
+} from "../types";
 
 interface UsePokemon {
   getUserPokemonList: () => void;
   deleteUserPokemon: (userPokemonId: string) => void;
   createUserPokemon: (newUserPokemonData: FormData) => void;
+  getPokemonDetail: (pokemonId: string) => void;
 }
 
 const {
@@ -29,7 +35,12 @@ const {
   },
 } = routes;
 
-const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
+const {
+  gettingPokemonError,
+  deletingPokemon,
+  creatingPokemon,
+  gettingDetailError,
+} = modalMessages;
 
 const usePokemon = (): UsePokemon => {
   const dispatch = useAppDispatch();
@@ -58,6 +69,30 @@ const usePokemon = (): UsePokemon => {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
   }, [dispatch]);
+
+  const getPokemonDetail = async (pokemonId: string) => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}/${pokemonId}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(gettingDetailError);
+      }
+
+      const { pokemon }: GetPokemonDetailResponse = await response.json();
+
+      dispatch(getPokemonDetailActionCreator(pokemon));
+      dispatch(unsetIsLoadingActionCreator());
+    } catch (error) {
+      dispatch(unsetIsLoadingActionCreator());
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+    }
+  };
 
   const deleteUserPokemon = async (userPokemonId: string) => {
     try {
@@ -119,6 +154,7 @@ const usePokemon = (): UsePokemon => {
     getUserPokemonList,
     deleteUserPokemon,
     createUserPokemon,
+    getPokemonDetail,
   };
 };
 
