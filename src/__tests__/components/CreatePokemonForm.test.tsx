@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
 import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
@@ -11,7 +11,11 @@ const testImage = new File(["test"], "test.png", {
   type: "image/png",
 });
 
-global.URL.createObjectURL = jest.fn();
+window.URL.createObjectURL = jest
+  .fn()
+  .mockReturnValue(
+    "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/1679248054259-image.webp"
+  );
 
 const mockedCreateUserPokemon = jest.fn();
 

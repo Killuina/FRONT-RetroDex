@@ -5,10 +5,10 @@ const FormStyled = styled.form`
   color: ${(props) => props.theme.fonts.colors.dark};
   display: flex;
   flex-direction: column;
-  padding: 1.875rem;
+  padding: ${(props) => props.theme.paddings.medium};
   width: 100%;
   gap: 0.5rem;
-  margin-bottom: ${(props) => props.theme.paddings.medium};
+  margin-bottom: ${(props) => props.theme.margins.standard};
 
   img {
     display: block;
@@ -37,6 +37,7 @@ const FormStyled = styled.form`
     }
 
     &__button {
+      margin-top: ${(props) => props.theme.paddings.medium};
       font-weight: ${(props) => props.theme.fonts.weights.semiBold};
       border-radius: ${(props) => props.theme.border.radius};
       padding: 0.75rem;
