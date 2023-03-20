@@ -13,6 +13,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Head>
         <title key="title">Pokédex</title>
         <meta name="description" content="A Pokédex CRUD App" />
+        <link
+          rel="preconnect"
+          href="https://cristina-jimenez-final-project-202301-bcn.onrender.com"
+        ></link>
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>

@@ -19,8 +19,8 @@ const CreatePokemonForm = (): JSX.Element => {
   };
 
   const initialUserPokemonSelectData: UserPokemonSelectData = {
-    firstType: "",
-    secondType: "",
+    firstType: "Normal",
+    secondType: "Normal",
   };
 
   const [userPokemonFormData, setUserPokemonFormData] = useState(
