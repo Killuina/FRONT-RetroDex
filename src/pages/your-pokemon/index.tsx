@@ -18,7 +18,7 @@ const UserPokemonListPage = (): JSX.Element => {
     <ClientSideProtectedRoute>
       <PageStyled>
         <h2>Your Pokémon</h2>
-        <PokemonList pokemonList={userPokemon} />
+        <PokemonList pokemonList={userPokemon.pokemonList} />
       </PageStyled>
     </ClientSideProtectedRoute>
   );

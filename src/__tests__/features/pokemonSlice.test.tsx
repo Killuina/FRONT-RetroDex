@@ -8,28 +8,59 @@ import {
 import {
   UserPokemon,
   UserPokemonList,
+  UserPokemonState,
 } from "../../store/features/userPokemon/types";
 
 describe("Given the pokemonReducer reducer", () => {
   describe("When it receives the action to loadPokemon and a list of two pokemon", () => {
     test("Then it should change pokemonListState to a list of this two pokemon", () => {
-      const currentUserPokemonListState: UserPokemonList = [];
+      const currentUserPokemonState: UserPokemonState = {
+        pokemonList: [],
+        pokemonDetail: {
+          ability: "",
+          backupImageUrl: "",
+          baseExp: "",
+          createdBy: "",
+          height: "",
+          id: "",
+          imageUrl: "",
+          name: "",
+          types: [],
+          weight: "",
+        },
+      };
 
       const loadUserPokemonAction =
         loadUserPokemonActionCreator(mockUserPokemonList);
 
-      const newUserPokemonListState = pokemonReducer(
-        currentUserPokemonListState,
+      const newUserPokemonState = pokemonReducer(
+        currentUserPokemonState,
         loadUserPokemonAction
       );
 
-      expect(newUserPokemonListState).toStrictEqual(mockUserPokemonList);
+      expect(newUserPokemonState.pokemonList).toStrictEqual(
+        mockUserPokemonList
+      );
     });
   });
 
   describe("When it receives the action to delete the first pokemon on the list: 'Pokamion' with id: '1', and a list of two pokemon", () => {
     test("Then it should return the list of Pokémon with Pokamion deleted", () => {
-      const currentUserPokemonListState: UserPokemonList = mockUserPokemonList;
+      const currentUserPokemonState: UserPokemonState = {
+        pokemonList: mockUserPokemonList,
+        pokemonDetail: {
+          ability: "",
+          backupImageUrl: "",
+          baseExp: "",
+          createdBy: "",
+          height: "",
+          id: "",
+          imageUrl: "",
+          name: "",
+          types: [],
+          weight: "",
+        },
+      };
       const expectedUserPokemonListState: UserPokemonList = [
         mockUserPokemonList[1],
       ];
@@ -38,12 +69,12 @@ describe("Given the pokemonReducer reducer", () => {
         mockUserPokemonList[0].id
       );
 
-      const newUserPokemonListState = pokemonReducer(
-        currentUserPokemonListState,
+      const newUserPokemonState = pokemonReducer(
+        currentUserPokemonState,
         deleteUserPokemonAction
       );
 
-      expect(newUserPokemonListState).toStrictEqual(
+      expect(newUserPokemonState.pokemonList).toStrictEqual(
         expectedUserPokemonListState
       );
     });
@@ -64,7 +95,22 @@ describe("Given the pokemonReducer reducer", () => {
           "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokamion2.webp",
         createdBy: "63fa113cda52dff28b261e0a",
       };
-      const currentUserPokemonListState: UserPokemonList = mockUserPokemonList;
+      const currentUserPokemonState: UserPokemonState = {
+        pokemonList: mockUserPokemonList,
+        pokemonDetail: {
+          ability: "",
+          backupImageUrl: "",
+          baseExp: "",
+          createdBy: "",
+          height: "",
+          id: "",
+          imageUrl: "",
+          name: "",
+          types: [],
+          weight: "",
+        },
+      };
+
       const expectedUserPokemonListState: UserPokemonList = [
         mockUserPokemonList[0],
         mockUserPokemonList[1],
@@ -73,12 +119,12 @@ describe("Given the pokemonReducer reducer", () => {
 
       const addUserPokemonAction = addUserPokemonActionCreator(newUserPokemon);
 
-      const newUserPokemonListState = pokemonReducer(
-        currentUserPokemonListState,
+      const newUserPokemonState = pokemonReducer(
+        currentUserPokemonState,
         addUserPokemonAction
       );
 
-      expect(newUserPokemonListState).toStrictEqual(
+      expect(newUserPokemonState.pokemonList).toStrictEqual(
         expectedUserPokemonListState
       );
     });

@@ -52,6 +52,7 @@ describe("Given the NavBar component", () => {
 
         expect(logoutButton).toBeInTheDocument();
       });
+
       test("Then it should show a link that says 'to Create Pokémon page'", () => {
         renderWithProviders(<NavBar />, { user: mockLoggedUserState });
 
@@ -61,19 +62,19 @@ describe("Given the NavBar component", () => {
 
         expect(createPokemonLink).toBeInTheDocument();
       });
+    });
 
-      describe("When rendered, the user is logged, and the user clicks on logout button", () => {
-        test("Then it should logout the user and remove token from local storage ", async () => {
-          renderWithProviders(<NavBar />, { user: mockLoggedUserState });
+    describe("When rendered, the user is logged, and the user clicks on logout button", () => {
+      test("Then it should logout the user and remove token from local storage ", async () => {
+        renderWithProviders(<NavBar />, { user: mockLoggedUserState });
 
-          const logoutButton = screen.getByRole("button", {
-            name: /logout/i,
-          });
-
-          await userEvent.click(logoutButton);
-
-          expect(mockRemoveToken).toHaveBeenCalled();
+        const logoutButton = screen.getByRole("button", {
+          name: /logout/i,
         });
+
+        await userEvent.click(logoutButton);
+
+        expect(mockRemoveToken).toHaveBeenCalled();
       });
     });
   });
