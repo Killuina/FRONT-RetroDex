@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useCallback } from "react";
 import modalMessages from "../../modals/modalMessages";
 
@@ -43,6 +44,7 @@ const {
 } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { token } = useAppSelector(({ user }) => user);
 
@@ -113,6 +115,7 @@ const usePokemon = (): UsePokemon => {
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
       dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
+      router.push("your-pokemon");
     } catch (error: unknown) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }

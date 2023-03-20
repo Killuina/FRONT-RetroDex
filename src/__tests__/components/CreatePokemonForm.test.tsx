@@ -1,6 +1,5 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import mockRouter from "next-router-mock";
 import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
 import { mockUserPokemon } from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
@@ -22,8 +21,6 @@ const mockedCreateUserPokemon = jest.fn();
 jest.mock("../../hooks/usePokemon/usePokemon", () => () => ({
   createUserPokemon: mockedCreateUserPokemon,
 }));
-
-const spyMockRouter = jest.spyOn(mockRouter, "push");
 
 describe("Given the CreatePokemonForm component", () => {
   describe("When it renders", () => {
@@ -258,7 +255,6 @@ describe("Given the CreatePokemonForm component", () => {
       await userEvent.click(createPokemonButton);
 
       expect(mockedCreateUserPokemon).toHaveBeenCalled();
-      expect(spyMockRouter).toHaveBeenCalledWith("your-pokemon");
     });
   });
 });
