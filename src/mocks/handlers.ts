@@ -58,7 +58,7 @@ export const handlers = [
       );
     }
   ),
-  rest.post(
+  rest.get(
     `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
       mockUserPokemonList[0].id
     }`,
@@ -118,7 +118,7 @@ export const errorHandlers = [
       );
     }
   ),
-  rest.post(
+  rest.get(
     `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
       mockUserPokemonList[0].id
     }`,

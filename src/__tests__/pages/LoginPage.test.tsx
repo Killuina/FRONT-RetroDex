@@ -30,9 +30,9 @@ describe("Given the LoginPage component", () => {
   });
 
   describe("When the user enters a wrong username and password, and clicks on Sign in button", () => {
-    beforeEach(() => server.use(...errorHandlers));
-
     test("Then it should show the modal component with error message 'Invalid credentials'", async () => {
+      server.use(...errorHandlers);
+
       const userCredentials = {
         username: "Manolito",
         password: "manolo1234",

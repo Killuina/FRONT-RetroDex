@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { UserPokemon } from "../../store/features/userPokemon/types";
 import { useAppSelector } from "../../store/hooks";
@@ -23,14 +24,15 @@ const PokemonCard = ({
 
   return (
     <PokemonCardStyled className={`pokemon-card ${types[0]}`}>
-      <Image
-        src={`${imageUrl && backupImageUrl}`}
-        alt={`${name}`}
-        width="120"
-        height="120"
-        priority={true}
-        loading="eager"
-      />
+      <Link href={`/pokemon/${encodeURIComponent(id)}`} className="link">
+        <Image
+          src={`${imageUrl && backupImageUrl}`}
+          alt={`${name}`}
+          width="120"
+          height="120"
+          loading="eager"
+        />
+      </Link>
       <h3 className="pokemon-card__name">{name}</h3>
       <span className="pokemon-card__types">Type:{types.join("/")}</span>
       <div className="pokemon-card__buttons">

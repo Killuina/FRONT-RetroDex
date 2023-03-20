@@ -1,9 +1,6 @@
 import { screen } from "@testing-library/react";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
-import {
-  mockWithOnePokemonUserPokemonState,
-  mockWithPokemonListUserPokemonState,
-} from "../../mocks/storeMocks/storeMocks";
+import { mockWithPokemonListUserPokemonState } from "../../mocks/storeMocks/storeMocks";
 import HomePage from "../../pages";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 

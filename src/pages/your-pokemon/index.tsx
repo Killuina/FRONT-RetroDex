@@ -3,7 +3,7 @@ import PokemonList from "../../components/PokemonList/PokemonList";
 import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../../store/hooks";
-import PageStyled from "../../styles/PageStyled";
+import PageStyled from "../../styles/pages/PageStyled";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();

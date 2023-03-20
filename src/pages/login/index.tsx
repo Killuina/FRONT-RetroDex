@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { useAppSelector } from "../../store/hooks";
 import { mainFont } from "../../styles/fonts";
-import PageStyled from "../../styles/PageStyled";
+import PageStyled from "../../styles/pages/PageStyled";
 
 const LoginPage = (): JSX.Element => {
   const router = useRouter();
