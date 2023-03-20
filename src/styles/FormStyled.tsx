@@ -8,15 +8,15 @@ const FormStyled = styled.form`
   padding: 1.875rem;
   width: 100%;
   gap: 0.5rem;
-  margin-bottom: ${(props) => props.theme.margins.standard};
+  margin-bottom: ${(props) => props.theme.paddings.medium};
 
-  .field--image {
-    display: flex;
+  img {
+    display: block;
+    margin: 1rem auto;
   }
 
   .form {
-    &__field,
-    &__image-field {
+    &__field {
       display: block;
       margin-bottom: ${(props) => props.theme.paddings.medium};
       border-radius: ${(props) => props.theme.border.radius};

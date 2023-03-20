@@ -11,6 +11,8 @@ const testImage = new File(["test"], "test.png", {
   type: "image/png",
 });
 
+global.URL.createObjectURL = jest.fn();
+
 const mockedCreateUserPokemon = jest.fn();
 
 jest.mock("../../hooks/usePokemon/usePokemon", () => () => ({

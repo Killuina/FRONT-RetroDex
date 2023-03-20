@@ -28,7 +28,6 @@ const PokemonCard = ({
         alt={`${name}`}
         width="120"
         height="120"
-        priority={true}
         loading="eager"
       />
       <h3 className="pokemon-card__name">{name}</h3>
