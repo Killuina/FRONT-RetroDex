@@ -115,7 +115,7 @@ const usePokemon = (): UsePokemon => {
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
       dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
-      router.push("your-pokemon");
+      router.push("/your-pokemon");
     } catch (error: unknown) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
