@@ -10,6 +10,7 @@ export const mainTheme: DefaultTheme = {
     modalErrorColor: "#EE7078",
     modalSucessColor: "#C6F6D5",
     loaderBackGroundColor: "rgba(255, 253, 240, 0.7)",
+    textBorderColor: "#B59171",
   },
   fonts: {
     mainFont: "'VT323', monospace",

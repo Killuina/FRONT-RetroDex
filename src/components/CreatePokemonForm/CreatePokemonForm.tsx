@@ -4,7 +4,7 @@ import Image from "next/image";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { secondaryFont } from "../../styles/fonts";
-import FormStyled from "../../styles/FormStyled";
+import FormStyled from "../../styles/components/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {

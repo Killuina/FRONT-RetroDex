@@ -3,7 +3,6 @@ import {
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsContext,
-  InferGetStaticPropsType,
   PreviewData,
 } from "next";
 import Image from "next/image";
@@ -64,7 +63,6 @@ const PokemonDetailPage = ({
   errorMessage,
 }: PokemonDetailPageProps): JSX.Element => {
   const dispatch = useAppDispatch();
-
   if (isError) {
     dispatch(setIsErrorModalActionCreator(errorMessage));
   }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import PokemonList from "../components/PokemonList/PokemonList";
 import usePokemon from "../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../store/hooks";
-import PageStyled from "../styles/PageStyled";
+import PageStyled from "../styles/pages/PageStyled";
 
 const HomePage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();

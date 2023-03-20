@@ -74,10 +74,7 @@ const usePokemon = (): UsePokemon => {
     try {
       dispatch(setIsLoadingActionCreator());
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}/${pokemonId}`,
-        {
-          method: "POST",
-        }
+        `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}/${pokemonId}`
       );
 
       if (!response.ok) {

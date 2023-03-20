@@ -11,6 +11,7 @@ declare module "styled-components" {
       modalErrorColor: string;
       modalSucessColor: string;
       loaderBackGroundColor: string;
+      textBorderColor: string;
     };
     fonts: {
       mainFont: string;
