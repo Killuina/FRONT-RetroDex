@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body {
+body, html {
   background-color: ${(props) => props.theme.colors.mainColor};
   width: 100%;
   height: 100%;

@@ -156,6 +156,7 @@ describe("Given the createUserPokemon function", () => {
       expect(spyDispatch).toHaveBeenCalledWith(addUserPokemonAction);
     });
   });
+
   test("Then it should call dispatch with set is sucess modal action with 'Pokemon created!' message", async () => {
     const {
       result: {

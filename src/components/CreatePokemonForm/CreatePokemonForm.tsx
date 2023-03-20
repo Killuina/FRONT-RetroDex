@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Image from "next/image";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
@@ -8,7 +7,6 @@ import FormStyled from "../../styles/components/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 
 const CreatePokemonForm = (): JSX.Element => {
-  const router = useRouter();
   const { createUserPokemon } = usePokemon();
 
   const initialUserPokemonFormData: UserPokemonFormData = {
@@ -82,8 +80,6 @@ const CreatePokemonForm = (): JSX.Element => {
     }
 
     createUserPokemon(newUserPokemonData);
-
-    router.push("your-pokemon");
   };
 
   return (
