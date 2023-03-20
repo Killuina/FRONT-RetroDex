@@ -63,19 +63,6 @@ export const handlers = [
       );
     }
   ),
-  rest.post(
-    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
-      mockUserPokemonList[0].id
-    }`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          pokemon: mockUserPokemonList[0],
-        })
-      );
-    }
-  ),
 ];
 
 export const errorHandlers = [
@@ -119,20 +106,6 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           error: "Error creating Pokémon",
-        })
-      );
-    }
-  ),
-
-  rest.post(
-    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}/${
-      mockUserPokemonList[0].id
-    }`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(500),
-        ctx.json({
-          error: "Error finding your Pokémon",
         })
       );
     }

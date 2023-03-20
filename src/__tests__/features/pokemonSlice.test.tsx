@@ -2,6 +2,7 @@ import { mockUserPokemonList as mockUserPokemonList } from "../../mocks/pokemonM
 import {
   addUserPokemonActionCreator,
   deleteUserPokemonActionCreator,
+  getPokemonDetailActionCreator,
   loadUserPokemonActionCreator,
   pokemonReducer,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -127,6 +128,43 @@ describe("Given the pokemonReducer reducer", () => {
       expect(newUserPokemonState.pokemonList).toStrictEqual(
         expectedUserPokemonListState
       );
+    });
+  });
+
+  describe("When it receives the action to get 'Pokamion's details, and a list of two pokemon", () => {
+    test("Then it should return the new UserPokemonState with that list of Pokémon and Pokamion's detail", () => {
+      const currentUserPokemonState: UserPokemonState = {
+        pokemonList: mockUserPokemonList,
+        pokemonDetail: {
+          ability: "",
+          backupImageUrl: "",
+          baseExp: "",
+          createdBy: "",
+          height: "",
+          id: "",
+          imageUrl: "",
+          name: "",
+          types: [],
+          weight: "",
+        },
+      };
+
+      const pokemonDetail = mockUserPokemonList[0];
+
+      const expectedUserPokemonState: UserPokemonState = {
+        pokemonList: mockUserPokemonList,
+        pokemonDetail: pokemonDetail,
+      };
+
+      const getPokemonDetailAction =
+        getPokemonDetailActionCreator(pokemonDetail);
+
+      const newUserPokemonState = pokemonReducer(
+        currentUserPokemonState,
+        getPokemonDetailAction
+      );
+
+      expect(newUserPokemonState).toStrictEqual(expectedUserPokemonState);
     });
   });
 });

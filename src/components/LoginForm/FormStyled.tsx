@@ -8,6 +8,7 @@ const FormStyled = styled.form`
   padding: 1.875rem;
   width: 100%;
   gap: 0.5rem;
+  margin-bottom: ${(props) => props.theme.margins.standard};
 
   .field--image {
     display: flex;
