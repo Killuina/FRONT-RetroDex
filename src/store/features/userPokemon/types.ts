@@ -16,4 +16,10 @@ export type UserPokemonList = UserPokemon[];
 export interface UserPokemonState {
   pokemonList: UserPokemonList;
   filter: string;
+  totalPokemon: number;
 }
+
+export type UserPokemonListState = Pick<
+  UserPokemonState,
+  "pokemonList" | "totalPokemon"
+>;
