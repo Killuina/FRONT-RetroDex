@@ -5,6 +5,11 @@ const PageStyled = styled.section`
   flex-direction: column;
   align-items: center;
 
+  .no-results-feedback {
+    padding: 1rem;
+    font-size: ${(props) => props.theme.fonts.sizes.pokemonDescriptionSize};
+  }
+
   h2 {
     font-size: ${(props) => props.theme.fonts.sizes.bigSize};
   }

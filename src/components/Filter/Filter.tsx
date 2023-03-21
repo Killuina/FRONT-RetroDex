@@ -1,5 +1,4 @@
 import { pokemonInputTypes } from "../../data/pokemonTypes";
-import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { addFilterActionCreator } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { secondaryFont } from "../../styles/fonts";

@@ -8,7 +8,7 @@ import PageStyled from "../../styles/pages/PageStyled";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
-  const { filter } = useAppSelector(({ pokemon }) => pokemon);
+  const { filter, pokemonList } = useAppSelector(({ pokemon }) => pokemon);
 
   useEffect(() => {
     getUserPokemonList(filter);
@@ -21,7 +21,11 @@ const UserPokemonListPage = (): JSX.Element => {
       <PageStyled>
         <h2>Your Pokémon</h2>
         <Filter />
-        <PokemonList pokemonList={userPokemon.pokemonList} />
+        {pokemonList.length === 0 ? (
+          <span className="no-results-feedback">No results found</span>
+        ) : (
+          <PokemonList pokemonList={userPokemon.pokemonList} />
+        )}
       </PageStyled>
     </ClientSideProtectedRoute>
   );
