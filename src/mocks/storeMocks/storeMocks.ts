@@ -47,3 +47,8 @@ export const mockWithOnePokemonUserPokemonState: UserPokemonState = {
   filter: "",
   pokemonList: [mockUserPokemonList[0]],
 };
+
+export const mockWithNoPokemonUserPokemonState: UserPokemonState = {
+  filter: "",
+  pokemonList: [],
+};
