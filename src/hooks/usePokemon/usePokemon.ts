@@ -50,19 +50,13 @@ const usePokemon = (): UsePokemon => {
       try {
         dispatch(setIsLoadingActionCreator());
 
-        let response;
-
-        if (type) {
-          response = await fetch(
-            `${
-              process.env.NEXT_PUBLIC_URL_API
-            }${pokemonPath}?${new URLSearchParams({ type })}`
-          );
-        } else {
-          response = await fetch(
-            `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
-          );
-        }
+        const response = type
+          ? await fetch(
+              `${
+                process.env.NEXT_PUBLIC_URL_API
+              }${pokemonPath}?${new URLSearchParams({ type })}`
+            )
+          : await fetch(`${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`);
 
         if (!response.ok) {
           throw new Error(gettingPokemonError);
