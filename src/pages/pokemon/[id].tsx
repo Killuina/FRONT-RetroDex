@@ -8,9 +8,7 @@ import {
 import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import { setIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
-import { getPokemonDetailActionCreator } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { store } from "../../store/store";
 import { secondaryFont } from "../../styles/fonts";
 import DetailPageStyled from "../../styles/pages/DetailPageStyled";
 import {
@@ -42,9 +40,6 @@ export const getStaticProps: GetStaticProps = async (
   const id = context.params!.id;
   const pokemonDetailProps = await getPokemonDetailData(id as string);
 
-  store.dispatch(
-    getPokemonDetailActionCreator(pokemonDetailProps.props.pokemon)
-  );
   return pokemonDetailProps;
 };
 

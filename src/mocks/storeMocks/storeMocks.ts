@@ -39,33 +39,11 @@ export const mockLoggedUserState: UserState = {
 };
 
 export const mockWithPokemonListUserPokemonState: UserPokemonState = {
-  pokemonDetail: {
-    ability: "",
-    backupImageUrl: "",
-    baseExp: "",
-    createdBy: "",
-    height: "",
-    id: "",
-    imageUrl: "",
-    name: "",
-    types: [],
-    weight: "",
-  },
+  filter: "",
   pokemonList: mockUserPokemonList,
 };
 
 export const mockWithOnePokemonUserPokemonState: UserPokemonState = {
-  pokemonDetail: {
-    ability: "",
-    backupImageUrl: "",
-    baseExp: "",
-    createdBy: "",
-    height: "",
-    id: "",
-    imageUrl: "",
-    name: "",
-    types: [],
-    weight: "",
-  },
+  filter: "",
   pokemonList: [mockUserPokemonList[0]],
 };

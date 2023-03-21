@@ -1,8 +1,9 @@
+import PokemonList from "../../components/PokemonList/PokemonList";
 import { mockUserPokemonList as mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import {
+  addFilterActionCreator,
   addUserPokemonActionCreator,
-  deleteUserPokemonActionCreator,
-  getPokemonDetailActionCreator,
+  deleteUserPokemonActionCreator as addFilteActionCreator,
   loadUserPokemonActionCreator,
   pokemonReducer,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -17,18 +18,7 @@ describe("Given the pokemonReducer reducer", () => {
     test("Then it should change pokemonListState to a list of this two pokemon", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: [],
-        pokemonDetail: {
-          ability: "",
-          backupImageUrl: "",
-          baseExp: "",
-          createdBy: "",
-          height: "",
-          id: "",
-          imageUrl: "",
-          name: "",
-          types: [],
-          weight: "",
-        },
+        filter: "",
       };
 
       const loadUserPokemonAction =
@@ -49,24 +39,13 @@ describe("Given the pokemonReducer reducer", () => {
     test("Then it should return the list of Pokémon with Pokamion deleted", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
-        pokemonDetail: {
-          ability: "",
-          backupImageUrl: "",
-          baseExp: "",
-          createdBy: "",
-          height: "",
-          id: "",
-          imageUrl: "",
-          name: "",
-          types: [],
-          weight: "",
-        },
+        filter: "",
       };
       const expectedUserPokemonListState: UserPokemonList = [
         mockUserPokemonList[1],
       ];
 
-      const deleteUserPokemonAction = deleteUserPokemonActionCreator(
+      const deleteUserPokemonAction = addFilteActionCreator(
         mockUserPokemonList[0].id
       );
 
@@ -98,18 +77,7 @@ describe("Given the pokemonReducer reducer", () => {
       };
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
-        pokemonDetail: {
-          ability: "",
-          backupImageUrl: "",
-          baseExp: "",
-          createdBy: "",
-          height: "",
-          id: "",
-          imageUrl: "",
-          name: "",
-          types: [],
-          weight: "",
-        },
+        filter: "",
       };
 
       const expectedUserPokemonListState: UserPokemonList = [
@@ -131,40 +99,22 @@ describe("Given the pokemonReducer reducer", () => {
     });
   });
 
-  describe("When it receives the action to get 'Pokamion's details, and a list of two pokemon", () => {
-    test("Then it should return the new UserPokemonState with that list of Pokémon and Pokamion's detail", () => {
+  describe("When it receives the action to add a filter and a payload: 'Water'", () => {
+    test("The it should change filter property on user pokemon state to 'Water'", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
-        pokemonDetail: {
-          ability: "",
-          backupImageUrl: "",
-          baseExp: "",
-          createdBy: "",
-          height: "",
-          id: "",
-          imageUrl: "",
-          name: "",
-          types: [],
-          weight: "",
-        },
+        filter: "",
       };
+      const expectedFilterState = "Water";
 
-      const pokemonDetail = mockUserPokemonList[0];
-
-      const expectedUserPokemonState: UserPokemonState = {
-        pokemonList: mockUserPokemonList,
-        pokemonDetail: pokemonDetail,
-      };
-
-      const getPokemonDetailAction =
-        getPokemonDetailActionCreator(pokemonDetail);
+      const addFilterAction = addFilterActionCreator(expectedFilterState);
 
       const newUserPokemonState = pokemonReducer(
         currentUserPokemonState,
-        getPokemonDetailAction
+        addFilterAction
       );
 
-      expect(newUserPokemonState).toStrictEqual(expectedUserPokemonState);
+      expect(newUserPokemonState.filter).toStrictEqual(expectedFilterState);
     });
   });
 });
