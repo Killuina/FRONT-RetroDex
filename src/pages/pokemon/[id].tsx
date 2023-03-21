@@ -72,6 +72,7 @@ const PokemonDetailPage = ({
       <Image
         alt={name}
         src={`${imageUrl && backupImageUrl}`}
+        priority
         height="120"
         width="120"
       />

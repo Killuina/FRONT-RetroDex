@@ -10,7 +10,7 @@ import { mockTokenPayload, user } from "../../mocks/userMocks/userMocks";
 import modalMessages from "../../modals/modalMessages";
 import { setIsSuccessModalActionCreator } from "../../store/features/ui/uiSlice";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
-import Wrapper from "../../utils/testUtils/Wrapper";
+import wrapper from "../../utils/testUtils/Wrapper";
 
 afterAll(() => {
   window.localStorage.clear();
@@ -36,7 +36,7 @@ describe("Given the useToken hook", () => {
           current: { getToken },
         },
       } = renderHook(() => useToken(), {
-        wrapper: Wrapper,
+        wrapper,
       });
 
       const loginUserAction = loginUserActionCreator(user);
@@ -56,7 +56,7 @@ describe("Given the useToken hook", () => {
           current: { removeToken },
         },
       } = renderHook(() => useToken(), {
-        wrapper: Wrapper,
+        wrapper,
       });
 
       const mockedRemoveItem = jest.spyOn(mockLocalStorage, "removeItem");
@@ -72,7 +72,7 @@ describe("Given the useToken hook", () => {
           current: { removeToken },
         },
       } = renderHook(() => useToken(), {
-        wrapper: Wrapper,
+        wrapper,
       });
 
       const setIsSuccessModalAction =

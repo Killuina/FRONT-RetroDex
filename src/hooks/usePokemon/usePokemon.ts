@@ -1,7 +1,5 @@
-import { useRouter } from "next/router";
 import { useCallback } from "react";
 import modalMessages from "../../modals/modalMessages";
-
 import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
@@ -44,33 +42,36 @@ const {
 } = modalMessages;
 
 const usePokemon = (): UsePokemon => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const { token } = useAppSelector(({ user }) => user);
 
-  const getUserPokemonList = useCallback(async () => {
-    try {
-      dispatch(setIsLoadingActionCreator());
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
-      );
+  const getUserPokemonList = useCallback(
+    async (filter?: string) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
 
-      if (!response.ok) {
-        throw new Error(gettingPokemonError);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
+        );
+
+        if (!response.ok) {
+          throw new Error(gettingPokemonError);
+        }
+
+        const { pokemon: pokemonList }: UserPokemonListResponse =
+          await response.json();
+
+        dispatch(loadUserPokemonActionCreator(pokemonList));
+
+        dispatch(unsetIsLoadingActionCreator());
+      } catch (error: unknown) {
+        dispatch(unsetIsLoadingActionCreator());
+
+        dispatch(setIsErrorModalActionCreator((error as Error).message));
       }
-
-      const { pokemon: pokemonList }: UserPokemonListResponse =
-        await response.json();
-
-      dispatch(loadUserPokemonActionCreator(pokemonList));
-
-      dispatch(unsetIsLoadingActionCreator());
-    } catch (error: unknown) {
-      dispatch(unsetIsLoadingActionCreator());
-
-      dispatch(setIsErrorModalActionCreator((error as Error).message));
-    }
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   const getPokemonDetail = async (pokemonId: string) => {
     try {
@@ -115,8 +116,8 @@ const usePokemon = (): UsePokemon => {
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
       dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
-      router.push("/your-pokemon");
     } catch (error: unknown) {
+      dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
   };
@@ -136,12 +137,13 @@ const usePokemon = (): UsePokemon => {
         }
       );
 
-      const { pokemon: newUserPokemon }: NewUserPokemonResponse =
-        await response.json();
-
       if (!response.ok) {
         throw new Error(creatingPokemon.error);
       }
+
+      const { pokemon: newUserPokemon }: NewUserPokemonResponse =
+        await response.json();
+
       dispatch(addUserPokemonActionCreator(newUserPokemon));
       dispatch(unsetIsLoadingActionCreator());
       dispatch(setIsSuccessModalActionCreator(creatingPokemon.sucess));
