@@ -41,17 +41,14 @@ export const mockLoggedUserState: UserState = {
 export const mockWithPokemonListUserPokemonState: UserPokemonState = {
   filter: "",
   pokemonList: mockUserPokemonList,
-  totalPokemon: mockUserPokemonList.length,
 };
 
 export const mockWithOnePokemonUserPokemonState: UserPokemonState = {
   filter: "",
   pokemonList: [mockUserPokemonList[0]],
-  totalPokemon: mockUserPokemonList.length,
 };
 
 export const mockWithNoPokemonUserPokemonState: UserPokemonState = {
   filter: "",
   pokemonList: [],
-  totalPokemon: mockUserPokemonList.length,
 };

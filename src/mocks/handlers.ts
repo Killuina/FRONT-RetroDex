@@ -32,7 +32,6 @@ export const handlers = [
         ctx.status(200),
         ctx.json({
           pokemon: mockUserPokemonList,
-          totalPokemon: mockUserPokemonList.length,
         })
       );
     }
