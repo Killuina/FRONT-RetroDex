@@ -4,7 +4,6 @@ import {
   addFilterActionCreator,
   addUserPokemonActionCreator,
   deleteUserPokemonActionCreator as addFilteActionCreator,
-  loadMoreUserPokemonActionCreator,
   loadUserPokemonActionCreator,
   pokemonReducer,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -15,18 +14,15 @@ import {
 } from "../../store/features/userPokemon/types";
 
 describe("Given the pokemonReducer reducer", () => {
-  describe("When it receives the action to loadUserPokemon and a list of two pokemon", () => {
+  describe("When it receives the action to loadPokemon and a list of two pokemon", () => {
     test("Then it should change pokemonListState to a list of this two pokemon", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: [],
         filter: "",
-        totalPokemon: 0,
       };
 
-      const loadUserPokemonAction = loadUserPokemonActionCreator({
-        pokemonList: mockUserPokemonList,
-        totalPokemon: 2,
-      });
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
 
       const newUserPokemonState = pokemonReducer(
         currentUserPokemonState,
@@ -39,38 +35,11 @@ describe("Given the pokemonReducer reducer", () => {
     });
   });
 
-  describe("When it receives the action to loadMoreUserPokemon and a list of two pokemon", () => {
-    test("Then it should change pokemonListState to a list of this two pokemon", () => {
-      const currentUserPokemonState: UserPokemonState = {
-        pokemonList: [mockUserPokemonList[0]],
-        filter: "",
-        totalPokemon: 0,
-      };
-      const expectedNewPokemonListState = [
-        mockUserPokemonList[0],
-        ...mockUserPokemonList,
-      ];
-
-      const loadMoreUserPokemonAction =
-        loadMoreUserPokemonActionCreator(mockUserPokemonList);
-
-      const newUserPokemonState = pokemonReducer(
-        currentUserPokemonState,
-        loadMoreUserPokemonAction
-      );
-
-      expect(newUserPokemonState.pokemonList).toStrictEqual(
-        expectedNewPokemonListState
-      );
-    });
-  });
-
   describe("When it receives the action to delete the first pokemon on the list: 'Pokamion' with id: '1', and a list of two pokemon", () => {
     test("Then it should return the list of Pokémon with Pokamion deleted", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
-        totalPokemon: 2,
       };
       const expectedUserPokemonListState: UserPokemonList = [
         mockUserPokemonList[1],
@@ -109,7 +78,6 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
-        totalPokemon: 2,
       };
 
       const expectedUserPokemonListState: UserPokemonList = [
@@ -136,7 +104,6 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
-        totalPokemon: 2,
       };
       const expectedFilterState = "Water";
 

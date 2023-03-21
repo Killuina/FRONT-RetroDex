@@ -1,17 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  UserPokemon,
-  UserPokemonList,
-  UserPokemonListState,
-  UserPokemonState,
-} from "./types";
+import { UserPokemon, UserPokemonList, UserPokemonState } from "./types";
 
 const initialPokemonList: UserPokemonList = [];
 
 const initialState: UserPokemonState = {
   pokemonList: initialPokemonList,
   filter: "",
-  totalPokemon: 0,
 };
 
 const pokemonSlice = createSlice({
@@ -20,20 +14,10 @@ const pokemonSlice = createSlice({
   reducers: {
     loadUserPokemon: (
       currentUserPokemonState,
-      {
-        payload: { pokemonList, totalPokemon },
-      }: PayloadAction<UserPokemonListState>
-    ): UserPokemonState => ({
-      ...currentUserPokemonState,
-      pokemonList: [...pokemonList],
-      totalPokemon: totalPokemon,
-    }),
-    loadMoreUserPokemon: (
-      currentUserPokemonState,
       { payload }: PayloadAction<UserPokemonList>
     ): UserPokemonState => ({
       ...currentUserPokemonState,
-      pokemonList: [...currentUserPokemonState.pokemonList, ...payload],
+      pokemonList: [...payload],
     }),
     deleteUserPokemon: (
       currentUserPokemonState,
@@ -46,6 +30,7 @@ const pokemonSlice = createSlice({
         ),
       ],
     }),
+
     addUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<UserPokemon>
@@ -69,5 +54,4 @@ export const {
   deleteUserPokemon: deleteUserPokemonActionCreator,
   addUserPokemon: addUserPokemonActionCreator,
   addFilter: addFilterActionCreator,
-  loadMoreUserPokemon: loadMoreUserPokemonActionCreator,
 } = pokemonSlice.actions;

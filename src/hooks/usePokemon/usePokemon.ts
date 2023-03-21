@@ -16,7 +16,7 @@ import { routes } from "../routes";
 import { NewUserPokemonResponse, UserPokemonListResponse } from "../types";
 
 interface UsePokemon {
-  getUserPokemonList: (type: string, page?: number) => void;
+  getUserPokemonList: (filter?: string) => void;
   deleteUserPokemon: (userPokemonId: string) => void;
   createUserPokemon: (newUserPokemonData: FormData) => void;
 }
@@ -35,7 +35,7 @@ const usePokemon = (): UsePokemon => {
   const { token } = useAppSelector(({ user }) => user);
 
   const getUserPokemonList = useCallback(
-    async (type: string, page = 0) => {
+    async (type?: string) => {
       try {
         dispatch(setIsLoadingActionCreator());
 
@@ -43,31 +43,18 @@ const usePokemon = (): UsePokemon => {
           ? await fetch(
               `${
                 process.env.NEXT_PUBLIC_URL_API
-              }${pokemonPath}?${new URLSearchParams({
-                page: `${page}`,
-              })}&${new URLSearchParams({ type })}`
+              }${pokemonPath}?${new URLSearchParams({ type })}`
             )
-          : await fetch(
-              `${
-                process.env.NEXT_PUBLIC_URL_API
-              }${pokemonPath}?${new URLSearchParams({
-                page: `${page}`,
-              })}`
-            );
+          : await fetch(`${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`);
 
         if (!response.ok) {
           throw new Error(gettingPokemonError);
         }
 
-        const { pokemon: pokemonList, totalPokemon }: UserPokemonListResponse =
+        const { pokemon: pokemonList }: UserPokemonListResponse =
           await response.json();
 
-        dispatch(
-          loadUserPokemonActionCreator({
-            pokemonList,
-            totalPokemon,
-          })
-        );
+        dispatch(loadUserPokemonActionCreator(pokemonList));
 
         dispatch(unsetIsLoadingActionCreator());
       } catch (error: unknown) {

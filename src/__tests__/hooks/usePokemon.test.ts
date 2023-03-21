@@ -38,12 +38,10 @@ describe("Given the usePokemon custom hook", () => {
         wrapper,
       });
 
-      const loadUserPokemonAction = loadUserPokemonActionCreator({
-        pokemonList: mockUserPokemonList,
-        totalPokemon: mockUserPokemonList.length,
-      });
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
 
-      await getUserPokemonList("");
+      await getUserPokemonList();
 
       expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
     });
@@ -64,7 +62,7 @@ describe("Given the usePokemon custom hook", () => {
       const setIsErrorModalAction =
         setIsErrorModalActionCreator(gettingPokemonError);
 
-      await getUserPokemonList("");
+      await getUserPokemonList();
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
     });
@@ -80,10 +78,8 @@ describe("Given the usePokemon custom hook", () => {
         wrapper,
       });
 
-      const loadUserPokemonAction = loadUserPokemonActionCreator({
-        pokemonList: mockUserPokemonList,
-        totalPokemon: mockUserPokemonList.length,
-      });
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
 
       await getUserPokemonList(PokemonTypes.water);
 

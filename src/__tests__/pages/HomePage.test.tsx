@@ -1,12 +1,7 @@
 import { screen } from "@testing-library/react";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
-import {
-  mockLoggedUserState,
-  mockWithNoPokemonUserPokemonState,
-  mockWithPokemonListUserPokemonState,
-} from "../../mocks/storeMocks/storeMocks";
+import { mockWithPokemonListUserPokemonState } from "../../mocks/storeMocks/storeMocks";
 import HomePage from "../../pages";
-import UserPokemonListPage from "../../pages/your-pokemon";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));
@@ -35,21 +30,6 @@ describe("Given the Home page", () => {
       });
 
       expect(pokemonCard).toBeInTheDocument();
-    });
-  });
-
-  describe("When there's an empty list in the store", () => {
-    test("Then it should show message: 'No results found'", () => {
-      const expectedMessage = "No results found";
-
-      renderWithProviders(<UserPokemonListPage />, {
-        pokemon: mockWithNoPokemonUserPokemonState,
-        user: mockLoggedUserState,
-      });
-
-      const message = screen.getByText(expectedMessage);
-
-      expect(message).toBeInTheDocument();
     });
   });
 });

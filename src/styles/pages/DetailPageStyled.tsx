@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const DetailPageStyled = styled.div`
-  padding: ${(props) => props.theme.paddings.medium};
+  padding: ${(props) => props.theme.paddings.medium}
+    ${(props) => props.theme.paddings.medium} 6.25rem
+    ${(props) => props.theme.paddings.medium};
   display: flex;
   flex-direction: column;
   align-items: center;
