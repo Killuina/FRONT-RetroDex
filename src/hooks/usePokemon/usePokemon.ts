@@ -52,15 +52,17 @@ const usePokemon = (): UsePokemon => {
 
         let response;
 
-        type
-          ? (response = await fetch(
-              `${
-                process.env.NEXT_PUBLIC_URL_API
-              }${pokemonPath}?${new URLSearchParams({ type })}`
-            ))
-          : (response = await fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
-            ));
+        if (type) {
+          response = await fetch(
+            `${
+              process.env.NEXT_PUBLIC_URL_API
+            }${pokemonPath}?${new URLSearchParams({ type })}`
+          );
+        } else {
+          response = await fetch(
+            `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
+          );
+        }
 
         if (!response.ok) {
           throw new Error(gettingPokemonError);
