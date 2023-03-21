@@ -19,6 +19,13 @@ const pokemonSlice = createSlice({
       ...currentUserPokemonState,
       pokemonList: [...payload],
     }),
+    loadMoreUserPokemon: (
+      currentUserPokemonState,
+      { payload }: PayloadAction<UserPokemonList>
+    ): UserPokemonState => ({
+      ...currentUserPokemonState,
+      pokemonList: [...currentUserPokemonState.pokemonList, ...payload],
+    }),
     deleteUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<string>
@@ -30,7 +37,6 @@ const pokemonSlice = createSlice({
         ),
       ],
     }),
-
     addUserPokemon: (
       currentUserPokemonState,
       { payload }: PayloadAction<UserPokemon>
@@ -54,4 +60,5 @@ export const {
   deleteUserPokemon: deleteUserPokemonActionCreator,
   addUserPokemon: addUserPokemonActionCreator,
   addFilter: addFilterActionCreator,
+  loadMoreUserPokemon: loadMoreUserPokemonActionCreator,
 } = pokemonSlice.actions;

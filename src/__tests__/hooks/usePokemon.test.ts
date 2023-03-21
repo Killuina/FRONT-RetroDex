@@ -41,7 +41,7 @@ describe("Given the usePokemon custom hook", () => {
       const loadUserPokemonAction =
         loadUserPokemonActionCreator(mockUserPokemonList);
 
-      await getUserPokemonList();
+      await getUserPokemonList("");
 
       expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
     });
@@ -62,7 +62,7 @@ describe("Given the usePokemon custom hook", () => {
       const setIsErrorModalAction =
         setIsErrorModalActionCreator(gettingPokemonError);
 
-      await getUserPokemonList();
+      await getUserPokemonList("");
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
     });
