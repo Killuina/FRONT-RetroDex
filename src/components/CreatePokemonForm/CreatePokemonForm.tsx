@@ -138,6 +138,7 @@ const CreatePokemonForm = (): JSX.Element => {
         maxLength={3}
         value={userPokemonFormData.height}
         onChange={handleUserPokemonFormData}
+        placeholder="0"
         className="form__field"
         type="text"
         autoComplete="off"
@@ -150,6 +151,7 @@ const CreatePokemonForm = (): JSX.Element => {
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
+        placeholder="0"
         autoComplete="off"
         id="weight"
       ></input>
@@ -160,21 +162,18 @@ const CreatePokemonForm = (): JSX.Element => {
         onChange={handleUserPokemonFormData}
         className="form__field"
         type="text"
+        placeholder="0"
         autoComplete="off"
         id="baseExp"
       ></input>
-      <label
-        aria-labelledby="image-label"
-        htmlFor="image"
-        className="form__image-field"
-      >
+      <label htmlFor="image" className="form__image-field">
         Image
       </label>
       <input type="file" id="image" onChange={handleImage} />
       {image && (
         <Image
           src={URL.createObjectURL(image)}
-          alt="sfd"
+          alt={userPokemonFormData.name}
           height="120"
           width="120"
         />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
+import modalMessages from "../../modals/modalMessages";
 import { UserPokemon } from "../../store/features/userPokemon/types";
 import { useAppSelector } from "../../store/hooks";
 import PokemonCardStyled from "./PokemonCardStyled";
@@ -30,7 +31,7 @@ const PokemonCard = ({
           alt={`${name}`}
           width="120"
           height="120"
-          loading="eager"
+          priority
         />
       </Link>
       <h3 className="pokemon-card__name">{name}</h3>
