@@ -15,5 +15,5 @@ export type UserPokemonList = UserPokemon[];
 
 export interface UserPokemonState {
   pokemonList: UserPokemonList;
-  pokemonDetail: UserPokemon;
+  filter: string;
 }

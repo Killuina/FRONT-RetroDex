@@ -3,22 +3,9 @@ import { UserPokemon, UserPokemonList, UserPokemonState } from "./types";
 
 const initialPokemonList: UserPokemonList = [];
 
-const initialPokemonDetail: UserPokemon = {
-  ability: "",
-  backupImageUrl: "",
-  baseExp: "",
-  createdBy: "",
-  height: "",
-  id: "",
-  imageUrl: "",
-  name: "",
-  types: [],
-  weight: "",
-};
-
 const initialState: UserPokemonState = {
   pokemonList: initialPokemonList,
-  pokemonDetail: initialPokemonDetail,
+  filter: "",
 };
 
 const pokemonSlice = createSlice({
@@ -51,13 +38,6 @@ const pokemonSlice = createSlice({
       ...currentUserPokemonState,
       pokemonList: [...currentUserPokemonState.pokemonList, payload],
     }),
-    getPokemonDetail: (
-      currentUserPokemonState,
-      { payload }: PayloadAction<UserPokemon>
-    ): UserPokemonState => ({
-      ...currentUserPokemonState,
-      pokemonDetail: { ...payload },
-    }),
   },
 });
 
@@ -66,5 +46,4 @@ export const {
   loadUserPokemon: loadUserPokemonActionCreator,
   deleteUserPokemon: deleteUserPokemonActionCreator,
   addUserPokemon: addUserPokemonActionCreator,
-  getPokemonDetail: getPokemonDetailActionCreator,
 } = pokemonSlice.actions;
