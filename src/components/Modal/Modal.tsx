@@ -30,7 +30,7 @@ const Modal = (): JSX.Element => {
   }, [dispatch, isSuccess, message]);
 
   return (
-    <ToastContainer className={secondaryFont.className} autoClose={2000} />
+    <ToastContainer className={secondaryFont.className} autoClose={5000} />
   );
 };
 

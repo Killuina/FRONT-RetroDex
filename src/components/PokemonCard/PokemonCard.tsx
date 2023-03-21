@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
-import modalMessages from "../../modals/modalMessages";
 import { UserPokemon } from "../../store/features/userPokemon/types";
 import { useAppSelector } from "../../store/hooks";
 import PokemonCardStyled from "./PokemonCardStyled";
