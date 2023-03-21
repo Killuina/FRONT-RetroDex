@@ -17,7 +17,11 @@ const HomePage = (): JSX.Element => {
     <PageStyled>
       <h2>Home</h2>
       <Filter />
-      <PokemonList pokemonList={pokemonList} />
+      {pokemonList.length === 0 ? (
+        <span className="no-results-feedback">No results found</span>
+      ) : (
+        <PokemonList pokemonList={pokemonList} />
+      )}
     </PageStyled>
   );
 };

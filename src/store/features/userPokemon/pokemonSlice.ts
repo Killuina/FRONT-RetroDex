@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserPokemon, UserPokemonList, UserPokemonState } from "./types";
+import {
+  UserPokemon,
+  UserPokemonList,
+  UserPokemonListState,
+  UserPokemonState,
+} from "./types";
 
 const initialPokemonList: UserPokemonList = [];
 
 const initialState: UserPokemonState = {
   pokemonList: initialPokemonList,
   filter: "",
+  totalPokemon: 0,
 };
 
 const pokemonSlice = createSlice({
@@ -14,10 +20,13 @@ const pokemonSlice = createSlice({
   reducers: {
     loadUserPokemon: (
       currentUserPokemonState,
-      { payload }: PayloadAction<UserPokemonList>
+      {
+        payload: { pokemonList, totalPokemon },
+      }: PayloadAction<UserPokemonListState>
     ): UserPokemonState => ({
       ...currentUserPokemonState,
-      pokemonList: [...payload],
+      pokemonList: [...pokemonList],
+      totalPokemon: totalPokemon,
     }),
     loadMoreUserPokemon: (
       currentUserPokemonState,

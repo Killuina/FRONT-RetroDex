@@ -20,10 +20,13 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: [],
         filter: "",
+        totalPokemon: 0,
       };
 
-      const loadUserPokemonAction =
-        loadUserPokemonActionCreator(mockUserPokemonList);
+      const loadUserPokemonAction = loadUserPokemonActionCreator({
+        pokemonList: mockUserPokemonList,
+        totalPokemon: 2,
+      });
 
       const newUserPokemonState = pokemonReducer(
         currentUserPokemonState,
@@ -41,6 +44,7 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: [mockUserPokemonList[0]],
         filter: "",
+        totalPokemon: 0,
       };
       const expectedNewPokemonListState = [
         mockUserPokemonList[0],
@@ -66,6 +70,7 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
+        totalPokemon: 2,
       };
       const expectedUserPokemonListState: UserPokemonList = [
         mockUserPokemonList[1],
@@ -104,6 +109,7 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
+        totalPokemon: 2,
       };
 
       const expectedUserPokemonListState: UserPokemonList = [
@@ -130,6 +136,7 @@ describe("Given the pokemonReducer reducer", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: mockUserPokemonList,
         filter: "",
+        totalPokemon: 2,
       };
       const expectedFilterState = "Water";
 

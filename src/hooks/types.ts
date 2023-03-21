@@ -15,6 +15,7 @@ export interface LoginResponse {
 
 export interface UserPokemonListResponse {
   pokemon: UserPokemonList;
+  totalPokemon: number;
 }
 
 export interface NewUserPokemonResponse {
