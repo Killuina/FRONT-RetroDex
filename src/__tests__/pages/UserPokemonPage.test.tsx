@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import { mockUserPokemonList } from "../../mocks/pokemonMocks/pokemonMock";
 import {
   mockLoggedUserState,
+  mockWithNoPokemonUserPokemonState,
   mockWithOnePokemonUserPokemonState,
   mockWithPokemonListUserPokemonState,
 } from "../../mocks/storeMocks/storeMocks";
@@ -62,6 +63,21 @@ describe("Given the UserPokemonPage component", () => {
       const modal = await screen.findByText(expectedMessage);
 
       expect(modal).toBeInTheDocument();
+    });
+  });
+
+  describe("When there's an empty list in the store", () => {
+    test("Then it should show message: 'No results found'", () => {
+      const expectedMessage = "No results found";
+
+      renderWithProviders(<UserPokemonListPage />, {
+        pokemon: mockWithNoPokemonUserPokemonState,
+        user: mockLoggedUserState,
+      });
+
+      const message = screen.getByText(expectedMessage);
+
+      expect(message).toBeInTheDocument();
     });
   });
 });
