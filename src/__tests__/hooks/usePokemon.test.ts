@@ -20,6 +20,7 @@ import wrapper from "../../utils/testUtils/Wrapper";
 import modalMessages from "../../modals/modalMessages";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { PokemonTypes } from "../../utils/types";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -70,6 +71,25 @@ describe("Given the usePokemon custom hook", () => {
       await getUserPokemonList();
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+    });
+  });
+
+  describe("When the getUserPokemonList is called with type 'Water' to filter", () => {
+    test("Then it should call the dispatch with loadPokemonAction", async () => {
+      const {
+        result: {
+          current: { getUserPokemonList },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
+
+      await getUserPokemonList(PokemonTypes.water);
+
+      expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
     });
   });
 });
