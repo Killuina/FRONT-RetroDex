@@ -35,7 +35,7 @@ const usePokemon = (): UsePokemon => {
   const { token } = useAppSelector(({ user }) => user);
 
   const getUserPokemonList = useCallback(
-    async (type = "", page = 0) => {
+    async (type: string, page = 0) => {
       try {
         dispatch(setIsLoadingActionCreator());
 

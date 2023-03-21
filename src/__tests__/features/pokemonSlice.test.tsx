@@ -4,6 +4,7 @@ import {
   addFilterActionCreator,
   addUserPokemonActionCreator,
   deleteUserPokemonActionCreator as addFilteActionCreator,
+  loadMoreUserPokemonActionCreator,
   loadUserPokemonActionCreator,
   pokemonReducer,
 } from "../../store/features/userPokemon/pokemonSlice";
@@ -14,7 +15,7 @@ import {
 } from "../../store/features/userPokemon/types";
 
 describe("Given the pokemonReducer reducer", () => {
-  describe("When it receives the action to loadPokemon and a list of two pokemon", () => {
+  describe("When it receives the action to loadUserPokemon and a list of two pokemon", () => {
     test("Then it should change pokemonListState to a list of this two pokemon", () => {
       const currentUserPokemonState: UserPokemonState = {
         pokemonList: [],
@@ -31,6 +32,31 @@ describe("Given the pokemonReducer reducer", () => {
 
       expect(newUserPokemonState.pokemonList).toStrictEqual(
         mockUserPokemonList
+      );
+    });
+  });
+
+  describe("When it receives the action to loadMoreUserPokemon and a list of two pokemon", () => {
+    test("Then it should change pokemonListState to a list of this two pokemon", () => {
+      const currentUserPokemonState: UserPokemonState = {
+        pokemonList: [mockUserPokemonList[0]],
+        filter: "",
+      };
+      const expectedNewPokemonListState = [
+        mockUserPokemonList[0],
+        ...mockUserPokemonList,
+      ];
+
+      const loadMoreUserPokemonAction =
+        loadMoreUserPokemonActionCreator(mockUserPokemonList);
+
+      const newUserPokemonState = pokemonReducer(
+        currentUserPokemonState,
+        loadMoreUserPokemonAction
+      );
+
+      expect(newUserPokemonState.pokemonList).toStrictEqual(
+        expectedNewPokemonListState
       );
     });
   });
