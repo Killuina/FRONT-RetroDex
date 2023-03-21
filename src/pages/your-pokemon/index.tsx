@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Filter from "../../components/Filter/Filter";
 import PokemonList from "../../components/PokemonList/PokemonList";
 import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSideProtectedRoute";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
@@ -7,10 +8,11 @@ import PageStyled from "../../styles/pages/PageStyled";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
+  const { filter } = useAppSelector(({ pokemon }) => pokemon);
 
   useEffect(() => {
-    getUserPokemonList();
-  }, [getUserPokemonList]);
+    getUserPokemonList(filter);
+  }, [filter, getUserPokemonList]);
 
   const userPokemon = useAppSelector((state) => state.pokemon);
 
@@ -18,6 +20,7 @@ const UserPokemonListPage = (): JSX.Element => {
     <ClientSideProtectedRoute>
       <PageStyled>
         <h2>Your Pokémon</h2>
+        <Filter />
         <PokemonList pokemonList={userPokemon.pokemonList} />
       </PageStyled>
     </ClientSideProtectedRoute>
