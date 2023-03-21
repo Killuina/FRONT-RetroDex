@@ -38,8 +38,10 @@ describe("Given the usePokemon custom hook", () => {
         wrapper,
       });
 
-      const loadUserPokemonAction =
-        loadUserPokemonActionCreator(mockUserPokemonList);
+      const loadUserPokemonAction = loadUserPokemonActionCreator({
+        pokemonList: mockUserPokemonList,
+        totalPokemon: mockUserPokemonList.length,
+      });
 
       await getUserPokemonList("");
 
@@ -78,8 +80,10 @@ describe("Given the usePokemon custom hook", () => {
         wrapper,
       });
 
-      const loadUserPokemonAction =
-        loadUserPokemonActionCreator(mockUserPokemonList);
+      const loadUserPokemonAction = loadUserPokemonActionCreator({
+        pokemonList: mockUserPokemonList,
+        totalPokemon: mockUserPokemonList.length,
+      });
 
       await getUserPokemonList(PokemonTypes.water);
 

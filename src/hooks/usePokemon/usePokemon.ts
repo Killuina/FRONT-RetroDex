@@ -59,10 +59,15 @@ const usePokemon = (): UsePokemon => {
           throw new Error(gettingPokemonError);
         }
 
-        const { pokemon: pokemonList }: UserPokemonListResponse =
+        const { pokemon: pokemonList, totalPokemon }: UserPokemonListResponse =
           await response.json();
 
-        dispatch(loadUserPokemonActionCreator(pokemonList));
+        dispatch(
+          loadUserPokemonActionCreator({
+            pokemonList,
+            totalPokemon,
+          })
+        );
 
         dispatch(unsetIsLoadingActionCreator());
       } catch (error: unknown) {
