@@ -21,7 +21,7 @@ import {
 } from "../types";
 
 interface UsePokemon {
-  getUserPokemonList: () => void;
+  getUserPokemonList: (filter?: string) => void;
   deleteUserPokemon: (userPokemonId: string) => void;
   createUserPokemon: (newUserPokemonData: FormData) => void;
   getPokemonDetail: (pokemonId: string) => void;
@@ -46,13 +46,21 @@ const usePokemon = (): UsePokemon => {
   const { token } = useAppSelector(({ user }) => user);
 
   const getUserPokemonList = useCallback(
-    async (filter?: string) => {
+    async (type?: string) => {
       try {
         dispatch(setIsLoadingActionCreator());
 
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
-        );
+        let response;
+
+        type
+          ? (response = await fetch(
+              `${
+                process.env.NEXT_PUBLIC_URL_API
+              }${pokemonPath}?${new URLSearchParams({ type })}`
+            ))
+          : (response = await fetch(
+              `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`
+            ));
 
         if (!response.ok) {
           throw new Error(gettingPokemonError);
