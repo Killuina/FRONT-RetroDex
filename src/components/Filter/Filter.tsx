@@ -17,7 +17,7 @@ const Filter = (): JSX.Element => {
     <FilterStyled className={secondaryFont.className}>
       <select
         className="form__field"
-        id="type-filter"
+        aria-label="Filter by type"
         onChange={handleSelectFilter}
       >
         <option value="">View All</option>
