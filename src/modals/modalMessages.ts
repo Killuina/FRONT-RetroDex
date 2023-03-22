@@ -4,6 +4,7 @@ interface ModalMessages {
   creatingPokemon: {
     sucess: string;
     error: string;
+    conflict: string;
   };
   deletingPokemon: {
     error: string;
@@ -23,6 +24,7 @@ const modalMessages: ModalMessages = {
   creatingPokemon: {
     sucess: "Pokémon created!",
     error: "Error creating Pokémon",
+    conflict: "Name already exists",
   },
   deletingPokemon: {
     error: "Error deleting Pokémon",

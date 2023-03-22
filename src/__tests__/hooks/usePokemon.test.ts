@@ -200,32 +200,8 @@ describe("Given the createUserPokemon function", () => {
 
     expect(showSuccessToast).toHaveBeenCalledWith(expectedMessage);
   });
-});
 
-test("Then it should redirect to your pokemon page", async () => {
-  const {
-    result: {
-      current: { createUserPokemon },
-    },
-  } = renderHook(() => usePokemon(), {
-    wrapper,
-  });
-
-  const expectedRoute = "/your-pokemon";
-
-  const mockNewUserPokemonData = getMockNewUserPokemonData();
-
-  await waitFor(() =>
-    createUserPokemon(mockNewUserPokemonData as unknown as FormData)
-  );
-
-  expect(spyRouter).toHaveBeenCalledWith(expectedRoute);
-});
-
-describe("When it is called to create a Pokemon but receives an error instead", () => {
-  test("Then it should call dispatch with set error modal action with 'Error creating pokémon' message", async () => {
-    server.resetHandlers(...errorHandlers);
-
+  test("Then it should redirect to your pokemon page", async () => {
     const {
       result: {
         current: { createUserPokemon },
@@ -234,16 +210,66 @@ describe("When it is called to create a Pokemon but receives an error instead", 
       wrapper,
     });
 
-    const mockNewUserPokemonData = getMockNewUserPokemonData();
+    const expectedRoute = "/your-pokemon";
 
-    const setIsErrorModalAction = setIsErrorModalActionCreator(
-      creatingPokemon.error
-    );
+    const mockNewUserPokemonData = getMockNewUserPokemonData();
 
     await waitFor(() =>
       createUserPokemon(mockNewUserPokemonData as unknown as FormData)
     );
 
-    expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+    expect(spyRouter).toHaveBeenCalledWith(expectedRoute);
+  });
+
+  describe("When it is called to create a Pokemon but receives an error instead", () => {
+    test("Then it should call dispatch with set error modal action with 'Error creating pokémon' message", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const {
+        result: {
+          current: { createUserPokemon },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const mockNewUserPokemonData = getMockNewUserPokemonData();
+
+      const setIsErrorModalAction = setIsErrorModalActionCreator(
+        creatingPokemon.error
+      );
+
+      await waitFor(() =>
+        createUserPokemon(mockNewUserPokemonData as unknown as FormData)
+      );
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+    });
+  });
+
+  describe("When it is called to create a Pokemon but the name already exists in the database", () => {
+    test("Then it should call dispatch with set error modal action with 'Name already exists' message", async () => {
+      server.use(errorHandlers[4]);
+
+      const {
+        result: {
+          current: { createUserPokemon },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const mockNewUserPokemonData = getMockNewUserPokemonData();
+
+      const setIsErrorModalAction = setIsErrorModalActionCreator(
+        creatingPokemon.conflict
+      );
+
+      await waitFor(() =>
+        createUserPokemon(mockNewUserPokemonData as unknown as FormData)
+      );
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+    });
   });
 });
