@@ -9,7 +9,7 @@ import {
 import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { routes } from "../routes";
+import { routes } from "../../utils/routes";
 import { CustomJwtPayload, LoginResponse, UserCredentials } from "../types";
 
 const {

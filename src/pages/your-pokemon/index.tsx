@@ -14,8 +14,6 @@ const UserPokemonListPage = (): JSX.Element => {
     getUserPokemonList(filter);
   }, [filter, getUserPokemonList]);
 
-  const userPokemon = useAppSelector((state) => state.pokemon);
-
   return (
     <ClientSideProtectedRoute>
       <PageStyled>
@@ -24,7 +22,7 @@ const UserPokemonListPage = (): JSX.Element => {
         {pokemonList.length === 0 ? (
           <span className="no-results-feedback">No results found</span>
         ) : (
-          <PokemonList pokemonList={userPokemon.pokemonList} />
+          <PokemonList pokemonList={pokemonList} />
         )}
       </PageStyled>
     </ClientSideProtectedRoute>

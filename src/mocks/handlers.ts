@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { routes } from "../hooks/routes";
+import { routes } from "../utils/routes";
 import { mockUserPokemonList } from "./pokemonMocks/pokemonMock";
 
 const {
@@ -114,6 +114,17 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           error: "Error creating Pokémon",
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${pokemonPath}${createPokemon}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(409),
+        ctx.json({
+          error: "Name already exists",
         })
       );
     }

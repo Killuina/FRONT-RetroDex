@@ -1,4 +1,4 @@
-import { routes } from "../../hooks/routes";
+import { routes } from "../routes";
 import {
   GetPokemonDetailResponse,
   UserPokemonListResponse,

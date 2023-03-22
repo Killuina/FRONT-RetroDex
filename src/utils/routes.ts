@@ -1,18 +1,4 @@
-interface Paths {
-  users: {
-    usersPath: string;
-    endpoints: {
-      login: string;
-    };
-  };
-  pokemon: {
-    pokemonPath: string;
-    endpoints: {
-      deletePokemon: string;
-      createPokemon: string;
-    };
-  };
-}
+import { Paths } from "./types";
 
 export const routes: Paths = {
   users: {

@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         <meta name="description" content="A Pokédex CRUD App" />
         <link
           rel="preconnect"
-          href="https://cristina-jimenez-final-project-202301-bcn.onrender.com"
+          href={`${process.env.NEXT_PUBLIC_URL_API}`}
         ></link>
       </Head>
       <Provider store={store}>

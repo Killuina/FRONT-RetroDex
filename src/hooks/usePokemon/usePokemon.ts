@@ -13,9 +13,10 @@ import {
   loadUserPokemonActionCreator,
 } from "../../store/features/userPokemon/pokemonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { routes } from "../routes";
+import { routes } from "../../utils/routes";
 import { NewUserPokemonResponse, UserPokemonListResponse } from "../types";
 import { showSuccessToast } from "../../modals/modals";
+import statusCodes from "../../utils/statusCodes";
 
 interface UsePokemon {
   getUserPokemonList: (filter?: string) => void;
@@ -29,6 +30,10 @@ const {
     endpoints: { deletePokemon, createPokemon },
   },
 } = routes;
+
+const {
+  clientError: { conflict },
+} = statusCodes;
 
 const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
 
@@ -89,10 +94,13 @@ const usePokemon = (): UsePokemon => {
       }
 
       dispatch(deleteUserPokemonActionCreator(userPokemonId));
+
       dispatch(unsetIsLoadingActionCreator());
+
       dispatch(setIsSuccessModalActionCreator(deletingPokemon.sucess));
     } catch (error: unknown) {
       dispatch(unsetIsLoadingActionCreator());
+
       dispatch(setIsErrorModalActionCreator((error as Error).message));
     }
   };
@@ -112,6 +120,10 @@ const usePokemon = (): UsePokemon => {
         }
       );
 
+      if (response.status === conflict) {
+        throw new Error(creatingPokemon.conflict);
+      }
+
       if (!response.ok) {
         throw new Error(creatingPokemon.error);
       }
@@ -120,11 +132,15 @@ const usePokemon = (): UsePokemon => {
         await response.json();
 
       dispatch(addUserPokemonActionCreator(newUserPokemon));
+
       dispatch(unsetIsLoadingActionCreator());
+
       router.push("/your-pokemon");
+
       showSuccessToast(creatingPokemon.sucess);
     } catch (error) {
       dispatch(setIsErrorModalActionCreator((error as Error).message));
+
       dispatch(unsetIsLoadingActionCreator());
     }
   };
