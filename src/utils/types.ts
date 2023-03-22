@@ -18,3 +18,34 @@ export enum PokemonTypes {
   steel = "Steel",
   normal = "Normal",
 }
+
+export interface Paths {
+  users: {
+    usersPath: string;
+    endpoints: {
+      login: string;
+    };
+  };
+  pokemon: {
+    pokemonPath: string;
+    endpoints: {
+      deletePokemon: string;
+      createPokemon: string;
+    };
+  };
+}
+
+export interface StatusCodes {
+  clientError: {
+    conflict: number;
+    notFound: number;
+    badRequest: number;
+    unauthorized: number;
+    gone: number;
+    forbbiden: number;
+  };
+  serverError: {
+    internalServer: number;
+  };
+  success: { okCode: number; resourceCreated: number };
+}
