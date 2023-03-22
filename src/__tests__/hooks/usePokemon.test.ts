@@ -1,4 +1,5 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
+import mockRouter from "next-router-mock";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import {
   getMockNewUserPokemonData,
@@ -20,8 +21,15 @@ import modalMessages from "../../modals/modalMessages";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
 import { PokemonTypes } from "../../utils/types";
+import { showSuccessToast } from "../../modals/modals";
 
 jest.mock("next/router", () => require("next-router-mock"));
+
+jest.mock("../../modals/modals", () => ({
+  showSuccessToast: jest.fn(),
+}));
+
+const spyRouter = jest.spyOn(mockRouter, "push");
 
 beforeEach(() => jest.resetAllMocks());
 
@@ -165,13 +173,15 @@ describe("Given the createUserPokemon function", () => {
 
       const addUserPokemonAction = addUserPokemonActionCreator(mockUserPokemon);
 
-      await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
+      await waitFor(() =>
+        createUserPokemon(mockNewUserPokemonData as unknown as FormData)
+      );
 
       expect(spyDispatch).toHaveBeenCalledWith(addUserPokemonAction);
     });
   });
 
-  test("Then it should call dispatch with set is sucess modal action with 'Pokemon created!' message", async () => {
+  test("Then it should call showSuccessToast function with message: 'Pokémon created!'", async () => {
     const {
       result: {
         current: { createUserPokemon },
@@ -180,16 +190,36 @@ describe("Given the createUserPokemon function", () => {
       wrapper,
     });
 
+    const expectedMessage = "Pokémon created!";
+
     const mockNewUserPokemonData = getMockNewUserPokemonData();
 
-    const setIsSuccessModalAction = setIsSuccessModalActionCreator(
-      creatingPokemon.sucess
+    await waitFor(() =>
+      createUserPokemon(mockNewUserPokemonData as unknown as FormData)
     );
 
-    await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
-
-    expect(spyDispatch).toHaveBeenCalledWith(setIsSuccessModalAction);
+    expect(showSuccessToast).toHaveBeenCalledWith(expectedMessage);
   });
+});
+
+test("Then it should redirect to your pokemon page", async () => {
+  const {
+    result: {
+      current: { createUserPokemon },
+    },
+  } = renderHook(() => usePokemon(), {
+    wrapper,
+  });
+
+  const expectedRoute = "/your-pokemon";
+
+  const mockNewUserPokemonData = getMockNewUserPokemonData();
+
+  await waitFor(() =>
+    createUserPokemon(mockNewUserPokemonData as unknown as FormData)
+  );
+
+  expect(spyRouter).toHaveBeenCalledWith(expectedRoute);
 });
 
 describe("When it is called to create a Pokemon but receives an error instead", () => {
@@ -210,7 +240,9 @@ describe("When it is called to create a Pokemon but receives an error instead", 
       creatingPokemon.error
     );
 
-    await createUserPokemon(mockNewUserPokemonData as unknown as FormData);
+    await waitFor(() =>
+      createUserPokemon(mockNewUserPokemonData as unknown as FormData)
+    );
 
     expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
   });
