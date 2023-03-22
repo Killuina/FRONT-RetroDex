@@ -10,7 +10,7 @@ const LoaderStyled = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: ${(props) => props.theme.colors.loaderBackGroundColor};
+  backdrop-filter: blur(2px);
 
   .loader {
     display: block;

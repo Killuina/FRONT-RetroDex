@@ -9,7 +9,7 @@ export const mainTheme: DefaultTheme = {
     inputColor: "#FFF",
     modalErrorColor: "#EE7078",
     modalSucessColor: "#C6F6D5",
-    loaderBackGroundColor: "rgba(255, 253, 240, 0.7)",
+    loaderBackGroundColor: "#b7b7b78f",
     textBorderColor: "#B59171",
   },
   fonts: {
