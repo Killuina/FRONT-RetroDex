@@ -4,6 +4,7 @@ const PageStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 
   .no-results-feedback {
     padding: 1rem;

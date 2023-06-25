@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
-import { UserCredentials } from "../../hooks/types";
+import { UserLoginCredentials } from "../../hooks/types";
 import useUser from "../../hooks/userUser/useUser";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
@@ -18,7 +18,7 @@ jest.mock("jwt-decode", () => jest.fn());
 
 beforeEach(() => jest.resetAllMocks());
 
-export const userCredentials: UserCredentials = {
+export const userCredentials: UserLoginCredentials = {
   username: "Manolo",
   password: "12345678",
 };

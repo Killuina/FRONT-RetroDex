@@ -21,7 +21,6 @@ button {
   padding: 0;
   border: none;
   cursor: pointer;
-  font-weight: inherit;
   font-family: inherit;
   font-size: inherit;
 }
@@ -31,14 +30,7 @@ h1, h2, h3 {
 }
 
 input, select {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: ${(props) => props.theme.colors.inputColor};
-  border: solid 1px;
-      border-radius: ${(props) => props.theme.border.radius};
-  font-weight: inherit;
-  font-family: inherit;
-  font-size: inherit;
+  border-radius: ${(props) => props.theme.border.radius};
 }
 
 ul, li, ol {

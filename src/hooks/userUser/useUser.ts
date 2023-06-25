@@ -10,7 +10,11 @@ import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { routes } from "../../utils/routes";
-import { CustomJwtPayload, LoginResponse, UserCredentials } from "../types";
+import {
+  CustomJwtPayload,
+  LoginResponse,
+  UserLoginCredentials,
+} from "../types";
 
 const {
   users: {
@@ -22,14 +26,14 @@ const {
 const { loginError } = modalMessages;
 
 interface UseUser {
-  loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  loginUser: (userCredentials: UserLoginCredentials) => Promise<void>;
 }
 
 const useUser = (): UseUser => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const loginUser = async (userCredentials: UserCredentials) => {
+  const loginUser = async (userCredentials: UserLoginCredentials) => {
     try {
       dispatch(setIsLoadingActionCreator());
       const response = await fetch(

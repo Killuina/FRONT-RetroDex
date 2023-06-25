@@ -4,9 +4,13 @@ import {
   UserPokemonList,
 } from "../store/features/userPokemon/types";
 
-export interface UserCredentials {
+export interface UserLoginCredentials {
   username: string;
   password: string;
+}
+
+export interface UserCredentials extends UserLoginCredentials {
+  email: string;
 }
 
 export interface LoginResponse {

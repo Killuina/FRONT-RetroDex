@@ -3,10 +3,10 @@ import Image from "next/image";
 import { pokemonInputTypes } from "../../data/pokemonTypes";
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { secondaryFont } from "../../styles/fonts";
-import FormStyled from "../../styles/components/FormStyled";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
+import FormStyled from "../../styles/shared/FormStyled";
 
-const CreatePokemonForm = (): JSX.Element => {
+const PokemonForm = (): JSX.Element => {
   const { createUserPokemon } = usePokemon();
 
   const initialUserPokemonFormData: UserPokemonFormData = {
@@ -185,4 +185,4 @@ const CreatePokemonForm = (): JSX.Element => {
   );
 };
 
-export default CreatePokemonForm;
+export default PokemonForm;
