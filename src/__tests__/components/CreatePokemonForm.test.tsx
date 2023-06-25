@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
+import PokemonForm from "../../components/PokemonForm/PokemonForm";
 import { mockUserPokemon } from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
@@ -26,7 +26,7 @@ describe("Given the CreatePokemonForm component", () => {
   describe("When it renders", () => {
     test("Then is should show a field with label 'Name'", () => {
       const expectedLabel = "Name";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const nameField = screen.getByLabelText(expectedLabel);
 
@@ -35,7 +35,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'First type'", () => {
       const expectedLabel = "First type";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const firstTypeField = screen.getByLabelText(expectedLabel);
 
@@ -44,7 +44,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'second type'", () => {
       const expectedLabel = "Second type";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const secondTypeField = screen.getByLabelText(expectedLabel);
 
@@ -53,7 +53,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'Ability'", () => {
       const expectedLabel = "Ability";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const abilityField = screen.getByLabelText(expectedLabel);
 
@@ -62,7 +62,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'Height'", () => {
       const expectedLabel = "Height";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const heightField = screen.getByLabelText(expectedLabel);
 
@@ -71,7 +71,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'Weight'", () => {
       const expectedLabel = "Weight";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const weightField = screen.getByLabelText(expectedLabel);
 
@@ -80,7 +80,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'Base exp'", () => {
       const expectedLabel = "Base exp";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const baseExpField = screen.getByLabelText(expectedLabel);
 
@@ -89,7 +89,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a field with label 'Image'", () => {
       const expectedLabel = "Image";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const imageField = screen.getByLabelText(expectedLabel);
 
@@ -98,7 +98,7 @@ describe("Given the CreatePokemonForm component", () => {
 
     test("Then is should show a button with text 'Create Pokémon'", () => {
       const expectedText = "Create Pokémon";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const createPokemonButton = screen.getByRole("button", {
         name: expectedText,
@@ -112,7 +112,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of name's field to 'Pokamion'", async () => {
       const nameLabel = "Name";
       const expectedFieldValue = "Pokamion";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const nameField = screen.getByLabelText(nameLabel);
 
@@ -128,7 +128,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of First type's field to 'Fairy'", async () => {
       const firstTypeLabel = "First type";
       const expectedFieldValue = "Fairy";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const firstTypeField: HTMLSelectElement =
         screen.getByLabelText(firstTypeLabel);
@@ -143,7 +143,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of Second type's field to 'Ground'", async () => {
       const secondTypeLabel = "Second type";
       const expectedFieldValue = "Ground";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const secondTypeField: HTMLSelectElement =
         screen.getByLabelText(secondTypeLabel);
@@ -158,7 +158,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of ability's field to 'Pesao'", async () => {
       const abilityLabel = "Ability";
       const expectedFieldValue = "Pesao";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const abilityField = screen.getByLabelText(abilityLabel);
 
@@ -174,7 +174,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of height's field to 23", async () => {
       const heightLabel = "Height";
       const expectedFieldValue = "23";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const heightField = screen.getByLabelText(heightLabel);
 
@@ -190,7 +190,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of weight's field to 145", async () => {
       const weightLabel = "Weight";
       const expectedFieldValue = "145";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const weightField = screen.getByLabelText(weightLabel);
 
@@ -206,7 +206,7 @@ describe("Given the CreatePokemonForm component", () => {
     test("Then it should change the value of base exp's field to 200", async () => {
       const baseExpLabel = "Base exp";
       const expectedFieldValue = "200";
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const baseExpField = screen.getByLabelText(baseExpLabel);
 
@@ -230,7 +230,7 @@ describe("Given the CreatePokemonForm component", () => {
       const imageLabel = "Image";
       const buttonText = "Create Pokémon";
 
-      renderWithProviders(<CreatePokemonForm />);
+      renderWithProviders(<PokemonForm />);
 
       const nameField = screen.getByLabelText(nameLabel);
       const firstTypeField = screen.getByLabelText(firstTypeLabel);

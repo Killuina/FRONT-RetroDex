@@ -5,7 +5,7 @@ export const mainTheme: DefaultTheme = {
     mainColor: "#FFFDF0",
     headerColor: "#F1ECC9",
     buttonColor: "#4D4DA7",
-    disabledButtonColor: "#434378",
+    disabledButtonColor: "#9898E9",
     inputColor: "#FFF",
     modalErrorColor: "#EE7078",
     modalSucessColor: "#C6F6D5",

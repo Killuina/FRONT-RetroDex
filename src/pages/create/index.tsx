@@ -1,11 +1,11 @@
-import CreatePokemonForm from "../../components/CreatePokemonForm/CreatePokemonForm";
-import PageStyled from "../../styles/pages/PageStyled";
+import PokemonForm from "../../components/PokemonForm/PokemonForm";
+import PageStyled from "../../styles/shared/PageStyled";
 
 const CreatePokemonPage = (): JSX.Element => {
   return (
     <PageStyled>
       <h2>Create your Pokémon</h2>
-      <CreatePokemonForm />
+      <PokemonForm />
     </PageStyled>
   );
 };
