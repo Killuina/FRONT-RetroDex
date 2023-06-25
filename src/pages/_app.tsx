@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import Layout from "../components/Layout/Layout";
-import GlobalStyles from "../styles/GlobalStyles";
+import GlobalStyle from "../styles/GlobalStyle";
 import { store } from "../store/store";
 import { mainTheme } from "../styles/mainTheme";
 
@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Provider store={store}>
         <ThemeProvider theme={mainTheme}>
           <Layout>
-            <GlobalStyles />
+            <GlobalStyle />
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>

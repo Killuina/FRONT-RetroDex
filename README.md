@@ -1,13 +1,10 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Cristina-Jimenez-Final-Project-back-202301-bcn&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Cristina-Jimenez-Final-Project-front-202301-bcn)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Cristina-Jimenez-Final-Project-back-202301-bcn&metric=coverage)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Cristina-Jimenez-Final-Project-front-202301-bcn)
-
 ## **POKÉDEX**
 
 Pokédex is a web CRUD application that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
 
 Overall, Pokédex is an efficient and user-friendly web application that is made for video game and Pokémon enthusiasts.
 
-[Visit Pokedex](https://cristina-j-final-project-front-202301.netlify.app/)
+[Visit Pokedex](https://custom-pokedex-next.netlify.app/)
 
 ![Login and register](resources/screenshots/login.png)
 ![Home and map](resources/screenshots/home.png)
@@ -49,7 +46,7 @@ To use this app, you'll need to have the following tool installed:
 Once installed, you can clone this repository and install all needed dependencies by using the following commands:
 
 ```
-git clone https://github.com/isdi-coders-2023/Cristina-Jimenez-Final-Project-front-202301-bcn.git
+git clone
 
 ```
 
