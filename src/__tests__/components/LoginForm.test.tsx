@@ -13,7 +13,7 @@ jest.mock("../../hooks/userUser/useUser", () => () => ({
 
 describe("Given the LoginForm component", () => {
   describe("When it renders", () => {
-    test("Then is shoulw show a field with label 'Username'", () => {
+    test("Then is should show a field with label 'Username'", () => {
       const expectedLabel = "Username";
       renderWithProviders(<LoginForm />);
 
@@ -22,7 +22,7 @@ describe("Given the LoginForm component", () => {
       expect(usernameField).toBeInTheDocument();
     });
 
-    test("Then is shoulw show a field with label 'Password'", () => {
+    test("Then is should show a field with label 'Password'", () => {
       const expectedLabel = "Password";
       renderWithProviders(<LoginForm />);
 

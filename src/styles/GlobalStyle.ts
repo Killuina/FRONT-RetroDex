@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 *,
 ::after,
 ::before {
@@ -156,4 +156,4 @@ border: solid #9B5FC5;
 
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;

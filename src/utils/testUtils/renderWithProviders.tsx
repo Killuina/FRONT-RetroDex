@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../../styles/GlobalStyles";
+import GlobalStyle from "../../styles/GlobalStyle";
 import { RootState, setupStore, store } from "../../store/store";
 import { mainTheme } from "../../styles/mainTheme";
 
@@ -17,7 +17,7 @@ const renderWithProviders = (
     return (
       <ThemeProvider theme={mainTheme}>
         <Provider store={testStore}>
-          <GlobalStyles />
+          <GlobalStyle />
           {children}
         </Provider>
       </ThemeProvider>
