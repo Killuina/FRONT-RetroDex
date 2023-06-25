@@ -20,10 +20,9 @@ const FormStyled = styled.form`
       display: block;
       margin-bottom: ${(props) => props.theme.paddings.medium};
       border-radius: ${(props) => props.theme.border.radius};
-      width: 100%;
-      padding: 0.5rem;
+      padding: 0.7rem;
       background-color: ${(props) => props.theme.colors.inputColor};
-      border: solid 1px;
+      border: solid 1px #a8abaf;
       border-radius: ${(props) => props.theme.border.radius};
       font-weight: inherit;
       font-family: inherit;
@@ -37,6 +36,8 @@ const FormStyled = styled.form`
     }
 
     &__button {
+      margin: 0 auto;
+      width: 50%;
       margin-top: ${(props) => props.theme.paddings.medium};
       font-weight: ${(props) => props.theme.fonts.weights.semiBold};
       border-radius: ${(props) => props.theme.border.radius};

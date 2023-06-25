@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUser from "../../hooks/userUser/useUser";
 import { secondaryFont } from "../../styles/fonts";
-import FormStyled from "../../styles/components/FormStyled";
+import FormStyled from "../../styles/shared/FormStyled";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
