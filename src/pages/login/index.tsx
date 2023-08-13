@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { useAppSelector } from "../../store/hooks";
-import { mainFont } from "../../styles/fonts";
-import PageStyled from "../../styles/shared/PageStyled";
+import { secondaryFont } from "../../styles/fonts";
+import Link from "next/link";
+import AuthenticationPageStyled from "../../styles/shared/AuthenticationPageStyled";
 
 const LoginPage = (): JSX.Element => {
   const router = useRouter();
@@ -14,10 +15,14 @@ const LoginPage = (): JSX.Element => {
   }
 
   return (
-    <PageStyled>
-      <h2 className={mainFont.className}>Log in</h2>
+    <AuthenticationPageStyled>
+      <h2>Log in</h2>
       <LoginForm />
-    </PageStyled>
+      <div className={`${secondaryFont.className} page__link`}>
+        <span>New here? </span>
+        <Link href={"/register"}>Register</Link>
+      </div>
+    </AuthenticationPageStyled>
   );
 };
 
