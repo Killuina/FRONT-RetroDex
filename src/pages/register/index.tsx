@@ -6,13 +6,10 @@ import AuthenticationPageStyled from "../../styles/shared/AuthenticationPageStyl
 const RegisterPage = (): React.ReactElement => {
   return (
     <AuthenticationPageStyled>
-      <h2>Register</h2>
       <RegisterForm />
       <div className={`${secondaryFont.className} page__link`}>
         <span>Already have an account? </span>
-        <Link href="/login" aria-label="to login page">
-          Log in
-        </Link>
+        <Link href="/login">Log in</Link>
       </div>
     </AuthenticationPageStyled>
   );

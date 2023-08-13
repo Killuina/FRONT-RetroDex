@@ -16,11 +16,10 @@ const LoginPage = (): JSX.Element => {
 
   return (
     <AuthenticationPageStyled>
-      <h2>Log in</h2>
       <LoginForm />
       <div className={`${secondaryFont.className} page__link`}>
         <span>New here? </span>
-        <Link href={"/register"}>Register</Link>
+        <Link href={"/register"}>Sign up</Link>
       </div>
     </AuthenticationPageStyled>
   );

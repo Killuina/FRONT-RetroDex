@@ -73,7 +73,7 @@ describe("Given the LoginForm component", () => {
       };
       const passwordLabel = "Password";
       const usernameLabel = "Username";
-      const signInButtonText = "Sign in";
+      const signInButtonText = "Log in";
 
       renderWithProviders(<LoginForm />);
 

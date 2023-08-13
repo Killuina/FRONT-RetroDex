@@ -54,7 +54,7 @@ const LoginForm = (): JSX.Element => {
         onChange={handleUserLoginCredentials}
       />
       <button className="form__button" disabled={areAreaFieldsEmpty}>
-        Sign in
+        Log in
       </button>
     </FormStyled>
   );
