@@ -43,8 +43,8 @@ const FormStyled = styled.form`
       border-radius: ${(props) => props.theme.border.radius};
       padding: 0.75rem;
       color: ${(props) => props.theme.fonts.colors.white};
-      background-color: ${(props) => props.theme.colors.buttonColor};
-      box-shadow: ${(props) => props.theme.colors.buttonColor} 0px 6px 12px -2px;
+      background-color: ${(props) => props.theme.colors.accentColor};
+      box-shadow: ${(props) => props.theme.colors.accentColor} 0px 6px 12px -2px;
     }
 
     &__button:disabled {

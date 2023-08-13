@@ -5,7 +5,7 @@ declare module "styled-components" {
     colors: {
       mainColor: string;
       headerColor: string;
-      buttonColor: string;
+      accentColor: string;
       disabledButtonColor: string;
       inputColor: string;
       modalErrorColor: string;

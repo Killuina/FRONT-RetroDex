@@ -4,7 +4,7 @@ export const mainTheme: DefaultTheme = {
   colors: {
     mainColor: "#FFFDF0",
     headerColor: "#F1ECC9",
-    buttonColor: "#4D4DA7",
+    accentColor: "#4D4DA7",
     disabledButtonColor: "#9898E9",
     inputColor: "#FFF",
     modalErrorColor: "#EE7078",
