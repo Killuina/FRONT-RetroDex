@@ -14,6 +14,7 @@ body, html {
   margin: 0;
   display: flex;
   flex-direction: column;
+  color: ${(props) => props.theme.fonts.colors.dark};
 }
 
 button {

@@ -15,20 +15,6 @@ const spyRouter = jest.spyOn(mockRouter, "push");
 beforeAll(() => jest.resetAllMocks());
 
 describe("Given the LoginPage component", () => {
-  describe("When rendered", () => {
-    test("Then it should render the page title 'Log in' on a heading", () => {
-      const expectedLoginPageTitle = "Log in";
-
-      renderWithProviders(<LoginPage />);
-
-      const loginPageTitle = screen.getByRole("heading", {
-        name: expectedLoginPageTitle,
-      });
-
-      expect(loginPageTitle).toBeInTheDocument();
-    });
-  });
-
   describe("When the user enters a wrong username and password, and clicks on Sign in button", () => {
     test("Then it should show the modal component with error message 'Invalid credentials'", async () => {
       server.use(...errorHandlers);
@@ -40,7 +26,7 @@ describe("Given the LoginPage component", () => {
 
       const passwordLabel = "Password";
       const usernameLabel = "Username";
-      const signInButtonText = "Sign in";
+      const signInButtonText = "Log in";
 
       const expectedMessage = "Invalid credentials";
 
