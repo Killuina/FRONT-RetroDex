@@ -1,6 +1,6 @@
 ## **POKÉDEX**
 
-Pokédex is a web CRUD application that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
+Pokédex is a web CRUD application with a toy-like retro style, that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
 
 Overall, Pokédex is an efficient and user-friendly web application that is made for video game and Pokémon enthusiasts.
 
@@ -34,7 +34,7 @@ Overall, Pokédex is an efficient and user-friendly web application that is made
 
 - Edit your already created Pokémon
 - Pagination
-- Display all 1000+ Pokémon on Home page
+- Display all 1000+ already existing Pokémon on Home page
 - Filter by generation on Home page
 
 ### **GET STARTED**
