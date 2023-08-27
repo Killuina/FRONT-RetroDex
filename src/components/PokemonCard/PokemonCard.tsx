@@ -40,8 +40,8 @@ const PokemonCard = ({
           <>
             <button className="pokemon-card__button" aria-label="edit pokemon">
               <svg
-                width="45"
-                height="45"
+                width="35"
+                height="35"
                 viewBox="0 0 52 53"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +60,8 @@ const PokemonCard = ({
               aria-label="delete pokemon"
             >
               <svg
-                width="40"
-                height="40"
+                width="30"
+                height="30"
                 viewBox="0 0 45 45"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
