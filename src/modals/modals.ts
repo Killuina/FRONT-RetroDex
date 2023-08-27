@@ -7,7 +7,6 @@ export const showErrorToast = (message: string) => {
     closeOnClick: true,
     progress: undefined,
     transition: Slide,
-    progressStyle: { backgroundColor: "#EE7078" },
   });
 };
 
@@ -17,6 +16,5 @@ export const showSuccessToast = (message: string) => {
     closeOnClick: true,
     progress: undefined,
     transition: Slide,
-    progressStyle: { backgroundColor: "#EE7078" },
   });
 };
