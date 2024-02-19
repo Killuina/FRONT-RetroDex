@@ -15,7 +15,7 @@ const NavBarStyled = styled.nav`
     padding: 1.2rem 1.5rem;
   }
 
-  @media (min-width: 697px) {
+  @media (min-width: 768px) {
     height: 60px;
     top: 8px;
     right: 0;
