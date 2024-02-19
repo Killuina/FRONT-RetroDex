@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const PokemonCardStyled = styled.article`
   position: relative;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
