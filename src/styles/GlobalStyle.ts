@@ -35,9 +35,9 @@ input, select {
 }
 
 ul, li, ol {
-list-style: none;
-padding: 0;
-margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -46,13 +46,16 @@ text-decoration: none;
 color: #000
 }
 
+.Toastify__toast-container {
+  width: 300px;
+}
+
 
 .Toastify__toast {
   border-radius: ${(props) => props.theme.border.radius};
   color: ${(props) => props.theme.fonts.colors.dark};
   font-family: inherit;
   font-weight: ${(props) => props.theme.fonts.weights.semiBold};
-  background-color: ${(props) => props.theme.colors.headerColor};
 }
 
 .Water {

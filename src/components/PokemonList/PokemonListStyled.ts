@@ -1,18 +1,15 @@
 import styled from "styled-components";
 
 const PokemonListStyled = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
   padding: ${(props) => props.theme.paddings.standard};
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10% 5%;
+  margin-bottom: 500px;
 
-  li {
-    width: 100%;
-  }
-
-  .pokemon-card {
-    margin-bottom: ${(props) => props.theme.margins.standard};
+  @media (max-width: 697px) {
+    gap: 5%;
   }
 `;
 

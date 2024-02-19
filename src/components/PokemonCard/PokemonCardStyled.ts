@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 const PokemonCardStyled = styled.article`
   position: relative;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 300px;
+  width: 300px;
   padding: ${(props) => props.theme.paddings.standard};
   border-radius: ${(props) => props.theme.border.radius};
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;

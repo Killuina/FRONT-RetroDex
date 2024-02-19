@@ -14,6 +14,14 @@ const NavBarStyled = styled.nav`
     height: 100%;
     padding: 1.2rem 1.5rem;
   }
+
+  @media (min-width: 768px) {
+    height: 60px;
+    top: 8px;
+    right: 0;
+    width: 500px;
+    background-color: ${(props) => props.theme.colors.headerColor};
+  }
 `;
 
 export default NavBarStyled;

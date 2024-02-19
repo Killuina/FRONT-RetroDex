@@ -7,6 +7,7 @@ const FormStyled = styled.form`
   flex-direction: column;
   padding: ${(props) => props.theme.paddings.medium};
   width: 100%;
+  max-width: 500px;
   gap: 0.5rem;
   margin-bottom: ${(props) => props.theme.margins.standard};
 
