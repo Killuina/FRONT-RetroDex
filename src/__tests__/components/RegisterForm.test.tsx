@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import userEvent from "@testing-library/user-event";
