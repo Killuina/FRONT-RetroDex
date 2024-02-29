@@ -3,6 +3,8 @@ import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import userEvent from "@testing-library/user-event";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 describe("Given the Register Form", () => {
   describe("When the user writes on all form fields", () => {
     test("Then it should enable de Sign up button", async () => {

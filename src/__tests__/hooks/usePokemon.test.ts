@@ -249,7 +249,7 @@ describe("Given the createUserPokemon function", () => {
 
   describe("When it is called to create a Pokemon but the name already exists in the database", () => {
     test("Then it should call dispatch with set error modal action with 'Name already exists' message", async () => {
-      server.use(errorHandlers[4]);
+      server.use(errorHandlers[5]);
 
       const {
         result: {

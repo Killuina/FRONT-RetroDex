@@ -1,7 +1,9 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import RegisterForm from "./RegisterForm";
 import userEvent from "@testing-library/user-event";
+
+jest.mock("next/router", () => require("next-router-mock"));
 
 describe("Given the Register Form", () => {
   describe("When the user writes on all form fields", () => {

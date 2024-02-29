@@ -4,6 +4,7 @@ import modalMessages from "../../modals/modalMessages";
 import {
   setIsErrorModalActionCreator,
   setIsLoadingActionCreator,
+  setIsSuccessModalActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
 import { User } from "../../store/features/user/types";
@@ -13,20 +14,22 @@ import { routes } from "../../utils/routes";
 import {
   CustomJwtPayload,
   LoginResponse,
+  UserCredentials,
   UserLoginCredentials,
 } from "../types";
 
 const {
   users: {
-    usersPath: path,
-    endpoints: { login },
+    usersPath,
+    endpoints: { login, register },
   },
 } = routes;
 
-const { loginError } = modalMessages;
+const { loginError, registerError, registerSuccess } = modalMessages;
 
 interface UseUser {
   loginUser: (userCredentials: UserLoginCredentials) => Promise<void>;
+  registerUser: (userCredentials: UserCredentials) => Promise<void>;
 }
 
 const useUser = (): UseUser => {
@@ -37,7 +40,7 @@ const useUser = (): UseUser => {
     try {
       dispatch(setIsLoadingActionCreator());
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
+        `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${login}`,
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
@@ -72,7 +75,35 @@ const useUser = (): UseUser => {
     }
   };
 
-  return { loginUser };
+  const registerUser = async (userCredentials: UserCredentials) => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${register}`,
+        {
+          method: "POST",
+          body: JSON.stringify(userCredentials),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(registerError);
+      }
+
+      dispatch(unsetIsLoadingActionCreator());
+
+      dispatch(setIsSuccessModalActionCreator(registerSuccess));
+
+      router.push("/login");
+    } catch (error: unknown) {
+      dispatch(unsetIsLoadingActionCreator());
+
+      dispatch(setIsErrorModalActionCreator((error as Error).message));
+    }
+  };
+
+  return { loginUser, registerUser };
 };
 
 export default useUser;
