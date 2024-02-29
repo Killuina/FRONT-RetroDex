@@ -24,6 +24,7 @@ export interface Paths {
     usersPath: string;
     endpoints: {
       login: string;
+      register: string;
     };
   };
   pokemon: {
