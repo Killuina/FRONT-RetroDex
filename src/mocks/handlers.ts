@@ -4,8 +4,8 @@ import { mockUserPokemonList } from "./pokemonMocks/pokemonMock";
 
 const {
   users: {
-    usersPath: path,
-    endpoints: { login },
+    usersPath,
+    endpoints: { login, register },
   },
   pokemon: {
     pokemonPath,
@@ -15,12 +15,23 @@ const {
 
 export const handlers = [
   rest.post(
-    `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
+    `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${login}`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.json({
           token: "mocken",
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${register}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(201),
+        ctx.json({
+          token: "Manolo registered!",
         })
       );
     }
@@ -75,12 +86,23 @@ export const handlers = [
 
 export const errorHandlers = [
   rest.post(
-    `${process.env.NEXT_PUBLIC_URL_API!}${path}${login}`,
+    `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${login}`,
     (req, res, ctx) => {
       return res(
         ctx.status(401),
         ctx.json({
           error: "Wrong credentials",
+        })
+      );
+    }
+  ),
+  rest.post(
+    `${process.env.NEXT_PUBLIC_URL_API!}${usersPath}${register}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          error: "Error registering user",
         })
       );
     }
