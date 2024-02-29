@@ -1,7 +1,7 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import { act } from "react-dom/test-utils";
-import { UserLoginCredentials } from "../../hooks/types";
+import { UserCredentials, UserLoginCredentials } from "../../hooks/types";
 import useUser from "../../hooks/userUser/useUser";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
@@ -11,6 +11,8 @@ import modalMessages from "../../modals/modalMessages";
 import { setIsErrorModalActionCreator } from "../../store/features/ui/uiSlice";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import wrapper from "../../utils/testUtils/Wrapper";
+import { showSuccessToast } from "../../modals/modals";
+import mockRouter from "next-router-mock";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -18,10 +20,18 @@ jest.mock("jwt-decode", () => jest.fn());
 
 beforeEach(() => jest.resetAllMocks());
 
-export const userCredentials: UserLoginCredentials = {
+const userLoginCredentials: UserLoginCredentials = {
   username: "Manolo",
   password: "12345678",
 };
+
+const userCredentials: UserCredentials = {
+  email: "manolo@hotmail.com",
+  username: "Manolo",
+  password: "12345678",
+};
+
+const spyRouter = jest.spyOn(mockRouter, "push");
 
 describe("Given the useUser custom hook", () => {
   describe("When loginUser function is called", () => {
@@ -40,7 +50,7 @@ describe("Given the useUser custom hook", () => {
 
       const loginUsersAction = loginUserActionCreator(user);
 
-      await act(async () => loginUser(userCredentials));
+      await act(async () => loginUser(userLoginCredentials));
 
       expect(spyDispatch).toHaveBeenCalledWith(loginUsersAction);
     });
@@ -56,13 +66,53 @@ describe("Given the useUser custom hook", () => {
         },
       } = renderHook(() => useUser(), { wrapper });
 
-      await act(async () => loginUser(userCredentials));
+      await act(async () => loginUser(userLoginCredentials));
 
       const setIsErrorAction = setIsErrorModalActionCreator(
         modalMessages.loginError
       );
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsErrorAction);
+    });
+  });
+
+  describe("When registerUser function is called and process is ok", () => {
+    test("Then it should redirect to login page", async () => {
+      const {
+        result: {
+          current: { registerUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper,
+      });
+
+      const expectedRoute = "/login";
+
+      await waitFor(() => registerUser(userCredentials));
+
+      expect(spyRouter).toHaveBeenCalledWith(expectedRoute);
+    });
+  });
+
+  describe("When registerUser function is called and process goes wrong", () => {
+    test("Then it should call dispatch with set error modal action with 'Error registering user' message", async () => {
+      server.use(...errorHandlers);
+
+      const {
+        result: {
+          current: { registerUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper,
+      });
+
+      const setIsErrorModalAction = setIsErrorModalActionCreator(
+        modalMessages.registerError
+      );
+
+      await waitFor(() => registerUser(userCredentials));
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
     });
   });
 });

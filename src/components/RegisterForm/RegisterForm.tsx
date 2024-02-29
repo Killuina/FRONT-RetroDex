@@ -3,6 +3,8 @@ import { secondaryFont } from "../../styles/fonts";
 import FormStyled from "../../styles/shared/FormStyled";
 import { UserCredentials } from "../../hooks/types";
 
+import useUser from "../../hooks/userUser/useUser";
+
 const RegisterForm = (): React.ReactElement => {
   const initialUserCredentials: UserCredentials = {
     email: "",
@@ -10,6 +12,7 @@ const RegisterForm = (): React.ReactElement => {
     username: "",
   };
 
+  const { registerUser } = useUser();
   const [userCredentials, setUserCredentials] = useState(
     initialUserCredentials
   );
@@ -25,8 +28,17 @@ const RegisterForm = (): React.ReactElement => {
     setUserCredentials({ ...userCredentials, [id]: value });
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    registerUser(userCredentials);
+  };
+
   return (
-    <FormStyled className={`${secondaryFont.className} form`}>
+    <FormStyled
+      onSubmit={handleSubmit}
+      className={`${secondaryFont.className} form`}
+    >
       <label htmlFor="email">Email</label>
       <input
         className="form__field"
