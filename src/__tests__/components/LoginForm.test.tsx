@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "../../components/Forms/LoginForm/LoginForm";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 
 jest.mock("next/router", () => require("next-router-mock"));

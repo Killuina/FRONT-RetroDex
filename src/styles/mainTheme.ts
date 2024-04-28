@@ -11,6 +11,7 @@ export const mainTheme: DefaultTheme = {
     modalSucessColor: "#C6F6D5",
     loaderBackGroundColor: "#B7B7B78F",
     textBorderColor: "#B59171",
+    inputBorderColor: "#ADB5BF",
   },
   fonts: {
     mainFont: "'VT323', monospace",
@@ -20,6 +21,7 @@ export const mainTheme: DefaultTheme = {
       pokemonNameSize: "1.875rem",
       pokemonDescriptionSize: "1.563rem",
       textSize: "1.25rem",
+      smallSize: "0.875rem",
     },
     weights: {
       bold: "700",

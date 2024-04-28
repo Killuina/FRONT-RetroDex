@@ -1,34 +1,17 @@
 import styled from "styled-components";
 
-const FormStyled = styled.form`
-  font-weight: ${(props) => props.theme.fonts.weights.semiBold};
-  color: ${(props) => props.theme.fonts.colors.dark};
-  display: flex;
-  flex-direction: column;
-  padding: ${(props) => props.theme.paddings.medium};
-  width: 100%;
+const FormStyled = styled.div`
   max-width: 500px;
-  gap: 0.5rem;
-  margin-bottom: ${(props) => props.theme.margins.standard};
-
-  img {
-    display: block;
-    margin: 1rem auto;
-  }
+  width: 100%;
 
   .form {
-    &__field {
-      display: block;
-      margin-bottom: ${(props) => props.theme.paddings.medium};
-      border-radius: ${(props) => props.theme.border.radius};
-      padding: 0.7rem;
-      background-color: ${(props) => props.theme.colors.inputColor};
-      border: solid 1px #a8abaf;
-      border-radius: ${(props) => props.theme.border.radius};
-      font-weight: inherit;
-      font-family: inherit;
-      font-size: inherit;
-    }
+    font-weight: ${(props) => props.theme.fonts.weights.semiBold};
+    color: ${(props) => props.theme.fonts.colors.dark};
+    display: flex;
+    flex-direction: column;
+    padding: ${(props) => props.theme.paddings.medium};
+    gap: 1rem;
+    margin-bottom: ${(props) => props.theme.margins.standard};
 
     &__image-field {
       cursor: pointer;
@@ -52,6 +35,52 @@ const FormStyled = styled.form`
       box-shadow: none;
       background-color: ${(props) => props.theme.colors.disabledButtonColor};
     }
+
+    img {
+      display: block;
+      margin: 1rem auto;
+    }
+  }
+
+  .field-container {
+    position: relative;
+  }
+
+  .field {
+    display: block;
+    margin-top: 0.75rem;
+    width: 100%;
+    border-radius: ${(props) => props.theme.border.radius};
+    padding: 0.7rem;
+    background-color: ${(props) => props.theme.colors.inputColor};
+    border: solid 1px ${(props) => props.theme.colors.inputBorderColor};
+    border-radius: ${(props) => props.theme.border.radius};
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: 47px;
+    }
+
+    &__invalid-message {
+      height: 25px;
+      width: 100%;
+      padding-top: 0.25rem;
+      color: ${(props) => props.theme.colors.modalErrorColor};
+      font-size: ${(props) => props.theme.fonts.sizes.smallSize};
+    }
+
+    &--invalid {
+      border-color: ${(props) => props.theme.colors.modalErrorColor};
+      outline: ${(props) => props.theme.colors.modalErrorColor};
+    }
+  }
+
+  .field:focus {
+    outline: solid 1.5px ${(props) => props.theme.fonts.colors.dark};
   }
 `;
 

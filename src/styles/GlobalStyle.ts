@@ -32,12 +32,17 @@ h1, h2, h3 {
 
 input, select {
   border-radius: ${(props) => props.theme.border.radius};
+  outline: none;
 }
 
 ul, li, ol {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+p {
+  margin: 0 
 }
 
 
