@@ -63,6 +63,7 @@ const LoginForm = (): JSX.Element => {
             className="field__icon"
             type="button"
             onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+            aria-label="Show Password"
           >
             {isPasswordVisible ? <OpenedEyeIcon /> : <ClosedEyeIcon />}
           </button>

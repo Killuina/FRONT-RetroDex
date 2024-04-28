@@ -81,4 +81,33 @@ describe("Given the Register Form", () => {
       expect(signUpButton).toBeDisabled();
     });
   });
+
+  describe("When the user clicks on Password visibility button", () => {
+    test("Then it should show the user's password: test", async () => {
+      const userCredentials = {
+        email: "test@test.com",
+        username: "User1234",
+        password: "test1234@",
+      };
+
+      const passwordLabel = "Password";
+
+      renderWithProviders(<RegisterForm />);
+
+      const passwordField = screen.getByLabelText(passwordLabel);
+      const passwordVisibilityButton = screen.getByRole("button", {
+        name: "Show Password",
+      });
+
+      await userEvent.type(passwordField, userCredentials.password);
+
+      await userEvent.click(passwordVisibilityButton);
+
+      const passwordFieldWithVisiblePassword = screen.getByDisplayValue(
+        userCredentials.password
+      );
+
+      expect(passwordFieldWithVisiblePassword).toBeInTheDocument();
+    });
+  });
 });

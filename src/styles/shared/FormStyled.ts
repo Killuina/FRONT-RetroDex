@@ -62,7 +62,7 @@ const FormStyled = styled.div`
     &__icon {
       position: absolute;
       right: 10px;
-      top: 45px;
+      top: 47px;
     }
 
     &__invalid-message {
