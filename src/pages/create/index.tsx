@@ -1,4 +1,4 @@
-import PokemonForm from "../../components/PokemonForm/PokemonForm";
+import PokemonForm from "../../components/Forms/PokemonForm/PokemonForm";
 import PageStyled from "../../styles/shared/PageStyled";
 
 const CreatePokemonPage = (): JSX.Element => {

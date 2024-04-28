@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "../../components/Forms/LoginForm/LoginForm";
 import { useAppSelector } from "../../store/hooks";
 import { secondaryFont } from "../../styles/fonts";
 import Link from "next/link";

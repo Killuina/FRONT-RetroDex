@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import PokemonForm from "../../components/PokemonForm/PokemonForm";
+import PokemonForm from "../../components/Forms/PokemonForm/PokemonForm";
 import { mockUserPokemon } from "../../mocks/pokemonMocks/pokemonMock";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 

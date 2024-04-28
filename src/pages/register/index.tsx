@@ -1,4 +1,4 @@
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
 import Link from "next/link";
 import { secondaryFont } from "../../styles/fonts";
 import AuthenticationPageStyled from "../../styles/shared/AuthenticationPageStyled";

@@ -12,6 +12,7 @@ declare module "styled-components" {
       modalSucessColor: string;
       loaderBackGroundColor: string;
       textBorderColor: string;
+      inputBorderColor: string;
     };
     fonts: {
       mainFont: string;
@@ -21,6 +22,7 @@ declare module "styled-components" {
         textSize: string;
         pokemonNameSize: string;
         pokemonDescriptionSize: string;
+        smallSize: string;
       };
       weights: {
         bold: string;
