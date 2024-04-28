@@ -65,7 +65,7 @@ const FormStyled = styled.div`
       top: 45px;
     }
 
-    &__error-message {
+    &__invalid-message {
       height: 25px;
       width: 100%;
       padding-top: 0.25rem;
@@ -73,7 +73,7 @@ const FormStyled = styled.div`
       font-size: ${(props) => props.theme.fonts.sizes.smallSize};
     }
 
-    &--error {
+    &--invalid {
       border-color: ${(props) => props.theme.colors.modalErrorColor};
       outline: ${(props) => props.theme.colors.modalErrorColor};
     }

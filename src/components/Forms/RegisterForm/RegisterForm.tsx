@@ -43,35 +43,53 @@ const RegisterForm = (): React.ReactElement => {
               <label htmlFor="email">Email</label>
               <Field
                 autoFocus
-                className={`field ${errors.email && "field--error"}`}
+                className={`field ${errors.email && "field--invalid"}`}
                 type="text"
                 autoComplete="off"
                 id="email"
                 name="email"
+                aria-describedby="invalid-email-message"
+                aria-invalid={!isValid}
               ></Field>
-              <p className="field__error-message">{errors.email}</p>
+              <span
+                role="alert"
+                id="invalid-email-message"
+                className="field__invalid-message"
+              >
+                {errors.email}
+              </span>
             </div>
             <div className="field-container">
               <label htmlFor="username">Username</label>
               <Field
-                className={`field ${errors.username && "field--error"}`}
+                className={`field ${errors.username && "field--invalid"}`}
                 type="text"
                 autoComplete="off"
                 id="username"
                 name="username"
+                aria-describedby="invalid-username-message"
+                aria-invalid={!isValid}
               ></Field>
-              <p className="field__error-message">{errors.username}</p>
+              <span
+                role="alert"
+                id="invalid-username-message"
+                className="field__invalid-message"
+              >
+                {errors.username}
+              </span>
             </div>
             <div className="field-container">
               <label htmlFor="password">Password</label>
               <Field
                 className={`field field--password ${
-                  errors.password && "field--error"
+                  errors.password && "field--invalid"
                 }`}
                 autoComplete="on"
                 type={isPasswordVisible ? "text" : "password"}
                 id="password"
                 name="password"
+                aria-describedby="invalid-password-message"
+                aria-invalid={!isValid}
               />
               <button
                 className="field__icon"
@@ -80,7 +98,13 @@ const RegisterForm = (): React.ReactElement => {
               >
                 {isPasswordVisible ? <OpenedEyeIcon /> : <ClosedEyeIcon />}
               </button>
-              <p className="field__error-message">{errors.password}</p>
+              <span
+                role="alert"
+                id="invalid-password-message"
+                className="field__invalid-message"
+              >
+                {errors.password}
+              </span>
             </div>
             <button
               className="form__button"

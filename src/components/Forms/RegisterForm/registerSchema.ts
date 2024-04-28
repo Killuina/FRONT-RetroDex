@@ -1,19 +1,20 @@
 import { object, string } from "yup";
+import invalidFieldMessages from "../../../data/invalidValidationMessages";
 
 const registerSchema = object({
-  email: string().email("You must enter a valid email."),
+  email: string().email(invalidFieldMessages.email.wrongFormat),
   username: string()
-    .min(5, "Your username is too short!")
-    .max(15, "Your username is too long!"),
+    .min(5, invalidFieldMessages.username.tooShort)
+    .max(15, invalidFieldMessages.username.tooLong),
   password: string()
-    .matches(/[A-Za-z]/, "Password must contain at least 1 letter.")
-    .matches(/\d/, "Password must contain at least 1 number.")
+    .matches(/[A-Za-z]/, invalidFieldMessages.pasword.containLetters)
+    .matches(/\d/, invalidFieldMessages.pasword.containNumbers)
     .matches(
       /[!@#$%^&*()_+]/,
-      "Password must contain at least 1 special character."
+      invalidFieldMessages.pasword.containSpecialCharacter
     )
-    .min(8, "Password must be 8 characters or more.")
-    .max(20, "Password can't be more than 20 characters."),
+    .min(8, invalidFieldMessages.pasword.tooShort)
+    .max(20, invalidFieldMessages.pasword.tooLong),
 });
 
 export default registerSchema;
