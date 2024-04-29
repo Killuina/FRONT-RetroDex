@@ -11,7 +11,7 @@ const FormStyled = styled.div`
     flex-direction: column;
     padding: ${(props) => props.theme.paddings.medium};
     gap: 1rem;
-    margin-bottom: ${(props) => props.theme.margins.standard};
+    margin-bottom: ${(props) => props.theme.paddings.standard};
 
     &__image-field {
       cursor: pointer;
@@ -62,10 +62,11 @@ const FormStyled = styled.div`
     &__icon {
       position: absolute;
       right: 10px;
-      top: 47px;
+      top: 44px;
     }
 
     &__invalid-message {
+      display: block;
       height: 25px;
       width: 100%;
       padding-top: 0.25rem;

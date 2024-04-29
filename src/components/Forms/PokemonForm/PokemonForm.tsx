@@ -95,7 +95,7 @@ const PokemonForm = (): JSX.Element => {
             type="text"
             autoComplete="off"
             id="name"
-          ></input>
+          />
         </div>
         <div className="field-container">
           <label htmlFor="firstType">First type</label>
@@ -137,7 +137,7 @@ const PokemonForm = (): JSX.Element => {
             type="text"
             autoComplete="off"
             id="ability"
-          ></input>
+          />
         </div>
         <div className="field-container">
           <label htmlFor="height">Height</label>
@@ -150,7 +150,7 @@ const PokemonForm = (): JSX.Element => {
             type="text"
             autoComplete="off"
             id="height"
-          ></input>
+          />
         </div>
         <div className="field-container">
           <label htmlFor="weight">Weight</label>
@@ -163,7 +163,7 @@ const PokemonForm = (): JSX.Element => {
             placeholder="0"
             autoComplete="off"
             id="weight"
-          ></input>
+          />
         </div>
         <div className="field-container">
           <label htmlFor="baseExp">Base exp</label>
@@ -176,7 +176,7 @@ const PokemonForm = (): JSX.Element => {
             placeholder="0"
             autoComplete="off"
             id="baseExp"
-          ></input>
+          />
         </div>
 
         <label htmlFor="image" className="form__image-field">

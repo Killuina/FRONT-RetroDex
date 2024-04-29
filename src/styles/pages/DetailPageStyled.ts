@@ -14,6 +14,7 @@ const DetailPageStyled = styled.div`
       font-size: ${(props) => props.theme.fonts.sizes.textSize};
       text-align: start;
       padding-bottom: 1rem;
+      padding-top: 1rem;
       border-bottom: solid 2px ${(props) => props.theme.colors.textBorderColor};
 
       span {
