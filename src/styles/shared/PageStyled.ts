@@ -5,6 +5,7 @@ const PageStyled = styled.section`
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  margin-bottom: 30px;
 
   .no-results-feedback {
     padding: 1rem;

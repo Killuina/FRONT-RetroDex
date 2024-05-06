@@ -11,7 +11,7 @@ const Header = (): JSX.Element => {
         width="30"
         height="30"
       />
-      <h1 className={mainFont.className}>Pokédex</h1>
+      <h1 className={mainFont.className}>RetroDex</h1>
     </HeaderStyled>
   );
 };

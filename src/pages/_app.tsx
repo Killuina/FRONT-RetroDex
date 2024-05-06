@@ -11,8 +11,11 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title key="title">Pokédex</title>
-        <meta name="description" content="A Pokédex CRUD App" />
+        <title key="title">RetroDex</title>
+        <meta
+          name="description"
+          content="A Pokédex CRUD App with retro pixel style"
+        />
         <link
           rel="preconnect"
           href={`${process.env.NEXT_PUBLIC_URL_API}`}

@@ -17,7 +17,7 @@ describe("Given the Header component", () => {
     test("Then it should show app title 'Pokédex' on a heading", () => {
       renderWithProviders(<Header />);
 
-      const pokedexTitle = screen.getByRole("heading", { name: /pokédex/i });
+      const pokedexTitle = screen.getByRole("heading", { name: /retrodex/i });
 
       expect(pokedexTitle).toBeInTheDocument();
     });
