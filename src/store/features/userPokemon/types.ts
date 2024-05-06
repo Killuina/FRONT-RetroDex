@@ -8,7 +8,10 @@ export interface UserPokemon {
   baseExp: string;
   imageUrl: string;
   backupImageUrl: string;
-  createdBy: string;
+  createdBy: {
+    username: string;
+    id: string;
+  };
 }
 
 export type UserPokemonList = UserPokemon[];

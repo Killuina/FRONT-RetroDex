@@ -9,7 +9,11 @@ const {
   },
   pokemon: {
     pokemonPath,
-    endpoints: { deletePokemon, createPokemon },
+    endpoints: {
+      deletePokemon,
+      createPokemon,
+      getUserPokemon: getUserPokemonList,
+    },
   },
 } = routes;
 
@@ -38,6 +42,17 @@ export const handlers = [
   ),
   rest.get(
     `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          pokemon: mockUserPokemonList,
+        })
+      );
+    }
+  ),
+  rest.get(
+    `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}${getUserPokemonList}`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -109,6 +124,17 @@ export const errorHandlers = [
   ),
   rest.get(
     `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          error: "Couldn't retreive Pokémon",
+        })
+      );
+    }
+  ),
+  rest.get(
+    `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}${getUserPokemonList}`,
     (req, res, ctx) => {
       return res(
         ctx.status(500),

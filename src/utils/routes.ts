@@ -1,6 +1,6 @@
-import { Paths } from "./types";
+import { Routes } from "./types";
 
-export const routes: Paths = {
+export const routes: Routes = {
   users: {
     usersPath: "/users",
     endpoints: {
@@ -11,6 +11,7 @@ export const routes: Paths = {
   pokemon: {
     pokemonPath: "/pokemon",
     endpoints: {
+      getUserPokemon: "/user",
       deletePokemon: "/delete/",
       createPokemon: "/create",
     },

@@ -16,7 +16,10 @@ export const mockUserPokemonList: UserPokemonList = [
     imageUrl: "/pokamion.png",
     backupImageUrl:
       "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokamion.webp",
-    createdBy: "63fa113cda52dff28b261e0a",
+    createdBy: {
+      username: "Manolo",
+      id: "63fa113cda52dff28b261e0a",
+    },
   },
   {
     id: "2",
@@ -29,7 +32,10 @@ export const mockUserPokemonList: UserPokemonList = [
     imageUrl: "/pokemito.png",
     backupImageUrl:
       "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokemito.webp",
-    createdBy: "63fa113cda52dff28b261e0a",
+    createdBy: {
+      username: "Manolo",
+      id: "63fa113cda52dff28b261e0a",
+    },
   },
 ];
 
@@ -44,7 +50,10 @@ export const mockUserPokemon: UserPokemon = {
   imageUrl: "/pokamion.png",
   backupImageUrl:
     "https://whvdnqxlctrpqnppjuwd.supabase.co/storage/v1/object/public/pokemon/pokamion.webp",
-  createdBy: "63fa113cda52dff28b261e0a",
+  createdBy: {
+    username: "Manolo",
+    id: "63fa113cda52dff28b261e0a",
+  },
 };
 
 export const getMockNewUserPokemonData = (): FormDataPolyfill => {

@@ -5,14 +5,19 @@ import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSide
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../../store/hooks";
 import PageStyled from "../../styles/shared/PageStyled";
+import useToken from "../../hooks/useToken/useToken";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
+  const { getToken } = useToken();
+
   const { filter, pokemonList } = useAppSelector(({ pokemon }) => pokemon);
 
   useEffect(() => {
-    getUserPokemonList(filter);
-  }, [filter, getUserPokemonList]);
+    const token = localStorage.getItem("token");
+
+    getUserPokemonList(filter, token!);
+  }, [filter, getUserPokemonList, getToken]);
 
   return (
     <ClientSideProtectedRoute>

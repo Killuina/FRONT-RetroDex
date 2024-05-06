@@ -19,7 +19,8 @@ import { showSuccessToast } from "../../modals/modals";
 import statusCodes from "../../utils/statusCodes";
 
 interface UsePokemon {
-  getUserPokemonList: (filter?: string) => Promise<void>;
+  getAllUsersPokemonList: (filter?: string) => Promise<void>;
+  getUserPokemonList: (token: string, filter?: string) => Promise<void>;
   deleteUserPokemon: (userPokemonId: string) => Promise<void>;
   createUserPokemon: (newUserPokemonData: FormData) => Promise<void>;
 }
@@ -27,7 +28,7 @@ interface UsePokemon {
 const {
   pokemon: {
     pokemonPath,
-    endpoints: { deletePokemon, createPokemon },
+    endpoints: { deletePokemon, createPokemon, getUserPokemon },
   },
 } = routes;
 
@@ -42,7 +43,7 @@ const usePokemon = (): UsePokemon => {
   const router = useRouter();
   const { token } = useAppSelector(({ user }) => user);
 
-  const getUserPokemonList = useCallback(
+  const getAllUsersPokemonList = useCallback(
     async (type?: string) => {
       try {
         dispatch(setIsLoadingActionCreator());
@@ -54,6 +55,46 @@ const usePokemon = (): UsePokemon => {
               }${pokemonPath}?${new URLSearchParams({ type })}`
             )
           : await fetch(`${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}`);
+
+        if (!response.ok) {
+          throw new Error(gettingPokemonError);
+        }
+
+        const { pokemon: pokemonList }: UserPokemonListResponse =
+          await response.json();
+
+        dispatch(loadUserPokemonActionCreator(pokemonList));
+
+        dispatch(unsetIsLoadingActionCreator());
+      } catch (error: unknown) {
+        dispatch(unsetIsLoadingActionCreator());
+
+        dispatch(setIsErrorModalActionCreator((error as Error).message));
+      }
+    },
+    [dispatch]
+  );
+
+  const getUserPokemonList = useCallback(
+    async (token: string, type?: string) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
+
+        const response = type
+          ? await fetch(
+              `${
+                process.env.NEXT_PUBLIC_URL_API
+              }${pokemonPath}?${new URLSearchParams({ type })}`
+            )
+          : await fetch(
+              `${process.env.NEXT_PUBLIC_URL_API}${pokemonPath}${getUserPokemon}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
 
         if (!response.ok) {
           throw new Error(gettingPokemonError);
@@ -145,6 +186,7 @@ const usePokemon = (): UsePokemon => {
     }
   };
   return {
+    getAllUsersPokemonList,
     getUserPokemonList,
     deleteUserPokemon,
     createUserPokemon,
