@@ -62,7 +62,10 @@ export const getPokemonDetailData = async (
           ability: "",
           backupImageUrl: "",
           baseExp: "",
-          createdBy: "",
+          createdBy: {
+            username: "",
+            id: "",
+          },
           height: "",
           id: "",
           imageUrl: "",

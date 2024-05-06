@@ -35,7 +35,7 @@ export const mockLoggedUserState: UserState = {
   id: "1",
   isLogged: true,
   token: "mocken",
-  username: "",
+  username: "Manolo",
 };
 
 export const mockWithPokemonListUserPokemonState: UserPokemonState = {

@@ -74,7 +74,7 @@ describe("Given the getPokemonDetailData function", () => {
             ability: "",
             backupImageUrl: "",
             baseExp: "",
-            createdBy: "",
+            createdBy: { id: "", username: "" },
             height: "",
             id: "",
             imageUrl: "",

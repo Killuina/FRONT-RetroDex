@@ -11,21 +11,20 @@ const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
   const { getToken } = useToken();
 
-  const { filter, pokemonList } = useAppSelector(({ pokemon }) => pokemon);
+  const { pokemonList } = useAppSelector(({ pokemon }) => pokemon);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    getUserPokemonList(filter, token!);
-  }, [filter, getUserPokemonList, getToken]);
+    getUserPokemonList(token!);
+  }, [getUserPokemonList, getToken]);
 
   return (
     <ClientSideProtectedRoute>
       <PageStyled>
         <h2>Your Pokémon</h2>
-        <Filter />
         {pokemonList.length === 0 ? (
-          <span className="no-results-feedback">No results found</span>
+          <span className="no-results-feedback">No Pokémon created</span>
         ) : (
           <PokemonList pokemonList={pokemonList} />
         )}

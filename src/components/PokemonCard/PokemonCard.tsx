@@ -10,9 +10,9 @@ interface PokemonCardProps {
 }
 
 const PokemonCard = ({
-  pokemon: { name, imageUrl, types, id, backupImageUrl },
+  pokemon: { name, imageUrl, types, id, backupImageUrl, createdBy },
 }: PokemonCardProps): JSX.Element => {
-  const { isLogged } = useAppSelector(({ user }) => user);
+  const { username } = useAppSelector(({ user }) => user);
   const { deleteUserPokemon } = usePokemon();
 
   const handleDeletePokemon = async (
@@ -36,7 +36,7 @@ const PokemonCard = ({
       <h3 className="pokemon-card__name">{name}</h3>
       <span className="pokemon-card__types">Type:{types.join("/")}</span>
       <div className="pokemon-card__buttons">
-        {isLogged && (
+        {username === createdBy.username && (
           <>
             <button className="pokemon-card__button" aria-label="edit pokemon">
               <svg
