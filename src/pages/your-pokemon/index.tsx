@@ -9,15 +9,15 @@ import useToken from "../../hooks/useToken/useToken";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
-  const { getToken } = useToken();
 
   const { pokemonList } = useAppSelector(({ pokemon }) => pokemon);
+  const { token } = useAppSelector(({ user }) => user);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    getUserPokemonList(token!);
-  }, [getUserPokemonList, getToken]);
+    if (token) {
+      getUserPokemonList(token);
+    }
+  }, [getUserPokemonList, token]);
 
   return (
     <ClientSideProtectedRoute>
