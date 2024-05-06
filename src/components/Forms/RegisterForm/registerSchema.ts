@@ -5,7 +5,7 @@ const registerSchema = object({
   email: string().email(invalidFieldMessages.email.wrongFormat),
   username: string()
     .min(5, invalidFieldMessages.username.tooShort)
-    .max(12, invalidFieldMessages.username.tooLong),
+    .max(15, invalidFieldMessages.username.tooLong),
   password: string()
     .matches(/[A-Za-z]/, invalidFieldMessages.pasword.containLetters)
     .matches(/\d/, invalidFieldMessages.pasword.containNumbers)

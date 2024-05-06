@@ -1,17 +1,16 @@
-## **POKÉDEX**
+## **RetroDex**
 
-Pokédex is a web CRUD application with a toy-like retro style, that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
+RetroDex is a web CRUD application with a toy-like retro style, that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
 
-Overall, Pokédex is an efficient and user-friendly web application that is made for video game and Pokémon enthusiasts.
+Overall, RetroDex is an efficient and user-friendly web application that is made for video game and Pokémon enthusiasts.
 
-[Visit Pokedex](https://custom-pokedex-next.netlify.app/)
+[Visit RetroDex](https://custom-pokedex-next.netlify.app/)
 
 ![Login and register](resources/screenshots/login.png)
 ![Home and map](resources/screenshots/home.png)
 ![Detail](resources/screenshots/detail.png)
 ![Create Form](resources/screenshots/createForm1.png)
 ![Create Form](resources/screenshots/createForm2.png)
-![Your Pokemon](resources/screenshots/your-pokemon.png)
 
 ### **FEATURES**
 
@@ -41,21 +40,18 @@ Overall, Pokédex is an efficient and user-friendly web application that is made
 
 To use this app, you'll need to have the following tool installed:
 
-- **[Node.js](https://nodejs.org/en/)**
+**[Node.js](https://nodejs.org/en/)**
 
 Once installed, you can clone this repository and install all needed dependencies by using the following commands:
 
 ```
 git clone
-
 ```
 
 On your code editor:
 
 ```
-
 npm install
-
 ```
 
 You can start the development server by running **`npm run dev`** and visiting **`http://localhost:3000/`** in your web browser.

@@ -26,6 +26,10 @@ button {
   font-size: inherit;
 }
 
+strong {
+  font-weight: inherit;
+}
+
 h1, h2, h3 {
   font-weight: inherit;
 }

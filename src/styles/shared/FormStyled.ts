@@ -3,6 +3,7 @@ import styled from "styled-components";
 const FormStyled = styled.div`
   max-width: 500px;
   width: 100%;
+  margin: 0 auto;
 
   .form {
     font-weight: ${(props) => props.theme.fonts.weights.semiBold};

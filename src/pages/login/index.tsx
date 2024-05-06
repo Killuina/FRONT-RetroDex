@@ -16,10 +16,20 @@ const LoginPage = (): JSX.Element => {
 
   return (
     <AuthenticationPageStyled>
-      <LoginForm />
-      <div className={`${secondaryFont.className} page__link`}>
-        <span>New here? </span>
-        <Link href={"/register"}>Sign up</Link>
+      <div className="page-heading">
+        <h2 className="page-heading__title">
+          Welcome to <strong>RetroDex</strong>
+        </h2>
+        <span className={`${secondaryFont.className} page-heading__subtitle`}>
+          Create your own custom Pokémon and become a real Pokémon trainer!
+        </span>
+      </div>
+      <div className="auth-form-container">
+        <LoginForm />
+        <div className={`${secondaryFont.className} page__link`}>
+          <span>New here? </span>
+          <Link href={"/register"}>Sign up</Link>
+        </div>
       </div>
     </AuthenticationPageStyled>
   );

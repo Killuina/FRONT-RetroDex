@@ -19,9 +19,9 @@ import { showSuccessToast } from "../../modals/modals";
 import statusCodes from "../../utils/statusCodes";
 
 interface UsePokemon {
-  getUserPokemonList: (filter?: string) => void;
-  deleteUserPokemon: (userPokemonId: string) => void;
-  createUserPokemon: (newUserPokemonData: FormData) => void;
+  getUserPokemonList: (filter?: string) => Promise<void>;
+  deleteUserPokemon: (userPokemonId: string) => Promise<void>;
+  createUserPokemon: (newUserPokemonData: FormData) => Promise<void>;
 }
 
 const {
