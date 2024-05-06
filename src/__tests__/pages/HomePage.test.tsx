@@ -42,7 +42,7 @@ describe("Given the Home page", () => {
     test("Then it should show message: 'No results found'", () => {
       const expectedMessage = "No results found";
 
-      renderWithProviders(<UserPokemonListPage />, {
+      renderWithProviders(<HomePage />, {
         pokemon: mockWithNoPokemonUserPokemonState,
         user: mockLoggedUserState,
       });

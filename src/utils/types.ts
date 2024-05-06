@@ -19,7 +19,7 @@ export enum PokemonTypes {
   normal = "Normal",
 }
 
-export interface Paths {
+export interface Routes {
   users: {
     usersPath: string;
     endpoints: {
@@ -30,6 +30,7 @@ export interface Paths {
   pokemon: {
     pokemonPath: string;
     endpoints: {
+      getUserPokemon: string;
       deletePokemon: string;
       createPokemon: string;
     };

@@ -36,6 +36,67 @@ beforeEach(() => jest.resetAllMocks());
 const { gettingPokemonError, deletingPokemon, creatingPokemon } = modalMessages;
 
 describe("Given the usePokemon custom hook", () => {
+  describe("When the getAllUsersPokemonList is called", () => {
+    test("Then it should call the dispatch with loadPokemonAction", async () => {
+      const {
+        result: {
+          current: { getAllUsersPokemonList },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
+
+      await getAllUsersPokemonList();
+
+      expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
+    });
+  });
+
+  describe("When the getAllUsersPokemonList is called and request to get user's pokemon fails", () => {
+    test("Then the dispatch should be called with the action to activate the error modal with message 'Error getting Pokémon'", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const {
+        result: {
+          current: { getAllUsersPokemonList },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const setIsErrorModalAction =
+        setIsErrorModalActionCreator(gettingPokemonError);
+
+      await getAllUsersPokemonList();
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
+    });
+  });
+
+  describe("When the getAllUsersPokemonList is called with type 'Water' to filter", () => {
+    test("Then it should call the dispatch with loadPokemonAction", async () => {
+      const {
+        result: {
+          current: { getAllUsersPokemonList },
+        },
+      } = renderHook(() => usePokemon(), {
+        wrapper,
+      });
+
+      const loadUserPokemonAction =
+        loadUserPokemonActionCreator(mockUserPokemonList);
+
+      await getAllUsersPokemonList(PokemonTypes.water);
+
+      expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
+    });
+  });
+});
+
+describe("Given the usePokemon custom hook", () => {
   describe("When the getUserPokemonList is called", () => {
     test("Then it should call the dispatch with loadPokemonAction", async () => {
       const {
@@ -49,7 +110,7 @@ describe("Given the usePokemon custom hook", () => {
       const loadUserPokemonAction =
         loadUserPokemonActionCreator(mockUserPokemonList);
 
-      await getUserPokemonList();
+      await getUserPokemonList("mocken");
 
       expect(spyDispatch).toHaveBeenCalledWith(loadUserPokemonAction);
     });
@@ -70,7 +131,7 @@ describe("Given the usePokemon custom hook", () => {
       const setIsErrorModalAction =
         setIsErrorModalActionCreator(gettingPokemonError);
 
-      await getUserPokemonList();
+      await getUserPokemonList("mocken");
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsErrorModalAction);
     });
@@ -249,7 +310,7 @@ describe("Given the createUserPokemon function", () => {
 
   describe("When it is called to create a Pokemon but the name already exists in the database", () => {
     test("Then it should call dispatch with set error modal action with 'Name already exists' message", async () => {
-      server.use(errorHandlers[5]);
+      server.use(errorHandlers[6]);
 
       const {
         result: {

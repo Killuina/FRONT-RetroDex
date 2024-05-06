@@ -6,12 +6,12 @@ import { useAppSelector } from "../store/hooks";
 import PageStyled from "../styles/shared/PageStyled";
 
 const HomePage = (): JSX.Element => {
-  const { getUserPokemonList } = usePokemon();
+  const { getAllUsersPokemonList } = usePokemon();
   const { filter, pokemonList } = useAppSelector(({ pokemon }) => pokemon);
 
   useEffect(() => {
-    getUserPokemonList(filter);
-  }, [filter, getUserPokemonList]);
+    getAllUsersPokemonList(filter);
+  }, [filter, getAllUsersPokemonList]);
 
   return (
     <PageStyled>

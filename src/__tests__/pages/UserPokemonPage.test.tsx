@@ -68,7 +68,7 @@ describe("Given the UserPokemonPage component", () => {
 
   describe("When there's an empty list in the store", () => {
     test("Then it should show message: 'No results found'", () => {
-      const expectedMessage = "No results found";
+      const expectedMessage = "No Pokémon created";
 
       renderWithProviders(<UserPokemonListPage />, {
         pokemon: mockWithNoPokemonUserPokemonState,

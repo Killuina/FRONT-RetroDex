@@ -53,6 +53,7 @@ const PokemonDetailPage = ({
     types,
     weight,
     imageUrl,
+    createdBy: { username },
   },
   isError,
   errorMessage,
@@ -87,6 +88,9 @@ const PokemonDetailPage = ({
         </p>
         <p className="pokemon-detail__base-exp">
           <span>Base Exp:</span> {baseExp}pts
+        </p>
+        <p className="pokemon-detail__created-by">
+          <span>Created by:</span> {username}
         </p>
       </div>
     </DetailPageStyled>
