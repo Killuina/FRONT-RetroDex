@@ -1,8 +1,12 @@
 ## **RetroDex**
 
-RetroDex is a web CRUD application with a toy-like retro style, that allows users to create and delete their own Pokémon, view a total list of Pokémon on the app, and view detailed information for each one. The application uses modern technologies such as Next.js, Typescript and Redux Toolkit for state management. It is deployed on Netlify for easy access by users. It is covered with a 100% by tests using Jest and React Testing Library
+RetroDex goes beyond a simple Pokémon CRUD. Dive into nostalgia with this web application that blends the charm of classic Pokémon games with the convenience of modern technology. Designed with captivating retro aesthetics, RetroDex allows you to create and customize your own Pokémon, explore a growing collection of creatures made by fellow users, and delete them as you please.
 
-Overall, RetroDex is an efficient and user-friendly web application that is made for video game and Pokémon enthusiasts.
+Built with cutting-edge technologies like Next.js and Typescript, RetroDex ensures a seamless and responsive experience.
+
+RetroDex is backed by a comprehensive testing suite, covering every feature with Jest and Testing Library to ensure performance and reliability. From crafting custom Pokémon to diving into meticulous details, RetroDex offers an immersive and user-friendly experience.
+
+Feel free to leave any suggestions! You can email me at **cristinajmartin98@gmail.com**
 
 [Visit RetroDex](https://custom-pokedex-next.netlify.app/)
 
