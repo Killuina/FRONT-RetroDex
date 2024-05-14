@@ -5,7 +5,7 @@ const AuthenticationPageStyled = styled.section`
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   gap: 80px;
 
   .auth-form-container {

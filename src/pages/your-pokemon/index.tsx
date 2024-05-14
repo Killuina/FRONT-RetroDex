@@ -5,7 +5,8 @@ import ClientSideProtectedRoute from "../../components/ProtectedRoute/ClientSide
 import usePokemon from "../../hooks/usePokemon/usePokemon";
 import { useAppSelector } from "../../store/hooks";
 import PageStyled from "../../styles/shared/PageStyled";
-import useToken from "../../hooks/useToken/useToken";
+import Link from "next/link";
+import { secondaryFont } from "../../styles/fonts";
 
 const UserPokemonListPage = (): JSX.Element => {
   const { getUserPokemonList } = usePokemon();
@@ -24,7 +25,15 @@ const UserPokemonListPage = (): JSX.Element => {
       <PageStyled>
         <h2>Your Pokémon</h2>
         {pokemonList.length === 0 ? (
-          <span className="no-results-feedback">No Pokémon created</span>
+          <>
+            <span className="no-results-feedback">No Pokémon created</span>
+            <Link
+              href={"/create"}
+              className={`${secondaryFont.className} create-pokemon-link`}
+            >
+              Create Pokémon
+            </Link>
+          </>
         ) : (
           <PokemonList pokemonList={pokemonList} />
         )}

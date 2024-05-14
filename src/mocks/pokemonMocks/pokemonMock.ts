@@ -8,7 +8,8 @@ export const mockUserPokemonList: UserPokemonList = [
   {
     id: "1",
     name: "Pokamion",
-    types: ["Water", "Fairy"],
+    firstType: "Water",
+    secondType: "Fairy",
     ability: "Pesao",
     height: "2",
     weight: "3",
@@ -24,7 +25,8 @@ export const mockUserPokemonList: UserPokemonList = [
   {
     id: "2",
     name: "Pokemito",
-    types: ["Water", "Dragon"],
+    firstType: "Water",
+    secondType: "Dragon",
     ability: "Xikito",
     height: "2",
     weight: "3",
@@ -42,7 +44,8 @@ export const mockUserPokemonList: UserPokemonList = [
 export const mockUserPokemon: UserPokemon = {
   id: "1",
   name: "Pokamion",
-  types: ["Water", "Fairy"],
+  firstType: "Water",
+  secondType: "Fairy",
   ability: "Pesao",
   height: "2",
   weight: "3",
@@ -59,8 +62,8 @@ export const mockUserPokemon: UserPokemon = {
 export const getMockNewUserPokemonData = (): FormDataPolyfill => {
   const mockNewUserPokemonData = new FormDataPolyfill();
   mockNewUserPokemonData.append("name", mockUserPokemon.name);
-  mockNewUserPokemonData.append("firstType", mockUserPokemon.types[0]);
-  mockNewUserPokemonData.append("secondType", mockUserPokemon.types[1]);
+  mockNewUserPokemonData.append("firstType", mockUserPokemon.firstType);
+  mockNewUserPokemonData.append("secondType", mockUserPokemon.secondType);
   mockNewUserPokemonData.append("ability", mockUserPokemon.ability);
   mockNewUserPokemonData.append("height", `${mockUserPokemon.height}`);
   mockNewUserPokemonData.append("weight", `${mockUserPokemon.weight}`);

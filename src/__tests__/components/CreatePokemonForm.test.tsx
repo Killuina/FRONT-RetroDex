@@ -245,8 +245,11 @@ describe("Given the CreatePokemonForm component", () => {
       });
 
       await userEvent.type(nameField, mockUserPokemon.name);
-      await userEvent.selectOptions(firstTypeField, mockUserPokemon.types[0]);
-      await userEvent.selectOptions(secondTypeField, mockUserPokemon.types[1]);
+      await userEvent.selectOptions(firstTypeField, mockUserPokemon.firstType);
+      await userEvent.selectOptions(
+        secondTypeField,
+        mockUserPokemon.secondType
+      );
       await userEvent.type(abilityField, mockUserPokemon.ability);
       await userEvent.type(heightField, mockUserPokemon.height);
       await userEvent.type(weightField, mockUserPokemon.weight);

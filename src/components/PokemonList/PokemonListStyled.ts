@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const PokemonListStyled = styled.ul`
-  padding: ${(props) => props.theme.paddings.standard};
+  padding: 3rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
