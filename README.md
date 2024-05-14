@@ -20,8 +20,8 @@ Feel free to leave any suggestions! You can email me at **cristinajmartin98@gmai
 
 - Add Pokémon data and image
 - Delete your Pokémon
-- See al Pokémon created on the app
-- See all Pokémon details
+- See all Pokémon created on the app
+- See Pokémon details
 - Filter by all 18 Pokémon types
 - Login authentication using JSON Web Token
 
@@ -46,17 +46,7 @@ To use this app, you'll need to have the following tool installed:
 
 **[Node.js](https://nodejs.org/en/)**
 
-Once installed, you can clone this repository and install all needed dependencies by using the following commands:
-
-```
-git clone
-```
-
-On your code editor:
-
-```
-npm install
-```
+Once installed, you can run **`git clone`** to clone the repository into your local folder and install all dependencies running **`npm install`**
 
 You can start the development server by running **`npm run dev`** and visiting **`http://localhost:3000/`** in your web browser.
 
