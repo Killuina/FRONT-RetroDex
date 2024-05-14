@@ -5,6 +5,7 @@ import usePokemon from "../../../hooks/usePokemon/usePokemon";
 import { secondaryFont } from "../../../styles/fonts";
 import { UserPokemonFormData, UserPokemonSelectData } from "./types";
 import FormStyled from "../../../styles/shared/FormStyled";
+import AddImageIcon from "../../Icons/AddImageIcon";
 
 const PokemonForm = (): JSX.Element => {
   const { createUserPokemon } = usePokemon();
@@ -179,18 +180,31 @@ const PokemonForm = (): JSX.Element => {
           />
         </div>
 
-        <label htmlFor="image" className="form__image-field">
-          Image
-        </label>
-        <input type="file" id="image" onChange={handleImage} />
-        {image && (
-          <Image
-            src={URL.createObjectURL(image)}
-            alt={userPokemonFormData.name}
-            height="120"
-            width="120"
+        <div className="field-container">
+          <span id="Image">Image</span>
+          <label
+            htmlFor="image"
+            className="field field--image"
+            aria-labelledby="Image"
+          >
+            <AddImageIcon />
+            <span>Upload image</span>
+          </label>
+          <input
+            type="file"
+            id="image"
+            className="image-field"
+            onChange={handleImage}
           />
-        )}
+          {image && (
+            <Image
+              src={URL.createObjectURL(image)}
+              alt={userPokemonFormData.name}
+              height="120"
+              width="120"
+            />
+          )}
+        </div>
         <button className="form__button" disabled={areAreaFieldsEmpty}>
           Create Pokémon
         </button>

@@ -2,9 +2,11 @@
 
 RetroDex goes beyond a simple Pokémon CRUD. Dive into nostalgia with this web application that blends the charm of classic Pokémon games with the convenience of modern technology. Designed with captivating retro aesthetics, RetroDex allows you to create and customize your own Pokémon, explore a growing collection of creatures made by fellow users, and delete them as you please.
 
-Built with cutting-edge technologies like Next.js and Typescript, RetroDex ensures a seamless and responsive experience.
+Built with cutting-edge technologies like **Next.js** and **Typescript**, RetroDex ensures a seamless and responsive experience.
 
-RetroDex is backed by a comprehensive testing suite, covering every feature with Jest and Testing Library to ensure performance and reliability. From crafting custom Pokémon to diving into meticulous details, RetroDex offers an immersive and user-friendly experience.
+With a robust pipeline implemented through **GitHub Actions** and **Husky Hooks**, RetroDex enforces consistency in commits and branches, conducts thorough testing, maintains clean code practices, and generates reports via SonarCloud. This ensures the protection of the main branch and the overall integrity of the codebase.
+
+RetroDex is backed by a comprehensive testing suite, covering every feature with **Jest**, **Testing Library** and **MSW** to ensure performance and reliability. From crafting custom Pokémon to diving into meticulous details, RetroDex offers an immersive and user-friendly experience.
 
 Feel free to leave any suggestions! You can email me at **cristinajmartin98@gmail.com**
 
