@@ -10,7 +10,15 @@ interface PokemonCardProps {
 }
 
 const PokemonCard = ({
-  pokemon: { name, imageUrl, types, id, backupImageUrl, createdBy },
+  pokemon: {
+    name,
+    imageUrl,
+    firstType,
+    secondType,
+    id,
+    backupImageUrl,
+    createdBy,
+  },
 }: PokemonCardProps): JSX.Element => {
   const { username } = useAppSelector(({ user }) => user);
   const { deleteUserPokemon } = usePokemon();
@@ -23,7 +31,7 @@ const PokemonCard = ({
   };
 
   return (
-    <PokemonCardStyled className={`pokemon-card ${types[0]}`}>
+    <PokemonCardStyled className={`pokemon-card ${firstType}`}>
       <Link href={`/pokemon/${encodeURIComponent(id)}`} className="link">
         <Image
           src={`${imageUrl && backupImageUrl}`}
@@ -34,7 +42,9 @@ const PokemonCard = ({
         />
       </Link>
       <h3 className="pokemon-card__name">{name}</h3>
-      <span className="pokemon-card__types">Type:{types.join("/")}</span>
+      <span className="pokemon-card__types">
+        Type:{`${firstType}/${secondType}`}
+      </span>
       <div className="pokemon-card__buttons">
         {username === createdBy.username && (
           <>

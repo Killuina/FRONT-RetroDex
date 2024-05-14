@@ -1,7 +1,8 @@
 export interface UserPokemon {
   id: string;
   name: string;
-  types: string[];
+  firstType: string;
+  secondType: string;
   ability: string;
   height: string;
   weight: string;

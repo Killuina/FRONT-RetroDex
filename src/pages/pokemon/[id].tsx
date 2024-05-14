@@ -50,7 +50,8 @@ const PokemonDetailPage = ({
     baseExp,
     height,
     name,
-    types,
+    firstType,
+    secondType,
     weight,
     imageUrl,
     createdBy: { username },
@@ -75,7 +76,7 @@ const PokemonDetailPage = ({
       <h2 className="pokemon-detail__name">{name}</h2>
       <div className={`${secondaryFont.className} pokemon-detail`}>
         <p className="pokemon-detail__type">
-          <span>Types:</span> {types.join("/")}
+          <span>Types:</span> {`${firstType}/${secondType}`}
         </p>
         <p className="pokemon-detail__type">
           <span>Ability:</span> {ability}

@@ -35,7 +35,7 @@ describe("Given the PokemonCard component", () => {
       renderWithProviders(<PokemonCard pokemon={mockUserPokemon} />);
 
       const pokemonCard = screen.getByText(
-        `Type:${mockUserPokemon.types[0]}/${mockUserPokemon.types[1]}`
+        `Type:${mockUserPokemon.firstType}/${mockUserPokemon.secondType}`
       );
 
       expect(pokemonCard).toBeInTheDocument();
