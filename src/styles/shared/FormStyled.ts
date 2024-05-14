@@ -14,12 +14,6 @@ const FormStyled = styled.div`
     gap: 1rem;
     margin-bottom: ${(props) => props.theme.paddings.standard};
 
-    &__image-field {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-    }
-
     &__button {
       margin: 0 auto;
       width: 50%;
@@ -79,10 +73,26 @@ const FormStyled = styled.div`
       border-color: ${(props) => props.theme.colors.modalErrorColor};
       outline: ${(props) => props.theme.colors.modalErrorColor};
     }
+
+    &--image {
+      cursor: pointer;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      span {
+        font-size: 14px;
+        color: #858a92;
+      }
+    }
   }
 
   .field:focus {
     outline: solid 1.5px ${(props) => props.theme.fonts.colors.dark};
+  }
+
+  input[type="file"] {
+    display: none;
   }
 `;
 
